@@ -1,0 +1,35 @@
+---
+title: "Wirtschaftspolitik und Wirtschaftspsychologie" 
+author: "Prof. Dr. Jan S. Voßwinkel" 
+date: "HfWU Zukunftsökonomie | WiSe 2023/24" 
+output: 
+   bookdown::gitbook: 
+    config: 
+      sharing: no 
+    number_sections: yes
+---
+
+
+
+#  {-} 
+
+  
+```{r qr,  echo=FALSE, warning=FALSE} 
+ library(qrcode) 
+  
+ qr <- qr_code('https://janvoss.github.io/Wirtschaftspolitik') 
+ #plot(qr) 
+  
+ generate_svg(qr, filename = "qr.svg") 
+  
+``` 
+  
+  
+  
+  ${}$             |  Unterlagen: [https://janvoss.github.io/Wirtschaftspolitik](https://janvoss.github.io/Wirtschaftspolitik) 
+ :-------------------------:|:-------------------------: 
+ ![logo](logo.png)  |  ![](qr.svg){width=60% }
+
+# Einleitung
+
+# ...
