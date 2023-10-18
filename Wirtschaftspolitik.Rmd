@@ -37,9 +37,14 @@ output:
 - Unter den Bedingungen des vollkommenen Wettbewerbs führen Märzte zu Effizienz
 
 - Bedingungen:  
-  - $\dots$  
-  - $\dots$  
-  - $\dots$
+  - vollständige Information
+  - Akteure handeln rational 
+  - homogene Güter 
+  - keine externen Effekte
+  - keine zeitlichen, örtilichen Präferenzen
+  - Abwesenheit von Marktmacht auf *beiden* Marktseiten (atomistische Marktstruktur)
+  - unendliche Reaktionsgeschwindigkeit
+  - keine Transaktionskosten
   
   
 ## Woran erkennen wir Effizienz?
