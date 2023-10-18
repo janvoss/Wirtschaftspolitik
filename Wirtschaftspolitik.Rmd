@@ -34,6 +34,24 @@ output:
 
 # Funktionsfähige Märkte als Referenzrahmen
 
+- Unter den Bedingungen des vollkommenen Wettbewerbs führen Märzte zu Effizienz
+
+- Bedingungen:  
+  - $\dots$  
+  - $\dots$  
+  - $\dots$
+  
+  
+## Woran erkennen wir Effizienz?
+
+- Gleiche Grenzraten der Substitution: $MRS^A_{x_1, x_2}=MRS^B_{x_1, x_2}$  
+- Gleiche Grenzraten der technischen Substitution: $MRTS^{x_1}_{L, K}=MRTS^{x_2}_{L, K}$  
+- Grenzrate der Subsitution entspricht Grenzrate der Transformation $MRS^i_{x_1, x_2}=MRT_{x_1, x_2}$
+
+## Effizienz unter nicht-idealen Bedingungen: second-best und third-best
+
+## Was leisten Märkte in Bezug auf die Verteilung (nicht?)
+
 # Marktversagen als Hindernis für eine nachhaltige Entwicklung
 
 ## Theorie
