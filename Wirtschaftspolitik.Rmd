@@ -57,6 +57,35 @@ output:
 
 ## Was leisten Märkte in Bezug auf die Verteilung (nicht?)
 
+Bitte lesen Sie:
+
+[Brenke, Karl: Armut: vom Elend eines Begriffs, in: Wirtschaftsdienst 98 (2018), S. 260-266](https://www.wirtschaftsdienst.eu/inhalt/jahr/2018/heft/4/beitrag/armut-vom-elend-eines-begriffs.html)
+
+```{r, echo=F, message=F, warning=F}
+qr <- qr_code('https://www.wirtschaftsdienst.eu/inhalt/jahr/2018/heft/4/beitrag/armut-vom-elend-eines-begriffs.html') 
+
+plot(qr) 
+
+
+
+
+```
+
+
+
+und
+
+[Grabka, Markus: Ungleichheit der Haushaltsnettoeinkommen – Trends, Treiber, Politikmaßnahmen, in: Wirtschaftsdienst 101 (2021), S. 508-515](https://www.wirtschaftsdienst.eu/inhalt/jahr/2021/heft/7/beitrag/ungleichheit-der-haushaltsnettoeinkommen-trends-treiber-politikmassnahmen.html)
+
+
+```{r, echo=F, message=F, warning=F}
+qr <- qr_code('https://www.wirtschaftsdienst.eu/inhalt/jahr/2021/heft/7/beitrag/ungleichheit-der-haushaltsnettoeinkommen-trends-treiber-politikmassnahmen.html') 
+ 
+plot(qr) 
+
+```
+
+
 # Marktversagen als Hindernis für eine nachhaltige Entwicklung
 
 ## Theorie
