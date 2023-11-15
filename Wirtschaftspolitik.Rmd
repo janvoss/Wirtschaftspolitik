@@ -9,12 +9,9 @@ output:
     number_sections: yes
 ---
 
+#  {.unnumbered}
 
-
-#  {-} 
-
-  
-```{r qr,  echo=FALSE, warning=FALSE} 
+```{r qr,  echo=FALSE, warning=FALSE}
  library(qrcode) 
   
  qr <- qr_code('https://janvoss.github.io/Wirtschaftspolitik') 
@@ -22,40 +19,44 @@ output:
   
  generate_svg(qr, filename = "qr.svg") 
   
-``` 
-  
-  
-  
-  ${}$             |  Unterlagen: [https://janvoss.github.io/Wirtschaftspolitik](https://janvoss.github.io/Wirtschaftspolitik) 
- :-------------------------:|:-------------------------: 
- ![logo](logo.png)  |  ![](qr.svg){width=60% }
+```
+
+|       ${}$        | Unterlagen: <https://janvoss.github.io/Wirtschaftspolitik> |
+|:----------------------------------:|:----------------------------------:|
+| ![logo](logo.png) |                  ![](qr.svg){width="60%"}                  |
 
 # Einleitung
 
 # Funktionsfähige Märkte als Referenzrahmen
 
-- Unter den Bedingungen des vollkommenen Wettbewerbs führen Märzte zu Effizienz
+-   Unter den Bedingungen des vollkommenen Wettbewerbs führen Märzte zu Effizienz
 
-- Bedingungen:  
-  - vollständige Information
-  - Akteure handeln rational 
-  - homogene Güter 
-  - keine externen Effekte
-  - keine zeitlichen, örtilichen Präferenzen
-  - Abwesenheit von Marktmacht auf *beiden* Marktseiten (atomistische Marktstruktur)
-  - unendliche Reaktionsgeschwindigkeit
-  - keine Transaktionskosten
-  
-  
+-   Bedingungen:
+
+    -   vollständige Information
+    -   Akteure handeln rational
+    -   homogene Güter
+    -   keine externen Effekte
+    -   keine zeitlichen, örtilichen Präferenzen
+    -   Abwesenheit von Marktmacht auf *beiden* Marktseiten (atomistische Marktstruktur)
+    -   unendliche Reaktionsgeschwindigkeit
+    -   keine Transaktionskosten
+
 ## Woran erkennen wir Effizienz?
 
-- Gleiche Grenzraten der Substitution: $MRS^A_{x_1, x_2}=MRS^B_{x_1, x_2}$  
-- Gleiche Grenzraten der technischen Substitution: $MRTS^{x_1}_{L, K}=MRTS^{x_2}_{L, K}$  
-- Grenzrate der Subsitution entspricht Grenzrate der Transformation $MRS^i_{x_1, x_2}=MRT_{x_1, x_2}$
+-   Gleiche Grenzraten der Substitution: $MRS^A_{x_1, x_2}=MRS^B_{x_1, x_2}$\
+-   Gleiche Grenzraten der technischen Substitution: $MRTS^{x_1}_{L, K}=MRTS^{x_2}_{L, K}$\
+-   Grenzrate der Subsitution entspricht Grenzrate der Transformation $MRS^i_{x_1, x_2}=MRT_{x_1, x_2}$
 
 ## Effizienz unter nicht-idealen Bedingungen: second-best und third-best
 
 ### Second best
+
+s.  Tafelaufschrieb
+
+### Third best
+
+![Thid best](Third-best.svg)
 
 ## Was leisten Märkte in Bezug auf die Verteilung (nicht?)
 
@@ -73,12 +74,9 @@ plot(qr)
 
 ```
 
-
-
 und
 
-[Grabka, Markus: Ungleichheit der Haushaltsnettoeinkommen – Trends, Treiber, Politikmaßnahmen, in: Wirtschaftsdienst 101 (2021), S. 508-515](https://www.wirtschaftsdienst.eu/inhalt/jahr/2021/heft/7/beitrag/ungleichheit-der-haushaltsnettoeinkommen-trends-treiber-politikmassnahmen.html)
-
+[Grabka, Markus: Ungleichheit der Haushaltsnettoeinkommen -- Trends, Treiber, Politikmaßnahmen, in: Wirtschaftsdienst 101 (2021), S. 508-515](https://www.wirtschaftsdienst.eu/inhalt/jahr/2021/heft/7/beitrag/ungleichheit-der-haushaltsnettoeinkommen-trends-treiber-politikmassnahmen.html)
 
 ```{r, echo=F, message=F, warning=F}
 qr <- qr_code('https://www.wirtschaftsdienst.eu/inhalt/jahr/2021/heft/7/beitrag/ungleichheit-der-haushaltsnettoeinkommen-trends-treiber-politikmassnahmen.html') 
@@ -86,7 +84,6 @@ qr <- qr_code('https://www.wirtschaftsdienst.eu/inhalt/jahr/2021/heft/7/beitrag/
 plot(qr) 
 
 ```
-
 
 # Marktversagen als Hindernis für eine nachhaltige Entwicklung
 
@@ -96,11 +93,11 @@ plot(qr)
 
 ### Energiepolitik
 
-- Energiewende ($\rightarrow$ Umweltökonomik)
+-   Energiewende ($\rightarrow$ Umweltökonomik)
 
-- Energieversorgungssicherheit
+-   Energieversorgungssicherheit
 
-- Industriestrompreis
+-   Industriestrompreis
 
 ### Migrations- Arbeitsmarkt- und Sozialpolitik
 
@@ -116,9 +113,9 @@ $\rightarrow$ Umweltökonomik
 
 ### Natürliche Monopole
 
-- Charakteristisches Merkmal?
+-   Charakteristisches Merkmal?
 
-- 
+-   
 
 ### Informationsasymmetrie
 
@@ -132,10 +129,11 @@ $\rightarrow$ Umweltökonomik
 
 ## Anwendungsfälle
 
-- Werbe- und Konsumverbote
+-   Werbe- und Konsumverbote
 
-- Börsenpsychologie
-- ...
+-   Börsenpsychologie
+
+-   ...
 
 # Ökonomische Theorie der Politik
 
@@ -151,27 +149,26 @@ $\rightarrow$ Umweltökonomik
 
 # Zusammenfassung und Ausblick
 
+-   Praktische Anwendung: Industriestrompreis
 
-- Praktische Anwendung: Industriestrompreis
+-   Aktuelle wirtschaftspolitische Themen
 
-- Aktuelle wirtschaftspolitische Themen
+-   Migration und Integration in den Arbeitsmarkt
 
-- Migration und Integration in den Arbeitsmarkt
+-   Interessensverbände/Lobbying
 
-- Interessensverbände/Lobbying
+-   Börsenpsychologie
 
-- Börsenpsychologie
+-   Antidumping-Politik
 
-- Antidumping-Politik
+-   Umweltpolitik
 
-- Umweltpolitik
+-   Auswirkungen staatlicher Eingriffen, Stichwort: Energiewende, Subventionen;
 
-- Auswirkungen staatlicher Eingriffen, Stichwort: Energiewende, Subventionen;
+-   Krisenmanagement in Unternehmen und "der Wirtschaft" und der Politik/ Wirtschaftspsychologie
 
-- Krisenmanagement in Unternehmen und "der Wirtschaft" und der Politik/ Wirtschaftspsychologie
+-   Wirtschaftspolitische Systeme vergleichen
 
-- Wirtschaftspolitische Systeme vergleichen
+-   Bürokratie
 
-- Bürokratie
-
-- (Gesundheitswesen)
+-   (Gesundheitswesen)
