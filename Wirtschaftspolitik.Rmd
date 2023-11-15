@@ -55,6 +55,8 @@ output:
 
 ## Effizienz unter nicht-idealen Bedingungen: second-best und third-best
 
+### Second best
+
 ## Was leisten Märkte in Bezug auf die Verteilung (nicht?)
 
 Bitte lesen Sie:
@@ -107,6 +109,22 @@ plot(qr)
 # Wirtschaftspsychologie: Hinterfragen der Verhaltensannahmen
 
 ## Theorie
+
+### Externe Effekte
+
+$\rightarrow$ Umweltökonomik
+
+### Natürliche Monopole
+
+- Charakteristisches Merkmal?
+
+- 
+
+### Informationsasymmetrie
+
+### Öffentliche Güter
+
+### Unvollständige Märkte
 
 ### Komplexere Nutzenfunktionen
 
