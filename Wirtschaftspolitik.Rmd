@@ -93,6 +93,24 @@ plot(qr)
 
 $\rightarrow$ Umweltökonomik
 
+Hier: Kurzfassung
+
+- Allokativ relevante externe Effekte liegen vor, wenn durch Markttransaktionen Kosten- oder Nutzenwirkungen bei unbeteiligten Dritten entstehen, die sich nicht (hinreichend) handlungsleitend in Marktpreisen widerspiegeln.
+
+- Wenn bestimmte Kostenwirkungen unberücksichtigt bleiben, dann wird im Gleichgewicht zu viel von einem Gut angeboten und nachgefragt.
+
+- Mögliche Reaktionen des Staates (bei negativen externen Effekten)
+
+  - Ge- und Verbote
+  
+  - Die Pigou-Steuer
+  
+  - Umweltzertifikate
+  
+  - Förderung von Substitutionsgütern und -technologien
+  
+  - $\dots$
+
 ```{r echo=F, message=F, warning=F}
 # Bibliotheken laden
 library(tidyverse)
@@ -196,7 +214,10 @@ chart <- ggplot() +
   ) +
   theme(axis.line = element_line(arrow = arrow(type='closed', length = unit(5,'pt'))))+
   labs(x = "Menge", y = "Preis", 
-       color = NULL, fill = NULL)
+  color = NULL,
+  fill = NULL,
+  title="Die Pigou-Steuer bei einem negativen externen Effekt")
+  
 
 
 chart
@@ -344,6 +365,22 @@ p
 
 
 ### Unvollständige Märkte
+
+- Nicht alle Risiken sind versicherbar  
+
+  - Schadensereignisse mit sehr geringer Eintrittswahrscheinlichkeit aber sehr hohem Schaden
+  
+  - Risiken in einem Umfeld, das durch Markthandlungen erst noch geformt wird (Unternehmensstrategien)
+  
+ - Risiken, bei denen nicht unterscheidbar ist, inwieweit sie endogen oder exogen sind (Arbeitslosenversicherung)
+ 
+- Für Absicherungen gegen diese Risiken gibt es keine (oder eben nur unvollständige) Märkte
+
+- Lösungen:
+
+  - Staatliche Absicherung
+  
+  - Private Absicherung durch Eigenkapital
 
 ## Anwendungsfälle
 
