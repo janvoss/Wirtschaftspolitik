@@ -398,10 +398,47 @@ p
 
 # Wirtschaftspsychologie: Hinterfragen der Verhaltensannahmen
 
+- Neoklassische Modelle beschreiben Verhalten vermutlich nur unvollständig und oder mit einem zu hohen Grad an Abstraktion
+
+- Gewünscht: "realistischere" Ergänzung und/oder Konkretisierung der Modellinhalte
+
+
+
 ## Theorie
 
 
 ### Komplexere Nutzenfunktionen
+
+- Neoklassisch $U=U(x_1, x_2, \dots, x_n)$
+
+- Aber was heißt eigentlich "Nutzen"?
+
+- Was sind Inputs ($x_i$) in der Nutzenfunktion?
+
+
+$\rightarrow$ Was *wollen* Menschen
+
+
+- Abbschließende Aufzählung unmöglich (daher ja das offene Konzept "Nutzen")
+
+- Wirtschaftspsychologische Konsumtheorie
+
+  - Ökonomik – Sparsamkeit – Rationalität  
+  
+  - Prestige – Ausdruck – soziale Anerkennung
+  
+  - Konformität
+  
+  - Lust – Erregung – Neugier
+  
+  - Angst – Furcht – Risikoneigung
+  
+  -Konsistenz – Dissonanz – Konflikt
+
+
+$\rightarrow$ Was heißt das für die Gestaltung von Produkten?
+
+$\rightarrow$ Was heißt das für die Gestaltung von Politik?
 
 ### Rationale Ignoranz
 
