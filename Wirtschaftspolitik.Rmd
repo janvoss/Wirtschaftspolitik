@@ -442,6 +442,36 @@ $\rightarrow$ Was heißt das für die Gestaltung von Politik?
 
 ### Rationale Ignoranz
 
+#### Jenseits der Optimierung
+
+- Es ist nicht *ökonomisch*, in jedem Moment zu optimieren
+
+- Daher Verwendung von Daumenregeln/Routinen/Heuristiken plausibel
+
+- Problem, wenn diese Hilfstechniken außerhalb des Kontextes angewandt werden, in dem sie gut funktionieren
+
+#### Werbung
+
+- Werbung: Komplexe Informationsvermittlung zur Beeinflussung des Verbraucherverhaltens
+
+- Art der Gestaltung beeinflusst Wahrnehmung von Informationen  
+$\rightarrow$ Manipulation?
+
+
+### Nudging
+
+[Wirtschaftsdienst Zeitgespräch: Nudging als politisches Instrument – gute Absicht oder staatlicher Übergriff?](https://www.wirtschaftsdienst.eu/inhalt/jahr/2014/heft/11/beitrag/nudging-als-politisches-instrument-gute-absicht-oder-staatlicher-uebergriff.html)
+
+```{r,  echo=FALSE, warning=FALSE, out.width="30%"}
+library(qrcode)
+
+qr <- qr_code('https://www.wirtschaftsdienst.eu/inhalt/jahr/2014/heft/11/beitrag/nudging-als-politisches-instrument-gute-absicht-oder-staatlicher-uebergriff.html')
+
+plot(qr)
+
+```
+
+
 ## Anwendungsfälle
 
 -   Werbe- und Konsumverbote
