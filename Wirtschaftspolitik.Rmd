@@ -484,6 +484,82 @@ plot(qr)
 
 ## Theorie der Demokratie
 
+### Seit dem 18. Jh: Condorcet Paradoxon 
+
+(s. Tafelaufschrieb)
+
+### Wiederholung (mit Relevanz) Arrows Unmöglichkeitstheorem
+
+[Arrows Unmöglichkeitstheorem](https://janvoss.github.io/Gerechtigkeit/gerechtigkeitsprinzipien.html#arrows-unm%C3%B6glichkeitstheorem)
+
+### Ein Alternatives Wahlverfahren: Die Borda-Wahl
+
+```{r, echo=F, warning=F, message=F}
+
+Borda <- data.frame(
+Punkte = c(2:0),
+I = c("x", "y", "z"),
+II = c("x", "y", "z"),
+III = c("x", "y", "z"),
+VI = c("y", "z", "x"),
+V = c("y", "z", "x")
+)
+
+library(knitr)
+kable(Borda, align="c",
+      caption="Borda Wahl mit unverzerrten Präferenzen")
+
+```
+
+
+Borda-Gewinner: y
+
+
+```{r, echo=F, warning=F, message=F}
+Borda <- data.frame(
+   Punkte = c(2:0),
+    I = c("x", "**z**", "**y**"),
+   II = c("x", "**z**", "**y**"),
+  III = c("x", "**z**", "**y**"),
+ VI = c("y", "z", "x"),
+ V = c("y", "z", "x")
+)
+
+kable(Borda, align="c",
+      caption="Borda Wahl, wenn I, II und III ihre Präferenzen strategisch angegeben")
+
+
+```
+
+Borda-Gewinner: x
+
+```{r, echo=F, warning=F, message=F}
+Borda <- data.frame(
+   Punkte = c(2:0),
+    I = c("x", "**z**", "**y**"),
+   II = c("x", "**z**", "**y**"),
+  III = c("x", "**z**", "**y**"),
+ VI = c("**z**", "**y**", "x"),
+ V = c("**z**", "**y**", "x")
+)
+
+kable(Borda, align="c",
+      caption="Borda Wahl, wenn IV und V ihrerseits strategisch reagieren")
+```
+
+Borda-Gewinner: z
+
+  $\rightarrow$ Anreize zu strategischem Wahlverhalten
+  
+  $\rightarrow$ Dadurch gewisse Zufälligkeit des Ergebnisses
+  
+  $\rightarrow$ Ursache: Es wird gegen eine von Arrows Anforderungen verstoßen (welche?).
+  
+  
+### Das Medianwählertheorem
+
+s. Tafelaufschrieb
+
 ## Interessensgruppentheorie
 
 ## Bürokratietheorie
