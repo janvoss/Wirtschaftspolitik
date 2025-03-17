@@ -1,0 +1,33 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Wirtschaftspolitik und Wirtschaftsosycholie"
+  author: "Prof. Dr. Jan S. Voßwinkel"
+  # date: "2024"
+  subtitle: "Sommersemester 2025"
+  #lang: de
+  language:  _language.yml
+  repo-url: https://github.com/janvoss/Wirtschaftsolitik.git
+#  issued: "Sommersemester 2024"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - Ausblick.qmd
+   # - summary.qmd
+    - literatur.qmd
+    - Uebungsfragen.qmd
+
+bibliography: Wirtschaftpolitik.bib
+#csl: dresden.csl #Ohne funktioniert es gut, mit nicht. 
+# Aber warum? Und was ist mit Herausgeberwerken (Hrsg vs. Ed?)
+
+
+format:
+  html:
+    theme: cosmo
+    code-fold: true
+    code-overflow: wrap
+
+editor: source
