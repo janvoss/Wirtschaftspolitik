@@ -1,9 +1,57 @@
 # Begriffe
 
-## Wirtschaftspolitik 
+```{python}
+#| warning: false
+# Wirtschaftsolitik und Wirtschaftspsychologie
 
-## Wirtschaftspsychologie
+from graphviz import Digraph
+from IPython.display import display
 
+dot = Digraph()
+
+# Layout
+dot.attr(rankdir='LR',
+         nodesep='3,5')
+
+# Cluster Wirtschaftspolitik
+with dot.subgraph(name='cluster_wirtschaftspolitik') as c:
+    c.attr(label='Wirtschaftspolitik',
+           fontname="times-bold", 
+           style='filled,rounded',
+           fillcolor='#0000ff33',
+           color='#0000ff',
+           penwidth='1.5',
+           radius='10')
+    c.node('a', 'Aktivitäten des Staates,\l' 
+                'mit denen die Wirtschaftsordnung\l'
+                'sowie wirtschaftliche Abläufe und Strukturen\l'
+                'beeinflusst und gestaltet werden\l', 
+                shape='none',
+                width='3.2',  # Manuelle Größenanpassung
+                height='1.5') 
+
+# Cluster Wirtschaftspsychologie
+with dot.subgraph(name='cluster_wirtschaftspsychologie') as c:
+    c.attr(label='Wirtschaftspsychologie',
+           fontname="times-bold",
+           style='filled,rounded',
+           fillcolor='#ff000033',
+           color='#ff0000',
+           penwidth='1.5',
+           radius='10')
+    c.node('b', 'Erleben und Verhalten\l'
+                'des Menschen\l'
+                'beim wirtschaftlichen Handeln\l', 
+                shape='none',
+                width='3.2',  # Gleiche Breite wie Cluster A
+                height='1.5') # Gleiche Höhe wie Cluster A
+
+# Kanten
+dot.edge('a','b', style='invis')
+
+# Ausgabe
+display(dot)
+```
 ## Verhältnisse 
 
 ```{python}
@@ -20,8 +68,20 @@ dot.attr(rankdir='LR',
          nodesep='1,5')
 
 # Knoten
-dot.node('a', 'Wirtschaftsolitik')
-dot.node('c', 'Wirtschaftspsychologie')
+dot.node('a', 'Wirtschaftspolitik',
+           shape='box', 
+           style='filled,rounded',
+           fillcolor='#0000ff33',
+           color='#0000ff',
+           penwidth='1.5',
+           radius='10')
+dot.node('c', 'Wirtschaftspsychologie',
+            shape= 'box',
+          style='filled,rounded',
+           fillcolor='#ff000033',
+           color='#ff0000',
+           penwidth='1.5',
+           radius='10')
 
 # Kanten
 #dot.edge('a', 'c', constraint= 'false', style='invis')
@@ -34,6 +94,7 @@ dot.edge('a', 'b', style= 'invis')
 dot.edge('b', 'c', style= 'invis')
 #dot.edge('c', 'a', constraint= 'false', style='invis')
 dot.edge('c', 'a', constraint= 'false', label='motiviert')
+dot.edge('c', 'a', constraint= 'false', label='erklärt', style='dashed', fontcolor='grey')
 
 # Display
 display(dot)

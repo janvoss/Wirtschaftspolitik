@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 book:
-  title: "Wirtschaftspolitik und Wirtschaftsosycholie"
+  title: "Wirtschaftspolitik und Wirtschaftspsychologie"
   author: "Prof. Dr. Jan S. Voßwinkel"
   # date: "2024"
   subtitle: "Sommersemester 2025"
@@ -25,7 +25,7 @@ book:
     - literatur.qmd
     - Uebungsfragen.qmd
 
-bibliography: Wirtschaftpolitik.bib
+bibliography: Wirtschaftspolitik.bib
 #csl: dresden.csl #Ohne funktioniert es gut, mit nicht. 
 # Aber warum? Und was ist mit Herausgeberwerken (Hrsg vs. Ed?)
 
