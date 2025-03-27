@@ -3,3 +3,39 @@
 ## Wirtschaftspolitik 
 
 ## Wirtschaftspsychologie
+
+## Verhältnisse 
+
+```{python}
+
+# Wirtschaftsolitik und Wirtschaftspsychologie
+
+from graphviz import Digraph
+from IPython.display import display
+
+dot = Digraph()
+
+# Layout
+dot.attr(rankdir='LR',
+         nodesep='1,5')
+
+# Knoten
+dot.node('a', 'Wirtschaftsolitik')
+dot.node('c', 'Wirtschaftspsychologie')
+
+# Kanten
+#dot.edge('a', 'c', constraint= 'false', style='invis')
+dot.edge('a', 'c', constraint= 'false', label='benötigt')
+
+dot.node('b', 'und', shape='none', fontcolor='grey') # muss offenbar hier eingefügt werden für Verlauf der Pfeile
+
+# dot.edge('a', 'c', style= 'invis')
+dot.edge('a', 'b', style= 'invis')
+dot.edge('b', 'c', style= 'invis')
+#dot.edge('c', 'a', constraint= 'false', style='invis')
+dot.edge('c', 'a', constraint= 'false', label='motiviert')
+
+# Display
+display(dot)
+
+```
