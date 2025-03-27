@@ -1,4 +1,6 @@
-# Begriffe
+# Begriffe, Verhältnisse und Bereiche
+
+## Begriffe
 
 ```{python}
 #| warning: false
@@ -99,4 +101,65 @@ dot.edge('c', 'a', constraint= 'false', label='erklärt', style='dashed', fontco
 # Display
 display(dot)
 
+```
+
+## Bereiche 
+
+```{python}
+
+from graphviz import Digraph
+from IPython.display import display
+
+dot = Digraph()
+dot.attr('node', width='2', shape='none', labeljust='c')
+#dot.attr(nodesep='.7')
+dot.attr(label='Bereiche der Wirtschaftspolitik', labelloc='t',
+          fontname="times-bold", fontsize="24", ranksep=".5")
+
+# Konfiguration der Hauptknoten und Subnodes
+main_nodes = {
+    'A': ['Allokation', ['Marktversagen\\l',
+                         'Wettbewerbspolitik\\l',
+                         'Ordnungspolitik\l',
+                         #'\\l'
+                         'Industriepolitik\\l']],
+    'B': ['Distribution', ['Soziale Sicherung\l',
+                           'Steuererhebung\l',
+                           'Öffentliche\l Bereitstellung\l von Gütern\l']],
+    'C': ['Stabilisierung', ['Automatische\l Stabilisatoren\l',
+                             'Antizyklische\l Fiskalpolitik\l',
+                             '(Geldpolitik)\l']]
+}
+
+# Hauptknoten erstellen
+for key in main_nodes:
+    dot.node(key, main_nodes[key][0], shape='underline')
+
+# Subnodes generieren und verbinden
+max_subnodes = max(len(sub) for _, (_, sub) in main_nodes.items())
+
+for i in range(max_subnodes):
+    current_nodes = []
+
+    for key, (label, subnodes) in main_nodes.items():
+        if i < len(subnodes):
+            node_id = f'{key}{i+1}'
+            dot.node(node_id, subnodes[i])
+            current_nodes.append(node_id)
+
+            # Vertikale unsichtbare Verbindungen
+            if i == 0:
+                dot.edge(key, node_id, style='invis')
+            else:
+                prev_node = f'{key}{i}'
+                dot.edge(prev_node, node_id, style='invis')
+
+    # Horizontale Ausrichtung der Subnodes
+    if current_nodes:
+        with dot.subgraph() as s:
+            s.attr(rank='same')
+            for node in current_nodes:
+                s.node(node)
+
+display(dot)
 ```
