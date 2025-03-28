@@ -1,0 +1,162 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Wirtschaftspolitik und Wirtschaftspsychologie",
+    "section": "",
+    "text": "\\({}\\)\n\\({}\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nOrganisatorisches\n\n\n\n\n\n\nUnterlagen: https://janvoss.github.io/Wirtschaftspolitik/\nModul: 209-017 Wirtschaftspolitik und Wirtschaftspsychologie (Modulhandbuch)\nWeitere Veranstaltung im ModuL: –\nPrüfungsleistung: K60",
+    "crumbs": [
+      "Organisatorisches"
+    ]
+  },
+  {
+    "objectID": "Begriffe.html",
+    "href": "Begriffe.html",
+    "title": "2  Begriffe, Verhältnisse und Bereiche",
+    "section": "",
+    "text": "2.1 Begriffe\nCode\n# Wirtschaftsolitik und Wirtschaftspsychologie\n\nfrom graphviz import Digraph\nfrom IPython.display import display\n\ndot = Digraph()\n\n# Layout\ndot.attr(rankdir='LR',\n         nodesep='3,5')\n\n# Cluster Wirtschaftspolitik\nwith dot.subgraph(name='cluster_wirtschaftspolitik') as c:\n    c.attr(label='Wirtschaftspolitik',\n           fontname=\"times-bold\", \n           style='filled,rounded',\n           fillcolor='#0000ff33',\n           color='#0000ff',\n           penwidth='1.5',\n           radius='10')\n    c.node('a', 'Aktivitäten des Staates,\\l' \n                'mit denen die Wirtschaftsordnung\\l'\n                'sowie wirtschaftliche Abläufe und Strukturen\\l'\n                'beeinflusst und gestaltet werden\\l', \n                shape='none',\n                width='3.2',  # Manuelle Größenanpassung\n                height='1.5') \n\n# Cluster Wirtschaftspsychologie\nwith dot.subgraph(name='cluster_wirtschaftspsychologie') as c:\n    c.attr(label='Wirtschaftspsychologie',\n           fontname=\"times-bold\",\n           style='filled,rounded',\n           fillcolor='#ff000033',\n           color='#ff0000',\n           penwidth='1.5',\n           radius='10')\n    c.node('b', 'Erleben und Verhalten\\l'\n                'des Menschen\\l'\n                'beim wirtschaftlichen Handeln\\l', \n                shape='none',\n                width='3.2',  # Gleiche Breite wie Cluster A\n                height='1.5') # Gleiche Höhe wie Cluster A\n\n# Kanten\ndot.edge('a','b', style='invis')\n\n# Ausgabe\ndisplay(dot)",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Begriffe, Verhältnisse und Bereiche</span>"
+    ]
+  },
+  {
+    "objectID": "Begriffe.html#wirtschaftspsychologie",
+    "href": "Begriffe.html#wirtschaftspsychologie",
+    "title": "2  Begriffe",
+    "section": "2.2 Wirtschaftspsychologie",
+    "text": "2.2 Wirtschaftspsychologie",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Begriffe</span>"
+    ]
+  },
+  {
+    "objectID": "Begriffe.html#verhältnisse",
+    "href": "Begriffe.html#verhältnisse",
+    "title": "2  Begriffe, Verhältnisse und Bereiche",
+    "section": "2.2 Verhältnisse",
+    "text": "2.2 Verhältnisse\n\n\nCode\n# Wirtschaftsolitik und Wirtschaftspsychologie\n\nfrom graphviz import Digraph\nfrom IPython.display import display\n\ndot = Digraph()\n\n# Layout\ndot.attr(rankdir='LR',\n         nodesep='1,5')\n\n# Knoten\ndot.node('a', 'Wirtschaftspolitik',\n           shape='box', \n           style='filled,rounded',\n           fillcolor='#0000ff33',\n           color='#0000ff',\n           penwidth='1.5',\n           radius='10')\ndot.node('c', 'Wirtschaftspsychologie',\n            shape= 'box',\n          style='filled,rounded',\n           fillcolor='#ff000033',\n           color='#ff0000',\n           penwidth='1.5',\n           radius='10')\n\n# Kanten\n#dot.edge('a', 'c', constraint= 'false', style='invis')\ndot.edge('a', 'c', constraint= 'false', label='benötigt')\n\ndot.node('b', 'und', shape='none', fontcolor='grey') # muss offenbar hier eingefügt werden für Verlauf der Pfeile\n\n# dot.edge('a', 'c', style= 'invis')\ndot.edge('a', 'b', style= 'invis')\ndot.edge('b', 'c', style= 'invis')\n#dot.edge('c', 'a', constraint= 'false', style='invis')\ndot.edge('c', 'a', constraint= 'false', label='motiviert')\ndot.edge('c', 'a', constraint= 'false', label='erklärt', style='dashed', fontcolor='grey')\n\n# Display\ndisplay(dot)",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Begriffe, Verhältnisse und Bereiche</span>"
+    ]
+  },
+  {
+    "objectID": "Begriffe.html#bereiche",
+    "href": "Begriffe.html#bereiche",
+    "title": "2  Begriffe, Verhältnisse und Bereiche",
+    "section": "2.3 Bereiche",
+    "text": "2.3 Bereiche\n\n2.3.1 Wirtschaftspolitik\n\n\nCode\nfrom graphviz import Digraph\nfrom IPython.display import display\n\ndot = Digraph()\ndot.attr('node', width='2', shape='none', labeljust='c')\n#dot.attr(nodesep='.7')\ndot.attr(label='Bereiche der Wirtschaftspolitik', labelloc='t',\n          fontname=\"times-bold\", fontsize=\"24\", ranksep=\".5\")\n\n# Konfiguration der Hauptknoten und Subnodes\nmain_nodes = {\n    'A': ['Allokation', ['Marktversagen\\\\l',\n                         'Wettbewerbspolitik\\\\l',\n                         'Ordnungspolitik\\l',\n                         #'\\\\l'\n                         'Industriepolitik\\\\l']],\n    'B': ['Distribution', ['Soziale Sicherung\\l',\n                           'Steuererhebung\\l',\n                           'Öffentliche\\l Bereitstellung\\l von Gütern\\l']],\n    'C': ['Stabilisierung', ['Automatische\\l Stabilisatoren\\l',\n                             'Antizyklische\\l Fiskalpolitik\\l',\n                             '(Geldpolitik)\\l']]\n}\n\n# Hauptknoten erstellen\nfor key in main_nodes:\n    dot.node(key, main_nodes[key][0], shape='underline')\n\n# Subnodes generieren und verbinden\nmax_subnodes = max(len(sub) for _, (_, sub) in main_nodes.items())\n\nfor i in range(max_subnodes):\n    current_nodes = []\n\n    for key, (label, subnodes) in main_nodes.items():\n        if i &lt; len(subnodes):\n            node_id = f'{key}{i+1}'\n            dot.node(node_id, subnodes[i])\n            current_nodes.append(node_id)\n\n            # Vertikale unsichtbare Verbindungen\n            if i == 0:\n                dot.edge(key, node_id, style='invis')\n            else:\n                prev_node = f'{key}{i}'\n                dot.edge(prev_node, node_id, style='invis')\n\n    # Horizontale Ausrichtung der Subnodes\n    if current_nodes:\n        with dot.subgraph() as s:\n            s.attr(rank='same')\n            for node in current_nodes:\n                s.node(node)\n\ndisplay(dot)\n\n\n\n\n\n\n\n\n\n\n\n2.3.2 Wirtschaftspsychologie\n\n\nCode\nfrom graphviz import Digraph\nfrom IPython.display import display\n\ndot = Digraph()\ndot.attr('node', width='2.5', shape='none', labeljust='c')\ndot.attr(nodesep='.7')\ndot.attr(label='Wirtschaftspsychologische Themen mit Bezug zur Wirtschaftspolitik', labelloc='t',\n          fontname=\"times-bold\", fontsize=\"24\")\n\n# Konfiguration der Hauptknoten und Subnodes\n\nmain_nodes = {\n    'A': ['Verbraucherschutz', [\n        'Unterstützung informierter\\l'\n        'Entscheidungen\\l',\n        'Berücksichtigung von\\l'\n        'möglicher Irrationalität\\l',\n        'Explizite Berücksichtigung\\l'\n        'differenzierter Konsummotive\\l'\n    ]],\n    'B': ['Umweltschutz', [\n        'Erklärung von Konsumverhalten\\l',\n        'psychologische Ansatzpunkte\\l'\n        'für Verhaltensänderungen\\l',\n        'Ergänzung herkömmlicher\\l'\n        'umweltpolitischer Maßnahmen\\l'\n    ]],\n    'C': ['Demokratiebeteiligung', [\n        'Geringe Rationalitätsanreize\\\\l',\n        'Warum wählen? (Expressive vs.\\l'\n        'instrumentelle Motive)\\l'\n    ]],\n    'D': ['Vertrauen', [\n        'Institutionenvertrauen in\\l'\n        '(Wirtschafts-)Krisen\\l',\n        '(Steuer-)Ehrlichkeit\\\\l',\n        'Gerechtigkeitsvorstellungen\\l'\n    ]]\n}\n\n# Hauptknoten erstellen\nfor key in main_nodes:\n    dot.node(key, main_nodes[key][0], shape='underline')\n\n# Subnodes generieren und verbinden\nmax_subnodes = max(len(sub) for _, (_, sub) in main_nodes.items())\n\nfor i in range(max_subnodes):\n    current_nodes = []\n\n    for key, (label, subnodes) in main_nodes.items():\n        if i &lt; len(subnodes):\n            node_id = f'{key}{i+1}'\n            dot.node(node_id, subnodes[i])\n            current_nodes.append(node_id)\n\n            # Vertikale unsichtbare Verbindungen\n            if i == 0:\n                dot.edge(key, node_id, style='invis')\n            else:\n                prev_node = f'{key}{i}'\n                dot.edge(prev_node, node_id, style='invis')\n\n    # Horizontale Ausrichtung der Subnodes\n    if current_nodes:\n        with dot.subgraph() as s:\n            s.attr(rank='same')\n            for node in current_nodes:\n                s.node(node)\n\ndisplay(dot)",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Begriffe, Verhältnisse und Bereiche</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  Einleitung",
+    "section": "",
+    "text": "Wirtschaftspolitik aus vielen Gründen erforderlich und praktiziert\n\nBesondere Herausforderung der Gegenwart und Zukunft: Die Transformation zur Klimaneutralität\nÖkonomik begründet Wirtschaftspolitik normative und kann sowohl ihre Wirkung als auch ihr Zustandekommen (Neue Politische Ökonomie) erklären\n\nWirtschaftspsychologie erklärt menschliches Verhalten in wirtschaftlichen Zusammenhängen\n\nSie liefert zur herkömmlichen Ökonomik zusätzliche Gründe für wirtschaftspolitisches Handeln und\nergänzt die Erklärung der Wirkung von Wirtschaftspolitik.\nWirtschaftspsychologie leistet auch einen Beitrag zur Erklärung des Zustandekommens wirtschaftspolitischen Entscheidungen",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Einleitung</span>"
+    ]
+  },
+  {
+    "objectID": "Maerkte.html",
+    "href": "Maerkte.html",
+    "title": "3  Effizienz auf Märkten",
+    "section": "",
+    "text": "4 Marktversagen",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Effizienz auf Märkten</span>"
+    ]
+  },
+  {
+    "objectID": "Transformation.html",
+    "href": "Transformation.html",
+    "title": "8  Wirtschaftspolitik und Wirtschaftspsychologie in der Transformation",
+    "section": "",
+    "text": "8.1 Einleitung",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Wirtschaftspolitik und Wirtschaftspsychologie in der Transformation</span>"
+    ]
+  },
+  {
+    "objectID": "Transformation.html#industriepolitik",
+    "href": "Transformation.html#industriepolitik",
+    "title": "8  Wirtschaftspolitik und Wirtschaftspsychologie in der Transformation",
+    "section": "8.2 Industriepolitik",
+    "text": "8.2 Industriepolitik",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Wirtschaftspolitik und Wirtschaftspsychologie in der Transformation</span>"
+    ]
+  },
+  {
+    "objectID": "Transformation.html#ordnungspolitik",
+    "href": "Transformation.html#ordnungspolitik",
+    "title": "8  Wirtschaftspolitik und Wirtschaftspsychologie in der Transformation",
+    "section": "8.3 Ordnungspolitik",
+    "text": "8.3 Ordnungspolitik",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Wirtschaftspolitik und Wirtschaftspsychologie in der Transformation</span>"
+    ]
+  },
+  {
+    "objectID": "Transformation.html#sozialpolitik",
+    "href": "Transformation.html#sozialpolitik",
+    "title": "8  Wirtschaftspolitik und Wirtschaftspsychologie in der Transformation",
+    "section": "8.4 Sozialpolitik",
+    "text": "8.4 Sozialpolitik",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Wirtschaftspolitik und Wirtschaftspsychologie in der Transformation</span>"
+    ]
+  },
+  {
+    "objectID": "Fallbeispiele.html",
+    "href": "Fallbeispiele.html",
+    "title": "9  Fallbeispiele",
+    "section": "",
+    "text": "9.1 Begrenzung von CO2-Emissionen",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Fallbeispiele</span>"
+    ]
+  },
+  {
+    "objectID": "Fallbeispiele.html#green-finance",
+    "href": "Fallbeispiele.html#green-finance",
+    "title": "9  Fallbeispiele",
+    "section": "9.2 Green Finance",
+    "text": "9.2 Green Finance",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Fallbeispiele</span>"
+    ]
+  },
+  {
+    "objectID": "Fallbeispiele.html#clean-industrial-deal",
+    "href": "Fallbeispiele.html#clean-industrial-deal",
+    "title": "9  Fallbeispiele",
+    "section": "9.3 Clean Industrial Deal",
+    "text": "9.3 Clean Industrial Deal",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Fallbeispiele</span>"
+    ]
+  },
+  {
+    "objectID": "Fallbeispiele.html#section",
+    "href": "Fallbeispiele.html#section",
+    "title": "9  Fallbeispiele",
+    "section": "9.4 ?",
+    "text": "9.4 ?",
+    "crumbs": [
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Fallbeispiele</span>"
+    ]
+  },
+  {
+    "objectID": "literatur.html",
+    "href": "literatur.html",
+    "title": "Literatur",
+    "section": "",
+    "text": "Curtin, Richard T. 2022. “A New Theory of Expectations.” Journal of Business Cycle Research 18 (3): 239–59. https://doi.org/10.1007/s41549-022-00074-w.\n\n\nFichter, Christian, ed. 2018. Wirtschaftspsychologie Für Bachelor. Springer-Lehrbuch. Berlin, Heidelberg: Springer. https://doi.org/10.1007/978-3-662-54944-5.\n\n\nFritsch, Michael. 2018. Marktversagen Und Wirtschaftspolitik. Verlag C.H.Beck. https://doi.org/10.15358/9783800656448.\n\n\nKarin, Malmendier, Ulrike {\\textbar} Li. 2023. “Aus Erfahrung klug? bpb.de.” January 2, 2023. https://www.bpb.de/shop/zeitschriften/apuz/inflation-2023/516745/aus-erfahrung-klug/.\n\n\nLachmann, L. M. 1943. “The Role of Expectations in Economics as a Social Science.” Economica 10 (37): 12–23. https://doi.org/10.2307/2549651.\n\n\nVöpel, Henning. 2025. “Grundzüge einer transformativen Ordnungspolitik. cep.eu.” 2025. https://www.cep.eu/de/eu-themen/details/grundzuege-einer-transformativen-ordnungspolitik.html.\n\n\nWeimann, Joachim. 2006. Wirtschaftspolitik. Springer-Lehrbuch. Berlin, Heidelberg: Springer. https://doi.org/10.1007/3-540-28857-0.",
+    "crumbs": [
+      "Literatur"
+    ]
+  }
+]
