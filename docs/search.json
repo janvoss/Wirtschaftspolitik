@@ -64,7 +64,7 @@
     "href": "Maerkte.html",
     "title": "3  Effizienz auf Märkten",
     "section": "",
-    "text": "4 Marktversagen",
+    "text": "3.1 Effizienzbedingungen Konsumsphäre\nGleiche Grenzraten der Substitution: \\[MRS^A_{x_1, x_2}=MRS^B_{x_1, x_2}\\]",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Effizienz auf Märkten</span>"
     ]
@@ -157,6 +157,76 @@
     "text": "Curtin, Richard T. 2022. “A New Theory of Expectations.” Journal of Business Cycle Research 18 (3): 239–59. https://doi.org/10.1007/s41549-022-00074-w.\n\n\nFichter, Christian, ed. 2018. Wirtschaftspsychologie Für Bachelor. Springer-Lehrbuch. Berlin, Heidelberg: Springer. https://doi.org/10.1007/978-3-662-54944-5.\n\n\nFritsch, Michael. 2018. Marktversagen Und Wirtschaftspolitik. Verlag C.H.Beck. https://doi.org/10.15358/9783800656448.\n\n\nKarin, Malmendier, Ulrike {\\textbar} Li. 2023. “Aus Erfahrung klug? bpb.de.” January 2, 2023. https://www.bpb.de/shop/zeitschriften/apuz/inflation-2023/516745/aus-erfahrung-klug/.\n\n\nLachmann, L. M. 1943. “The Role of Expectations in Economics as a Social Science.” Economica 10 (37): 12–23. https://doi.org/10.2307/2549651.\n\n\nVöpel, Henning. 2025. “Grundzüge einer transformativen Ordnungspolitik. cep.eu.” 2025. https://www.cep.eu/de/eu-themen/details/grundzuege-einer-transformativen-ordnungspolitik.html.\n\n\nWeimann, Joachim. 2006. Wirtschaftspolitik. Springer-Lehrbuch. Berlin, Heidelberg: Springer. https://doi.org/10.1007/3-540-28857-0.",
     "crumbs": [
       "Literatur"
+    ]
+  },
+  {
+    "objectID": "Marktversagen.html",
+    "href": "Marktversagen.html",
+    "title": "4  Marktversagen",
+    "section": "",
+    "text": "4.1 Theorie",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Marktversagen</span>"
+    ]
+  },
+  {
+    "objectID": "Marktversagen.html#theorie",
+    "href": "Marktversagen.html#theorie",
+    "title": "4  Marktversagen",
+    "section": "",
+    "text": "4.1.1 Externe Effekte\n\\(\\rightarrow\\) Umweltökonomik\nHier: Kurzfassung\n\nAllokativ relevante externe Effekte liegen vor, wenn durch Markttransaktionen Kosten- oder Nutzenwirkungen bei unbeteiligten Dritten entstehen, die sich nicht (hinreichend) handlungsleitend in Marktpreisen widerspiegeln.\nWenn bestimmte Kostenwirkungen unberücksichtigt bleiben, dann wird im Gleichgewicht zu viel von einem Gut angeboten und nachgefragt.\nMögliche Reaktionen des Staates (bei negativen externen Effekten)\n\nGe- und Verbote\nDie Pigou-Steuer\nUmweltzertifikate\nFörderung von Substitutionsgütern und -technologien\n\\(\\dots\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\n4.1.2 Natürliche Monopole\n\nCharakteristisches Merkmal?\nWirtschaftspolitischer Handlungsbedarf\n\n\n\n4.1.3 Informationsasymmetrie\n\nVor Vertragsabschluss: Adverse Selektion\nNach Vertragsabschluss: Moral hazard?\nPrivate und staatliche Bewältigungsstrategien?\n\n\n\n4.1.4 Öffentliche Güter\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n4.1.5 Unvollständige Märkte\n\nNicht alle Risiken sind versicherbar\n\nSchadensereignisse mit sehr geringer Eintrittswahrscheinlichkeit aber sehr hohem Schaden\nRisiken in einem Umfeld, das durch Markthandlungen erst noch geformt wird (Unternehmensstrategien)\n\nRisiken, bei denen nicht unterscheidbar ist, inwieweit sie endogen oder exogen sind (Arbeitslosenversicherung)\nFür Absicherungen gegen diese Risiken gibt es keine (oder eben nur unvollständige) Märkte\nLösungen:\n\nStaatliche Absicherung\nPrivate Absicherung durch Eigenkapital",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Marktversagen</span>"
+    ]
+  },
+  {
+    "objectID": "Maerkte.html#effizienzbedingungen-produktionssphäre",
+    "href": "Maerkte.html#effizienzbedingungen-produktionssphäre",
+    "title": "3  Effizienz auf Märkten",
+    "section": "3.2 Effizienzbedingungen Produktionssphäre",
+    "text": "3.2 Effizienzbedingungen Produktionssphäre\nGleiche Grenzraten der technischen Substitution: \\[MRTS^{x_1}_{L, K}=MRTS^{x_2}_{L, K}\\]",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Effizienz auf Märkten</span>"
+    ]
+  },
+  {
+    "objectID": "Maerkte.html#effizienzbedingungen-abstimmung-zwischen-beiden-sphären",
+    "href": "Maerkte.html#effizienzbedingungen-abstimmung-zwischen-beiden-sphären",
+    "title": "3  Effizienz auf Märkten",
+    "section": "3.3 Effizienzbedingungen Abstimmung zwischen beiden Sphären",
+    "text": "3.3 Effizienzbedingungen Abstimmung zwischen beiden Sphären\nGrenzrate der Subsitution entspricht Grenzrate der Transformation \\[MRS^A_{x_1, x_2}=MRS^B_{x_1, x_2}=MRT_{x_1, x_2}\\]",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Effizienz auf Märkten</span>"
+    ]
+  },
+  {
+    "objectID": "Zweitbeste.html",
+    "href": "Zweitbeste.html",
+    "title": "5  Umgehen mit Unvollkommenheiten: Zweit- und Drittbeste Welten",
+    "section": "",
+    "text": "5.1 Second best",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Umgehen mit Unvollkommenheiten: Zweit- und Drittbeste Welten</span>"
+    ]
+  },
+  {
+    "objectID": "Zweitbeste.html#second-best",
+    "href": "Zweitbeste.html#second-best",
+    "title": "5  Umgehen mit Unvollkommenheiten: Zweit- und Drittbeste Welten",
+    "section": "",
+    "text": "Tafelaufschrieb",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Umgehen mit Unvollkommenheiten: Zweit- und Drittbeste Welten</span>"
+    ]
+  },
+  {
+    "objectID": "Zweitbeste.html#third-best",
+    "href": "Zweitbeste.html#third-best",
+    "title": "5  Umgehen mit Unvollkommenheiten: Zweit- und Drittbeste Welten",
+    "section": "5.2 Third best",
+    "text": "5.2 Third best\n\n\n\nThird best",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Umgehen mit Unvollkommenheiten: Zweit- und Drittbeste Welten</span>"
     ]
   }
 ]

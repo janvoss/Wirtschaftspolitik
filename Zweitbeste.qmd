@@ -1,2 +1,9 @@
 # Umgehen mit Unvollkommenheiten: Zweit- und Drittbeste Welten
 
+## Second best
+
+s.  Tafelaufschrieb
+
+## Third best
+
+![Third best](Third-best.svg)
