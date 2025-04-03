@@ -1,6 +1,5 @@
 # Effizienz auf Märkten
 
-
 -   Unter den Bedingungen des vollkommenen Wettbewerbs führen Märzte zu Effizienz
 
 -   Bedingungen:
@@ -14,19 +13,24 @@
     -   unendliche Reaktionsgeschwindigkeit
     -   keine Transaktionskosten
 
-
 ## Effizienzbedingungen Konsumsphäre
 
 Gleiche Grenzraten der Substitution: $$MRS^A_{x_1, x_2}=MRS^B_{x_1, x_2}$$
 
-
 ## Effizienzbedingungen Produktionssphäre
 
-Gleiche Grenzraten der technischen Substitution: 
-$$MRTS^{x_1}_{L, K}=MRTS^{x_2}_{L, K}$$
+Gleiche Grenzraten der technischen Substitution: $$MRTS^{x_1}_{L, K}=MRTS^{x_2}_{L, K}$$
 
+## Effizienzbedingungen Abstimmung zwischen beiden Sphären
 
-## Effizienzbedingungen Abstimmung zwischen beiden Sphären 
+Grenzrate der Subsitution entspricht Grenzrate der Transformation $$MRS^A_{x_1, x_2}=MRS^B_{x_1, x_2}=MRT_{x_1, x_2}$$
 
-Grenzrate der Subsitution entspricht Grenzrate der Transformation
-$$MRS^A_{x_1, x_2}=MRS^B_{x_1, x_2}=MRT_{x_1, x_2}$$
+## Wirtschaftspsychologische Ergänzung
+
+-   Nutzenfunktion wird in der Ökonomik $U=U(x_1, x_2,\dots, x_n)$ wird als gegeben und konstant unterstellt
+
+-   Aus psychologischer Sicht kann sich die Zusammensetzung der Nutzenfunktion und insbesondere die Gewichtung der Elemente $x_1, x_2, \dots, x_n$ im Zeitablauf ändern und situationsabhängig sein.
+
+-   Einzelne Güter kann man sich als Bündel von Produkteigenschaften vorstellen: $X_j=X_j(x_1, x_2, \dots. x_n)$
+
+-   Die subjektive Vorstellung darüber, welche Produkteigenschaften ein einzelnes Gut aufweist und inwiefern diese zur Nutzenfunktion passen, ist abhängig vom subjektiven Informationsstand, von Interpretation und kann auch in der Zeit variieren.
