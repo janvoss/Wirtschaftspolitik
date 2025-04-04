@@ -34,3 +34,171 @@ Grenzrate der Subsitution entspricht Grenzrate der Transformation $$MRS^A_{x_1, 
 -   Einzelne Güter kann man sich als Bündel von Produkteigenschaften vorstellen: $X_j=X_j(x_1, x_2, \dots. x_n)$
 
 -   Die subjektive Vorstellung darüber, welche Produkteigenschaften ein einzelnes Gut aufweist und inwiefern diese zur Nutzenfunktion passen, ist abhängig vom subjektiven Informationsstand, von Interpretation und kann auch in der Zeit variieren.
+
+### Nutzenmaximierung unter Nebenbedingungen
+
+```{python}
+#| message: false
+#| output: false
+#| include: false
+
+from graphviz import Digraph
+
+dot = Digraph()
+
+# Layout des gesamten Graphen
+dot.attr(rankdir='LR')
+
+# Funktion zur Erstellung eines Clusters mit \l für Linksbündigkeit
+def create_cluster(dot, name, label, color, fillcolor, nodes #, max_nodes
+                   ):
+    with dot.subgraph(name=name) as c:
+        c.attr(label=label,
+               fontname="times-bold",
+               style='filled,rounded',
+               fillcolor=fillcolor,
+               color=color,
+               penwidth='1.5')
+
+        # Standardknoten mit \l für Linksbündigkeit
+        for node_id, node_label in nodes:
+            # \n durch \l ersetzen und am Ende \l hinzufügen
+            formatted_label = node_label.replace('\n', '\\l') + '\\l'
+            c.node(node_id,
+                   label=formatted_label,
+                   width="3",
+                   height=".3",
+                   shape='none',
+                   )  # Schrift6art für bessere Lesbarkeit
+
+        # Unsichtbare Platzhalterknoten
+        for i in range(len(nodes)#, max_nodes
+        ):
+            c.node(f'{name}_placeholder_{i}', '', style='invis', width="3", height=".7")
+
+# Clusterdefinitionen (unverändert)
+clusters = [
+    ('cluster_ziel', 'Zielfunktion', 'blue', '#FFFFFF', [
+        ('a1', 'bekannt'),
+        ('a2', 'gegeben'),
+        ('a3', 'konstant')
+    ]),
+    ('cluster_Restriktion','Restriktionen', 'blue', '#EFEFEF', [
+        ('b1', 'Informationen'),
+        ('b2', 'Zielkonflikte'),
+        ('b3', 'Begleiterscheinungen von'
+                '\n Zielen und Mitteln '),
+    #    ('b4', '')
+    ]),
+    ('cluster_Handlung', 'Handlung', 'blue', '#DFDFDF', [
+        ('c1', 'stabil'),
+        ('c2', 'abhängig von variablen\n'
+               'Restriktionen veränderlich')
+    ])
+]
+
+# max_nodes = max(len(cluster[4]) for cluster in clusters)
+
+# Cluster erstellen
+for name, label, color, fillcolor, nodes in clusters:
+    create_cluster(dot, name, label, color, fillcolor, nodes#, max_nodes
+                   )
+
+# Unsichtbare Kanten für vertikale Anordnung
+dot.edge('a2', 'b2'#, style='invis'
+         )
+dot.edge('b2', 'c2'#, style='invis'
+)
+#Datei erzeugen 
+dot.format = 'svg'  # Format setzen
+dot.render(filename='Nutzenmaximierung', cleanup=True)  # Erzeugt output.svg
+
+```
+
+![Schema der rationalen Nutzenmaximierung](Nutzenmaximierung.svg)
+
+### SOR-Modell der Wirtschaftspsychologie
+
+
+```{python}
+
+#| message: false
+#| output: false
+#| include: false
+
+from graphviz import Digraph
+
+dot = Digraph()
+
+# Layout des gesamten Graphen
+dot.attr(rankdir='LR')
+
+# Funktion zur Erstellung eines Clusters mit \l für Linksbündigkeit
+def create_cluster(dot, name, label, color, fillcolor, nodes #, max_nodes
+                   ):
+    with dot.subgraph(name=name) as c:
+        c.attr(label=label,
+               fontname="times-bold",
+               style='filled,rounded',
+               fillcolor=fillcolor,
+               color=color,
+               penwidth='1.5')
+
+        # Standardknoten mit \l für Linksbündigkeit
+        for node_id, node_label in nodes:
+            # \n durch \l ersetzen und am Ende \l hinzufügen
+            formatted_label = node_label.replace('\n', '\\l') + '\\l'
+            c.node(node_id,
+                   label=formatted_label,
+                   width="3",
+                   height=".3",
+                   shape='none',
+                   )  # Schrift6art für bessere Lesbarkeit
+
+        # Unsichtbare Platzhalterknoten
+        for i in range(len(nodes)#, max_nodes
+        ):
+            c.node(f'{name}_placeholder_{i}', '', style='invis', width="3", height=".7")
+
+# Clusterdefinitionen (unverändert)
+clusters = [
+    ('cluster_Stimulus', 'Stimulus', 'blue', '#FFFFFF', [
+        ('a1', 'Reiz wirkt auf Organismus'),
+        ('a2', '')
+    ]),
+    ('cluster_Organismus','Organismus', 'blue', '#EFEFEF', [
+        ('b1', 'Verarbeitung'),
+        ('b2', 'Vorwissen'),
+        ('b3', 'Werte'),
+        ('b4', 'aktuelle Situation'),
+        ('b5', '...'),
+    ]),
+    ('cluster_Reaktion', 'Reaktion', 'blue', '#DFDFDF', [
+        ('c1', 'Reaktion auf den Reiz'),
+        ('c2', 'abhängig von Reiz\n'
+               'und Situation im Organismus')
+    ])
+]
+
+# max_nodes = max(len(cluster[4]) for cluster in clusters)
+
+# Cluster erstellen
+for name, label, color, fillcolor, nodes in clusters:
+    create_cluster(dot, name, label, color, fillcolor, nodes#, max_nodes
+                   )
+
+# Unsichtbare Kanten für vertikale Anordnung
+dot.edge('a2', 'b2'#, style='invis'
+         )
+dot.edge('b2', 'c2'#, style='invis'
+         )
+
+
+
+#Datei erzeugen 
+dot.format = 'svg'  # Format setzen
+dot.render(filename='SOR', cleanup=True)  # Erzeugt output.svg
+
+```
+
+![SOR-Modell](SOR.svg)
