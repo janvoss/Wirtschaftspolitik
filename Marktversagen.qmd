@@ -1,8 +1,6 @@
 # Marktversagen
 
-## Theorie
-
-### Externe Effekte
+## Externe Effekte
 
 $\rightarrow$ Umweltökonomik
 
@@ -137,13 +135,32 @@ chart
 ```
 
 
-### Natürliche Monopole
+## Natürliche Monopole
 
--   Charakteristisches Merkmal?
+-   Charakteristisches Merkmal: Subadditive Kostenfunktion
 
--   Wirtschaftspolitischer Handlungsbedarf
 
-### Informationsasymmetrie
+### Regulierungsstrategien: Rate-of-Return-Regulierung (RoR)
+
+- Die RoR gewährt den Unternehmen eine bestimmte Verzinsung auf das eingesetzte Kapital  
+- $\frac{px - C}{K} \leq s$, mit $s$: genehmigte Maximalverzinsung  
+
+- Das Problem der Informationsasymmetrie bleibt  
+
+- Die Festlegung von $s$ ist nicht willkürfrei möglich  
+
+- Es gibt den Anreiz für Unternehmen, zu kapitalintensiv zu produzieren („Averch-Johnson-Effekt“)  
+
+### Regulierungsstrategien: Price-Cap-Regulierung (PCR)
+
+- Die PCR reguliert Preisveränderungen eines Warenkorbes an Gütern  
+
+- Damit verbleibt Spielraum für die Preisgestaltung im Detail  
+- $\overset{n}{\underset{i=1}{\sum}} w_{t}^{i} \left[\frac{p_{t}^{i} - p_{t-1}^{i}}{p_{t-1}^{i}}\right] \leq I_{t} - X$,  
+  mit $w_{t}^{i}$: Umsatzanteil des Gutes $i$ zum Zeitpunkt $t$,  
+  $I$: Inflationsrate, $X$: sektorspezifischer Produktivitätsindikator  
+
+## Informationsasymmetrien
 
 
 - Vor Vertragsabschluss: Adverse Selektion 
@@ -153,7 +170,7 @@ chart
 - Private und staatliche Bewältigungsstrategien?
 
 
-### Öffentliche Güter
+## Öffentliche Güter
 
 
 ```{tikz,  fig.ext = 'png', cache=F, echo=F,  out.width="75%"}
@@ -277,7 +294,7 @@ p
 
 
 
-### Unvollständige Märkte
+## Unvollständige Märkte
 
 - Nicht alle Risiken sind versicherbar  
 

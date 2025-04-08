@@ -164,7 +164,7 @@
     "href": "Marktversagen.html",
     "title": "4  Marktversagen",
     "section": "",
-    "text": "4.1 Theorie",
+    "text": "4.1 Externe Effekte\n\\(\\rightarrow\\) Umweltökonomik\nHier: Kurzfassung",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Marktversagen</span>"
     ]
@@ -237,6 +237,56 @@
     "text": "3.4 Wirtschaftspsychologische Ergänzung\n\nNutzenfunktion wird in der Ökonomik \\(U=U(x_1, x_2,\\dots, x_n)\\) wird als gegeben und konstant unterstellt\nAus psychologischer Sicht kann sich die Zusammensetzung der Nutzenfunktion und insbesondere die Gewichtung der Elemente \\(x_1, x_2, \\dots, x_n\\) im Zeitablauf ändern und situationsabhängig sein.\nEinzelne Güter kann man sich als Bündel von Produkteigenschaften vorstellen: \\(X_j=X_j(x_1, x_2, \\dots. x_n)\\)\nDie subjektive Vorstellung darüber, welche Produkteigenschaften ein einzelnes Gut aufweist und inwiefern diese zur Nutzenfunktion passen, ist abhängig vom subjektiven Informationsstand, von Interpretation und kann auch in der Zeit variieren.\n\n\n3.4.1 Nutzenmaximierung unter Nebenbedingungen\n\n\n\nSchema der rationalen Nutzenmaximierung\n\n\n\n\n3.4.2 SOR-Modell der Wirtschaftspsychologie\n\n\n\nSOR-Modell",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Effizienz auf Märkten</span>"
+    ]
+  },
+  {
+    "objectID": "Marktversagen.html#externe-effekte",
+    "href": "Marktversagen.html#externe-effekte",
+    "title": "4  Marktversagen",
+    "section": "",
+    "text": "Allokativ relevante externe Effekte liegen vor, wenn durch Markttransaktionen Kosten- oder Nutzenwirkungen bei unbeteiligten Dritten entstehen, die sich nicht (hinreichend) handlungsleitend in Marktpreisen widerspiegeln.\nWenn bestimmte Kostenwirkungen unberücksichtigt bleiben, dann wird im Gleichgewicht zu viel von einem Gut angeboten und nachgefragt.\nMögliche Reaktionen des Staates (bei negativen externen Effekten)\n\nGe- und Verbote\nDie Pigou-Steuer\nUmweltzertifikate\nFörderung von Substitutionsgütern und -technologien\n\\(\\dots\\)",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Marktversagen</span>"
+    ]
+  },
+  {
+    "objectID": "Marktversagen.html#natürliche-monopole",
+    "href": "Marktversagen.html#natürliche-monopole",
+    "title": "4  Marktversagen",
+    "section": "4.2 Natürliche Monopole",
+    "text": "4.2 Natürliche Monopole\n\nCharakteristisches Merkmal: Subadditive Kostenfunktion\n\n\n4.2.1 Regulierungsstrategien: Rate-of-Return-Regulierung (RoR)\n\nDie RoR gewährt den Unternehmen eine bestimmte Verzinsung auf das eingesetzte Kapital\n\n\\(\\frac{px - C}{K} \\leq s\\), mit \\(s\\): genehmigte Maximalverzinsung\nDas Problem der Informationsasymmetrie bleibt\nDie Festlegung von \\(s\\) ist nicht willkürfrei möglich\nEs gibt den Anreiz für Unternehmen, zu kapitalintensiv zu produzieren („Averch-Johnson-Effekt“)\n\n\n\n4.2.2 Regulierungsstrategien: Price-Cap-Regulierung (PCR)\n\nDie PCR reguliert Preisveränderungen eines Warenkorbes an Gütern\nDamit verbleibt Spielraum für die Preisgestaltung im Detail\n\n\\(\\overset{n}{\\underset{i=1}{\\sum}} w_{t}^{i} \\left[\\frac{p_{t}^{i} - p_{t-1}^{i}}{p_{t-1}^{i}}\\right] \\leq I_{t} - X\\),\nmit \\(w_{t}^{i}\\): Umsatzanteil des Gutes \\(i\\) zum Zeitpunkt \\(t\\),\n\\(I\\): Inflationsrate, \\(X\\): sektorspezifischer Produktivitätsindikator",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Marktversagen</span>"
+    ]
+  },
+  {
+    "objectID": "Marktversagen.html#informationsasymmetrien",
+    "href": "Marktversagen.html#informationsasymmetrien",
+    "title": "4  Marktversagen",
+    "section": "4.3 Informationsasymmetrien",
+    "text": "4.3 Informationsasymmetrien\n\nVor Vertragsabschluss: Adverse Selektion\nNach Vertragsabschluss: Moral hazard?\nPrivate und staatliche Bewältigungsstrategien?",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Marktversagen</span>"
+    ]
+  },
+  {
+    "objectID": "Marktversagen.html#öffentliche-güter",
+    "href": "Marktversagen.html#öffentliche-güter",
+    "title": "4  Marktversagen",
+    "section": "4.4 Öffentliche Güter",
+    "text": "4.4 Öffentliche Güter",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Marktversagen</span>"
+    ]
+  },
+  {
+    "objectID": "Marktversagen.html#unvollständige-märkte",
+    "href": "Marktversagen.html#unvollständige-märkte",
+    "title": "4  Marktversagen",
+    "section": "4.5 Unvollständige Märkte",
+    "text": "4.5 Unvollständige Märkte\n\nNicht alle Risiken sind versicherbar\n\nSchadensereignisse mit sehr geringer Eintrittswahrscheinlichkeit aber sehr hohem Schaden\nRisiken in einem Umfeld, das durch Markthandlungen erst noch geformt wird (Unternehmensstrategien)\n\nRisiken, bei denen nicht unterscheidbar ist, inwieweit sie endogen oder exogen sind (Arbeitslosenversicherung)\nFür Absicherungen gegen diese Risiken gibt es keine (oder eben nur unvollständige) Märkte\nLösungen:\n\nStaatliche Absicherung\nPrivate Absicherung durch Eigenkapital",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Marktversagen</span>"
     ]
   }
 ]
