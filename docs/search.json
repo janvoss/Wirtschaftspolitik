@@ -288,5 +288,45 @@
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Marktversagen</span>"
     ]
+  },
+  {
+    "objectID": "Poloek.html",
+    "href": "Poloek.html",
+    "title": "7  (Neue) Politische Ökonomie",
+    "section": "",
+    "text": "7.1 Vorüberlegungen",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>(Neue) Politische Ökonomie</span>"
+    ]
+  },
+  {
+    "objectID": "Poloek.html#das-condorcet-paradoxon",
+    "href": "Poloek.html#das-condorcet-paradoxon",
+    "title": "7  (Neue) Politische Ökonomie",
+    "section": "7.2 Das Condorcet-Paradoxon",
+    "text": "7.2 Das Condorcet-Paradoxon\n\n7.2.1 Der problemlose Fall: nur eingipflige Präferenzen\n\n\nCode\nlibrary(ggplot2)\n# Condorcet-Paradoxon\n\n## df\n\ndf &lt;- data.frame(Person    = rep(c('A', 'B', 'C'), each=3),\n                 Menge     = rep(c(1,2,3),              3),\n                 Präferenz = c(3,2,1,\n                               1,2,3,\n                               1,3,2))\n\n#head(df)\n\n\n# Funktion definieren, damit der Plot für geänderte Daten repliziert werden kann\ngeneriere_plot &lt;- function(df) {\n           ggplot(df, aes(Menge, Präferenz, color=Person))+\n          geom_line()+\n          geom_point(size=3, alpha=.5)+\n          scale_x_continuous(breaks=c(1,2,3),\n                             labels=c('wenig', 'mittel', 'viel'))+\n          scale_y_continuous(breaks=c(1,2,3),\n                             labels=c('niedrig', 'moderat', 'hoch'))+\n          theme_light()+\n          theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())\n}\n\ngeneriere_plot(df)\n\n\n\n\n\nPräferenzen von 3 Personen, alle eingipflig\n\n\n\n\nAbstimmung durch paarweisen Vergleich:\nwenig vs. mittel: 1:2\nmittel vs. viel: 2:1\nAlso: mittel \\(\\succ\\) wenig und mittel \\(\\succ\\) viel\nFür gesellschaftliche Rangfolge noch testen\nwenig vs. viel: 1:2\nAlso \\(\\boxed{\\text{mittel} \\succ \\text{viel} \\succ \\text{wenig}}\\)\nEindeutiges Abstimmungsergebnis, konsistente Rangfolge\n\n\n7.2.2 Der problematische Fall: mehrgipflige Präferenzen\n\n\nCode\n# Änderung einer Präferenzstruktur\n\ndf$`Präferenz`[4:5] &lt;- c(2, 1) # Mehrgipflige Präferenz bei B\n\ngeneriere_plot(df)\n\n\n\n\n\nPräferenzen von 3 Personen, Präferenz von B mehrgipflig\n\n\n\n\nAbstimmung durch paarweisen Vergleich:\nwenig vs. mittel: 2:1\nwenig vs. viel: 1:2\nAlso: viel \\(\\succ\\) wenig \\(\\succ\\) mittel\nDas sieht konsistent aus. Aber es fehlt noch ein Vergleich.\nviel vs. mittel: 2:1\n\\(\\boxed{\\text{Ups!}}\\)\nDie gesellschaftliche Rangfolge als Ergebnis der demokratischen Abstimmung lautet also \\(\\boxed{\\text{viel} \\succ \\text{wenig} \\succ \\text{mittel} \\succ \\text{viel}\\succ \\text{wenig} \\succ \\dots}\\)\nKein eindeutiges Abstimmungsergebnis, inkonsistente Rangfolge \\(\\rightarrow\\) \\(\\boxed{\\text{intransitive soziale Präferenz}}\\)",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>(Neue) Politische Ökonomie</span>"
+    ]
+  },
+  {
+    "objectID": "Poloek.html#erinnerung-arrows-unmöglichkeitstheorem",
+    "href": "Poloek.html#erinnerung-arrows-unmöglichkeitstheorem",
+    "title": "7  (Neue) Politische Ökonomie",
+    "section": "7.3 Erinnerung: Arrows Unmöglichkeitstheorem",
+    "text": "7.3 Erinnerung: Arrows Unmöglichkeitstheorem",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>(Neue) Politische Ökonomie</span>"
+    ]
+  },
+  {
+    "objectID": "Poloek.html#stimmentausch",
+    "href": "Poloek.html#stimmentausch",
+    "title": "7  (Neue) Politische Ökonomie",
+    "section": "7.4 Stimmentausch",
+    "text": "7.4 Stimmentausch",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>(Neue) Politische Ökonomie</span>"
+    ]
   }
 ]

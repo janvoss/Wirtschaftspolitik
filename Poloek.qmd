@@ -1,1 +1,97 @@
 # (Neue) Politische Ökonomie
+
+## Vorüberlegungen
+
+## Das Condorcet-Paradoxon
+
+### Der problemlose Fall: nur eingipflige Präferenzen
+
+```{r}
+#| warning: false
+#| message: false
+#| fig-cap: "Präferenzen von 3 Personen, alle eingipflig"
+
+library(ggplot2)
+# Condorcet-Paradoxon
+
+## df
+
+df <- data.frame(Person    = rep(c('A', 'B', 'C'), each=3),
+                 Menge     = rep(c(1,2,3),              3),
+                 Präferenz = c(3,2,1,
+                               1,2,3,
+                               1,3,2))
+
+#head(df)
+
+
+# Funktion definieren, damit der Plot für geänderte Daten repliziert werden kann
+generiere_plot <- function(df) {
+           ggplot(df, aes(Menge, Präferenz, color=Person))+
+          geom_line()+
+          geom_point(size=3, alpha=.5)+
+          scale_x_continuous(breaks=c(1,2,3),
+                             labels=c('wenig', 'mittel', 'viel'))+
+          scale_y_continuous(breaks=c(1,2,3),
+                             labels=c('niedrig', 'moderat', 'hoch'))+
+          theme_light()+
+          theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+}
+
+generiere_plot(df)
+```
+
+Abstimmung durch paarweisen Vergleich:
+
+wenig vs. mittel: 1:2
+
+mittel vs. viel: 2:1
+
+Also: mittel $\succ$ wenig und mittel $\succ$ viel
+
+Für gesellschaftliche Rangfolge noch testen
+
+wenig vs. viel: 1:2
+
+Also $\boxed{\text{mittel} \succ \text{viel} \succ \text{wenig}}$
+
+Eindeutiges Abstimmungsergebnis, konsistente Rangfolge
+
+### Der problematische Fall: mehrgipflige Präferenzen
+
+
+```{r}
+#| warning: false
+#| message: false
+#| fig-cap: "Präferenzen von 3 Personen, Präferenz von B mehrgipflig"
+
+# Änderung einer Präferenzstruktur
+
+df$`Präferenz`[4:5] <- c(2, 1) # Mehrgipflige Präferenz bei B
+
+generiere_plot(df)
+
+```
+
+Abstimmung durch paarweisen Vergleich:
+
+wenig vs. mittel: 2:1
+
+wenig vs. viel: 1:2
+
+Also: viel $\succ$ wenig  $\succ$ mittel
+
+Das sieht konsistent aus. Aber es fehlt noch ein Vergleich.
+
+viel vs. mittel: 2:1
+
+$\boxed{\text{Ups!}}$
+
+Die gesellschaftliche Rangfolge als Ergebnis der demokratischen Abstimmung lautet also  $\boxed{\text{viel} \succ \text{wenig} \succ \text{mittel} \succ \text{viel}\succ \text{wenig} \succ \dots}$
+
+Kein eindeutiges Abstimmungsergebnis, inkonsistente Rangfolge $\rightarrow$ $\boxed{\text{intransitive soziale Präferenz}}$
+
+
+## Erinnerung: Arrows Unmöglichkeitstheorem
+
+## Stimmentausch
