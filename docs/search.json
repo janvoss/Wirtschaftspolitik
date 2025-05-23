@@ -338,5 +338,15 @@
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>(Neue) Politische Ökonomie</span>"
     ]
+  },
+  {
+    "objectID": "Akteure.html",
+    "href": "Akteure.html",
+    "title": "6  Akteure und Instititutionen der Wirtschaftspolitik",
+    "section": "",
+    "text": "Code\nimport graphviz\nfrom IPython.display import display\n\n# Graph mit 'circo'-Engine für kreisförmige Anordnung mit kleinerem Abstand\ng = graphviz.Digraph('satelliten', engine='circo' #,\n                #  graph_attr={'nodesep': '0.01', 'ranksep': '0.01'}\n)  # Abstände angepasst\n\n# Zentraler Knoten: größer, fett, zentriert\ng.node('Zentrum', 'Wirtschaftspolitik',\n       fontsize='15',\n       fontname='Times-Bold',  # Fett durch spezifische Schriftart\n       shape='circle',\n       width='2'\n)  # Größe angepasst\n\n# Satelliten-Knoten mit eigenen Stichpunkten\ng.node('A', 'Akteur 1')\ng.node('B', 'Akteur 2')\ng.node('C', 'Akteur 3')\ng.node('D', 'Akteur 4')\ng.node('E', 'Akteur 5')\n\n# Alle Kanten \nfor node in ['A', 'B', 'C', 'D', 'E']:\n    g.edge(node, 'Zentrum')\n\n# Graph anzeigen\ndisplay(g)\n\n\n\n\n\nAkteure der Wirtschaftspolitik",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Akteure und Instititutionen der Wirtschaftspolitik</span>"
+    ]
   }
 ]

@@ -1,1 +1,38 @@
 # Akteure und Instititutionen der Wirtschaftspolitik
+
+```{python}
+#| message: false
+#| warning: false
+#| fig-cap: "Akteure der Wirtschaftspolitik"
+
+import graphviz
+from IPython.display import display
+
+# Graph mit 'circo'-Engine für kreisförmige Anordnung mit kleinerem Abstand
+g = graphviz.Digraph('satelliten', engine='circo' #,
+                #  graph_attr={'nodesep': '0.01', 'ranksep': '0.01'}
+)  # Abstände angepasst
+
+# Zentraler Knoten: größer, fett, zentriert
+g.node('Zentrum', 'Wirtschaftspolitik',
+       fontsize='15',
+       fontname='Times-Bold',  # Fett durch spezifische Schriftart
+       shape='circle',
+       width='2'
+)  # Größe angepasst
+
+# Satelliten-Knoten mit eigenen Stichpunkten
+g.node('A', 'Akteur 1')
+g.node('B', 'Akteur 2')
+g.node('C', 'Akteur 3')
+g.node('D', 'Akteur 4')
+g.node('E', 'Akteur 5')
+
+# Alle Kanten 
+for node in ['A', 'B', 'C', 'D', 'E']:
+    g.edge(node, 'Zentrum')
+
+# Graph anzeigen
+display(g)
+```
+
