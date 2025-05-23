@@ -2,6 +2,10 @@
 
 ## Vorüberlegungen
 
+- Möglichst einheitlicher Ansatz zur Analyse von sozialen Phänomenen auf Märkten und in der Politik
+
+- Zunächst stark neoklassisch geprägt, inzwischen stark durch wirtschaftspsychologische Überlegungen/ behavioral economics beeinflusst 
+
 ## Das Condorcet-Paradoxon
 
 ### Der problemlose Fall: nur eingipflige Präferenzen
