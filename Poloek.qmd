@@ -107,8 +107,8 @@ Kein eindeutiges Abstimmungsergebnis, inkonsistente Rangfolge $\rightarrow$ $\bo
 library(knitr)
 
 df <- data.frame(Wähler=c("A", "B", "C"),
-                 Projekt_I =c(5, -2, -2),
-                 Projekt_II=c(-2, 5, -2))
+                 `Projekt I` =c(5, -2, -2),
+                 `Projekt II`=c(-2, 5, -2))
 
 kable(df)
 

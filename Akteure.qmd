@@ -18,18 +18,27 @@ g.node('Zentrum', 'Wirtschaftspolitik',
        fontsize='15',
        fontname='Times-Bold',  # Fett durch spezifische Schriftart
        shape='circle',
-       width='2'
+      # width='2'
 )  # Größe angepasst
 
 # Satelliten-Knoten mit eigenen Stichpunkten
-g.node('A', 'Akteur 1')
-g.node('B', 'Akteur 2')
-g.node('C', 'Akteur 3')
-g.node('D', 'Akteur 4')
-g.node('E', 'Akteur 5')
+g.node('A', 'Zentralbanken')
+g.node('B', 'Lobbyisten')
+g.node('C', 'Europäische Union')
+g.node('D', 'Ministerien')
+g.node('E', 'Gewerkschaften\l und Arbeitgeberverbände')
+g.node('F', 'Wählende')
+g.node('G', 'Unternehmen')
+g.node('H', 'PolitkerInnen\l (ParlamentarierInnen,\l ParteifunktionärInnen), ...')
+g.node('I', 'Andere Länder')
+g.node('J', 'Internationale Organisationen')
+g.node('K', 'Justiz')
+g.node('L', 'Wissenschaft')
+g.node('M', 'Medien/Presse')
+
 
 # Alle Kanten 
-for node in ['A', 'B', 'C', 'D', 'E']:
+for node in ['A', 'B', 'C', 'D', 'E', "F", "G", "H", "I", "J", "K", "L", "M"]:
     g.edge(node, 'Zentrum')
 
 # Graph anzeigen
