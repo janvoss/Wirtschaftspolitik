@@ -87,7 +87,7 @@ Also: viel $\succ$ wenig  $\succ$ mittel
 
 Das sieht konsistent aus. Aber es fehlt noch ein Vergleich.
 
-viel vs. mittel: 2:1
+viel vs. mittel: 1:2
 
 $\boxed{\text{Ups!}}$
 
@@ -96,7 +96,169 @@ Die gesellschaftliche Rangfolge als Ergebnis der demokratischen Abstimmung laute
 Kein eindeutiges Abstimmungsergebnis, inkonsistente Rangfolge $\rightarrow$ $\boxed{\text{intransitive soziale Präferenz}}$
 
 
-## Erinnerung: Arrows Unmöglichkeitstheorem
+## Verallgemeinerung: Arrows Unmöglichkeitstheorem
+
+### Endogene Werte
+
+Normativer Individualismus: Werte der Beteiligten Individuen als
+Ausgangspunkt (und Endpunkt!)
+
+$\rightarrow$ Gesellschaftliche Ziele auf die Ziele der Individuen
+zurückführbar sein.
+
+$\rightarrow$ Soziale Wohlfahrtsfunktion $W=W(U_1, U_2, \dots, U_n)$
+
+Aber wie genau?
+
+$W=\sum_i^n \alpha_i U_i$
+
+$W=\prod_i^nU_i^{\alpha_i}$
+
+$W=\min(U_i)$
+
+### Arrows Unmöglichkeitstheorem
+
+Die Darstellung folgt  @weimannWirtschaftspolitik2006
+
+#### Grundlagen
+
+-   Unter Beibehaltung des normativen Individualismus müsste es
+    gelingen, aus Einzelpräferenzen eine gesellschaftliche Präferenz zu
+    aggregieren.\
+    $\rightarrow$ Mechanismus der Präferenzaggregation finden
+
+-   Arrows Unmöglichkeitestheorem: Bestimmte Anforderungen an einen
+    solchen Präferenzaggregtionsmechanisms sind nicht gleichzeitig
+    erfüllbar.
+
+**Pareto-Effizienz (P)**: Wenn eine Alternative existiert, die von allen
+Individuen einer anderen Alternative vorgezogen wird, bzw. von keinem
+Individuum abgelehnt wird, dann soll auch die soziale Ordnung diese
+Alternative bevorzugen.
+
+**Ausschluss von Diktatur (ND)**: Es soll kein Individuum existieren,
+dessen individuelle Präferenzordnung immer, ganz gleich wie die
+Präferenzen der anderen Gesellschaftsmitglieder aussehen, identisch ist
+mit der sozialen Ordnung.
+
+**Transitivität (T)**: Die soziale Präferenz soll eine transitive
+Ordnung über die Alternativen sein.
+
+**Unrestricted Domain (UD)**: Alle möglichen individuellen
+Präferenzordnungen über die Alternativen sind auch zugelassen.
+
+**Unabhängigkeit von irrelevanten Alternativen (UIA)**: Die
+gesellschaftliche Präferenz bezüglich zweier Alternativen darf nur von
+den individuellen Ordnungen zwischen diesen beiden Alternativen
+abhängen, nicht jedoch von der Position einer dritten Alternative.
+
+**Unmöglichkeitstheorem**: Jede SWF, die den Axiomen **P**, **T**,
+**UD** und **UIA** genügt, genügt nicht **ND** und ist daher
+diktatorisch.
+
+#### Der Beweis
+
+Der Beweis folgt der Idee zu zeigen, dass bei mindestens einer Kombination von individuellen Präferenzordnungen (, die wegen **UD** zulässig sein muss,) bei Erfüllung aller anderen Anforderungen die Forderung nach **ND** nicht erfüllbar ist.
+
+**Begrifflichkeiten**
+
+Definition: Eine Gruppe $G$ ist *decisive bezüglichden Alternativen*
+$x,y$, wenn immer dann, wenn alle Mitglieder von $G$ $x$ der Alternative
+$y$ vorziehen, auch in der sozialen Rangordnung $x$ vor $y$ rangiert.
+
+Ist eine Gruppe *bezüglich aller Alternativen decisive*, dann ist sie
+*decisive*.
+
+Der Beweis erfolgt in drei Schritten.
+
+**1. Feld-Erweiterungs-Lemma**
+
+*Wenn eine Gruppe über ein beliebiges Alternativenpaar decisive ist,
+dann ist sie decisive.*
+
+Gegeben seien vier Alternativen $\left(x,y\right)$ und
+$\left(a,b\right)$.
+
+$G$ sei decisive bezüglich $\left(x,y\right)$.
+
+Zu zeigen: $G$ ist auch decisive bezüglich $(a,b)$.
+
+Alle Mitglieder in $G$ haben die Präferenzordnung
+$a\succ x\succ y\succ b$
+
+Für alle nicht in $G$ gilt: $a\succ x$ und $y\succ b$
+
+Hinsichtlich der anderen Paare sind alle möglichen Relationen
+zugelassen.
+
+Für die soziale Rangfolge gilt dann: $x\succ y$, weil per Annahme $G$
+decisive für dieses Paar ist.
+
+Es gilt auch für die soziale Rangfolge $a\succ x$, weil dies für alle
+Gesellschaftsmitglieder gilt und wir **P** annehmen.
+
+Gleiches Argument: $y\succ b$.
+
+Aus **T** und $x\succ y$ folgt die soziale Präferenzordnung
+$a\succ x\succ y\succ b$.
+
+Da **UIA** gilt, kann die Rangfolge $a\succ b$ nur durch die Mitglieder
+in $G$ bestimmt worden sein.
+
+Damit ist $G$ decisive für $\left(a,b\right)$ und damit decisive.
+
+**2. Gruppen-Konzentrations-Lemma**
+
+*Wenn eine Gruppe G mit mehr als einem Mitglied decisive ist, dann ist
+es auch eine kleinere Gruppe, die in G enthalten ist.*
+
+$G$ sei decisive und bestehe aus $G_{1}$ und $G_{2}$.
+
+Für alle Mitglieder von $G_{1}$ gelte $x\succ y$ (s.o.) und $x\succ z$.
+Die Ordnung zwischen $\left(y,z\right)$ sei beliebig.
+
+Wenn nun für die soziale Rangordnung gilt: $x\succ z$, dann ist $G_{1}$
+für dieses Paar decisive.
+
+Wenn für die soziale Rangordnung gilt $x\preceq z$, dann ist $G_{2}$ für
+dieses Paar decisive.
+
+Wenn für die soziale Rangfolge gilt $z\succ x$, und $x\succ y$ ($G$ ist
+decisive), dann muss wegen **T** gelten: $z\succ x\succ y$.
+
+Damit ist dann $G_{2}$ decisive bezüglich $\left(z,x\right)$ und somit
+decisive.
+
+Wenn also $G$ decisive ist, dann ist entweder $G_{1}$ oder $G_{2}$.
+
+**3. Anwendung der Lemmata auf die Gesamtgruppe**
+
+Aus **P** folgt, dass die gesamte Gruppe immer decisive ist.
+
+Das Gruppen-Konzentrations-Lemma, erlaubt es, immer kleinere Gruppen zu
+bilden.
+
+Am Ende erhält man eine Gruppe, die aus einem Mitglied besteht - und das
+verstößt gegen **ND**.
+
+#### Schlussfolgerungen
+
+-   Was nun?
+
+-   Abkehr von einzelnen Anforderungen, insb.
+
+    -   **T** (Aber: Zufall akzeptabel?)
+    -   **UD** (Aber: Wirklich bestimmte Präferenzen (Individuen!)
+        ausschließen)
+    -   **UIA** (Aber: Strategieanfälligkeit)
+
+-   Abkehr von dem Vorhaben, Wertungen auf die Präferenzen der
+    Individuen zurückzuführen?\
+    $\rightarrow$ Stattdessen: Offenlegen der zugrundegelegten Wertungen
+
+-   Verschiebung der Fragestellung: Nicht Zustände sind gerecht oder
+    ungerecht, sondern Handlungen und Prozesse, die Zustände
+    herbeiführen?
 
 ## Stimmentausch
 
