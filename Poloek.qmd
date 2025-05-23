@@ -95,3 +95,86 @@ Kein eindeutiges Abstimmungsergebnis, inkonsistente Rangfolge $\rightarrow$ $\bo
 ## Erinnerung: Arrows Unmöglichkeitstheorem
 
 ## Stimmentausch
+
+### Expliziter Stimmentausch
+
+
+```{r}
+#| message: false
+#| warning: false
+#| fig-cap: "Drei Abstimmende mit drei Idealpunkten"
+
+library(ggplot2)
+
+# Zentren der Kreise mit center_id als Buchstaben
+centers <- data.frame(
+  x0 = c(2, 5, 8),
+  y0 = c(4, 8, 3),
+  center_id = c("A", "B", "C")
+)
+
+# Funktion, die für ein Zentrum beliebig viele Kreise (verschiedene Radien) erzeugt
+make_circles <- function(center, radii, npoints = 100) {
+  theta <- seq(0, 2 * pi, length.out = npoints)
+  circles <- do.call(rbind, lapply(radii, function(r) {
+    data.frame(
+      x = center$x0 + r * cos(theta),
+      y = center$y0 + r * sin(theta),
+      center_id = center$center_id,
+      radius = r
+    )
+  }))
+  circles
+}
+
+# Jedem Zentrum zwei Kreise mit verschiedenen Radien zuordnen
+all_circles <- do.call(rbind, Map(make_circles,
+                                  split(centers, seq(nrow(centers))),
+                                  list(c(1, 2, 3), c(1.5, 2.5, 3.5), c(1, 3, 4))))
+
+# Zentren für ein geschlossenes Dreieck vorbereiten
+centers_triangle <- rbind(centers, centers[1, ])
+
+# Plot mit Kreisen, Mittelpunkten und geschlossenem Dreieck
+p <- ggplot(all_circles, aes(x, y, group = interaction(center_id, radius), color = center_id)) +
+ geom_path(linewidth = .7) +
+ geom_path(linewidth = 1, color='white') +
+  geom_point(data = centers, aes(x = x0, y = y0), color = c('red', 'green', 'blue'), size = 3, inherit.aes = FALSE) + # ok, nicht die reine Lehre...
+ # geom_path(data = centers_triangle, aes(x = x0, y = y0),
+ #           color = "black", linetype = "dashed", linewidth = 1, inherit.aes = FALSE) +
+  scale_x_continuous(breaks=NULL)+
+  scale_y_continuous(breaks=NULL)+
+  coord_fixed() +
+  theme_light() +
+  labs(x=expression(G[1]),
+       y=expression(G[2]),
+color = "Person")
+
+p
+```
+
+
+```{r}
+#| warning: false
+#| message: false
+#| fig-cap: "Kreisrunde Isonutzenlinien"
+
+p <- p + geom_path(linewidth = 1)
+p
+
+```
+
+
+```{r}
+#| message: false
+#| warning: false
+#| fig-cap: "Pareto-Menge"
+
+p + geom_path(data = centers_triangle, aes(x = x0, y = y0),
+           color = "black", linetype = "dashed", linewidth = 1, inherit.aes = FALSE)
+```
+
+
+### Impliziter Stimmentausch
+
+## Ein alternatives Wahlverfahren: Die Borda-Wahl
