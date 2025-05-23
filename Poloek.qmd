@@ -98,7 +98,24 @@ Kein eindeutiges Abstimmungsergebnis, inkonsistente Rangfolge $\rightarrow$ $\bo
 
 ### Expliziter Stimmentausch
 
+#### Ein Zahlenbeispiel
 
+```{r}
+#| warning: false
+#| message: false
+
+library(knitr)
+
+df <- data.frame(Wähler=c("A", "B", "C"),
+                 Projekt_I =c(5, -2, -2),
+                 Projekt_II=c(-2, 5, -2))
+
+kable(df)
+
+```
+
+
+#### Ein grafisches Beispiel
 ```{r}
 #| message: false
 #| warning: false
