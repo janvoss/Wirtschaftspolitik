@@ -360,4 +360,25 @@ p + geom_path(data = centers_triangle, aes(x = x0, y = y0),
 
 ### Impliziter Stimmentausch
 
+Die Bündelung von Alternativen kann erfolgversprechend sein
+
+```{r}
+#| message: false
+#| warning: false
+
+library(knitr)
+library(tidyverse)
+df <- data.frame(Wähler=c("A", "B", "C"),
+                 I   =c(1, 1, 0),
+                 II  =c(0, 0, 50),
+                 III= c(1, 0, 1),
+                 IV=  c(0, 50, 0)) %>% 
+      mutate(I_u_III=I+III,
+             II_u_IV=II+IV)
+
+kable(df)
+
+```
+
+
 ## Ein alternatives Wahlverfahren: Die Borda-Wahl
