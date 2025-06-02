@@ -382,3 +382,66 @@ kable(df)
 
 
 ## Ein alternatives Wahlverfahren: Die Borda-Wahl
+
+
+```{r, echo=T, warning=F, message=F}
+
+Borda <- data.frame(
+Punkte = c(2:0),
+A = c("x", "y", "z"),
+B = c("x", "y", "z"),
+C = c("x", "y", "z"),
+D = c("y", "z", "x"),
+E = c("y", "z", "x")
+)
+
+library(knitr)
+kable(Borda, align="c",
+      caption="Borda Wahl mit unverzerrten Präferenzen")
+
+```
+
+
+Borda-Gewinner: y
+
+
+```{r, echo=T, warning=F, message=F}
+Borda <- data.frame(
+   Punkte = c(2:0),
+    A = c("x", "**z**", "**y**"),
+   B = c("x", "**z**", "**y**"),
+  C = c("x", "**z**", "**y**"),
+ D = c("y", "z", "x"),
+ E = c("y", "z", "x")
+)
+
+kable(Borda, align="c",
+      caption="Borda Wahl, wenn I, II und III ihre Präferenzen strategisch angegeben")
+
+
+```
+
+Borda-Gewinner: x
+
+```{r, echo=F, warning=F, message=F}
+Borda <- data.frame(
+   Punkte = c(2:0),
+    A = c("x", "**z**", "**y**"),
+   B = c("x", "**z**", "**y**"),
+  C = c("x", "**z**", "**y**"),
+ D = c("**z**", "**y**", "x"),
+ E = c("**z**", "**y**", "x")
+)
+
+kable(Borda, align="c",
+      caption="Borda Wahl, wenn IV und V ihrerseits strategisch reagieren")
+```
+
+Borda-Gewinner: z
+
+  $\rightarrow$ Anreize zu strategischem Wahlverhalten
+  
+  $\rightarrow$ Dadurch gewisse Zufälligkeit des Ergebnisses
+  
+  $\rightarrow$ Ursache: Es wird gegen eine von Arrows Anforderungen verstoßen (welche?).
+  

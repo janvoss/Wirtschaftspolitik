@@ -685,6 +685,170 @@ window.Quarto = {
 </section>
 <section id="ein-alternatives-wahlverfahren-die-borda-wahl" class="level2" data-number="7.5">
 <h2 data-number="7.5" class="anchored" data-anchor-id="ein-alternatives-wahlverfahren-die-borda-wahl"><span class="header-section-number">7.5</span> Ein alternatives Wahlverfahren: Die Borda-Wahl</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Borda <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="at">Punkte =</span> <span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">0</span>),</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="at">A =</span> <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span>),</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="at">B =</span> <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span>),</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="at">C =</span> <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"z"</span>),</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="at">D =</span> <span class="fu">c</span>(<span class="st">"y"</span>, <span class="st">"z"</span>, <span class="st">"x"</span>),</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="at">E =</span> <span class="fu">c</span>(<span class="st">"y"</span>, <span class="st">"z"</span>, <span class="st">"x"</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(Borda, <span class="at">align=</span><span class="st">"c"</span>,</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption=</span><span class="st">"Borda Wahl mit unverzerrten Präferenzen"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Borda Wahl mit unverzerrten Präferenzen</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Punkte</th>
+<th style="text-align: center;">A</th>
+<th style="text-align: center;">B</th>
+<th style="text-align: center;">C</th>
+<th style="text-align: center;">D</th>
+<th style="text-align: center;">E</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;">y</td>
+<td style="text-align: center;">y</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">y</td>
+<td style="text-align: center;">y</td>
+<td style="text-align: center;">y</td>
+<td style="text-align: center;">z</td>
+<td style="text-align: center;">z</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">z</td>
+<td style="text-align: center;">z</td>
+<td style="text-align: center;">z</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;">x</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Borda-Gewinner: y</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Borda <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>   <span class="at">Punkte =</span> <span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">0</span>),</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">A =</span> <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"**z**"</span>, <span class="st">"**y**"</span>),</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>   <span class="at">B =</span> <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"**z**"</span>, <span class="st">"**y**"</span>),</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">C =</span> <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"**z**"</span>, <span class="st">"**y**"</span>),</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a> <span class="at">D =</span> <span class="fu">c</span>(<span class="st">"y"</span>, <span class="st">"z"</span>, <span class="st">"x"</span>),</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a> <span class="at">E =</span> <span class="fu">c</span>(<span class="st">"y"</span>, <span class="st">"z"</span>, <span class="st">"x"</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(Borda, <span class="at">align=</span><span class="st">"c"</span>,</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption=</span><span class="st">"Borda Wahl, wenn I, II und III ihre Präferenzen strategisch angegeben"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Borda Wahl, wenn I, II und III ihre Präferenzen strategisch angegeben</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Punkte</th>
+<th style="text-align: center;">A</th>
+<th style="text-align: center;">B</th>
+<th style="text-align: center;">C</th>
+<th style="text-align: center;">D</th>
+<th style="text-align: center;">E</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;">y</td>
+<td style="text-align: center;">y</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><strong>z</strong></td>
+<td style="text-align: center;"><strong>z</strong></td>
+<td style="text-align: center;"><strong>z</strong></td>
+<td style="text-align: center;">z</td>
+<td style="text-align: center;">z</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><strong>y</strong></td>
+<td style="text-align: center;"><strong>y</strong></td>
+<td style="text-align: center;"><strong>y</strong></td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;">x</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Borda-Gewinner: x</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Borda Wahl, wenn IV und V ihrerseits strategisch reagieren</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Punkte</th>
+<th style="text-align: center;">A</th>
+<th style="text-align: center;">B</th>
+<th style="text-align: center;">C</th>
+<th style="text-align: center;">D</th>
+<th style="text-align: center;">E</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;"><strong>z</strong></td>
+<td style="text-align: center;"><strong>z</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><strong>z</strong></td>
+<td style="text-align: center;"><strong>z</strong></td>
+<td style="text-align: center;"><strong>z</strong></td>
+<td style="text-align: center;"><strong>y</strong></td>
+<td style="text-align: center;"><strong>y</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><strong>y</strong></td>
+<td style="text-align: center;"><strong>y</strong></td>
+<td style="text-align: center;"><strong>y</strong></td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;">x</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Borda-Gewinner: z</p>
+<p><span class="math inline">\(\rightarrow\)</span> Anreize zu strategischem Wahlverhalten</p>
+<p><span class="math inline">\(\rightarrow\)</span> Dadurch gewisse Zufälligkeit des Ergebnisses</p>
+<p><span class="math inline">\(\rightarrow\)</span> Ursache: Es wird gegen eine von Arrows Anforderungen verstoßen (welche?).</p>
 
 
 </section>
