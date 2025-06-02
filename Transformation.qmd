@@ -12,9 +12,51 @@
 
 ## Industriepolitik
 
-### Horizontale Industriepolitik
+### Horizontale vs. vertikale Industriepolitik
 
-### Vertikale Industriepolitik
+```{r}
+#| message: false
+#| warning: false
+
+
+library(knitr)
+
+# Erstelle den Data Frame
+industriepolitik <- data.frame(
+  Merkmal = c(
+    "Zielgruppe",
+    "Ansatz",
+    "Beispiele",
+    "Vorteile",
+    "Risiken",
+    "Politische Akzeptanz"
+  ),
+  Horizontale_Industriepolitik = c(
+    "Gesamte Wirtschaft/Industrie",
+    "Allgemeine Rahmenbedingungen verbessern",
+    "Infrastruktur, Bildung, Forschung, Steueranreize",
+    "Wettbewerb bleibt erhalten, geringe Verzerrungen",
+    "Weniger gezielte Steuerung, ggf. langsamer Wandel",
+    "Breiter Konsens, marktkonform"
+  ),
+  Vertikale_Industriepolitik = c(
+    "Einzelne Sektoren, Branchen oder Unternehmen",
+    "Selektive Förderung strategischer Bereiche",
+    "Subventionen für Batterien, Stahl, E-Mobilität",
+    "Schnelle Entwicklung strategischer Industrien",
+    "Wettbewerbsverzerrung, Risiko von Fehlallokation",
+    "Umstritten, Gefahr von Lobbyismus"
+  )
+)
+
+# Gib die Tabelle mit kable aus
+kable(industriepolitik, 
+      col.names = c("Merkmal", "Horizontale Industriepolitik", "Vertikale Industriepolitik"),
+      caption = "Vergleich: Horizontale vs. vertikale Industriepolitik")
+
+```
+
+
 
 ### Industriepolitik in der Transformation
 
