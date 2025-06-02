@@ -38,11 +38,10 @@
 
 #### Gegenüberstellung
 
-```{r}
-#| message: false
-#| warning: false
 
+::: {.cell}
 
+```{.r .cell-code}
 library(knitr)
 
 # Erstelle den Data Frame
@@ -77,22 +76,36 @@ industriepolitik <- data.frame(
 kable(industriepolitik, 
       col.names = c("Merkmal", "Horizontale Industriepolitik", "Vertikale Industriepolitik"),
       caption = "Vergleich: Horizontale vs. vertikale Industriepolitik")
-
 ```
+
+::: {.cell-output-display}
+
+
+Table: Vergleich: Horizontale vs. vertikale Industriepolitik
+
+|Merkmal              |Horizontale Industriepolitik                      |Vertikale Industriepolitik                       |
+|:--------------------|:-------------------------------------------------|:------------------------------------------------|
+|Zielgruppe           |Gesamte Wirtschaft/Industrie                      |Einzelne Sektoren, Branchen oder Unternehmen     |
+|Ansatz               |Allgemeine Rahmenbedingungen verbessern           |Selektive Förderung strategischer Bereiche       |
+|Beispiele            |Infrastruktur, Bildung, Forschung, Steueranreize  |Subventionen für Batterien, Stahl, E-Mobilität   |
+|Vorteile             |Wettbewerb bleibt erhalten, geringe Verzerrungen  |Schnelle Entwicklung strategischer Industrien    |
+|Risiken              |Weniger gezielte Steuerung, ggf. langsamer Wandel |Wettbewerbsverzerrung, Risiko von Fehlallokation |
+|Politische Akzeptanz |Breiter Konsens, marktkonform                     |Umstritten, Gefahr von Lobbyismus                |
+
+
+:::
+:::
+
 
 #### Aktuelle Debatte
 
 [Kranen/Freitag (2024): STEP – ein Paradigmenwechsel in der europäischen Wirtschaftspolitik?](https://www.wirtschaftsdienst.eu/inhalt/jahr/2024/heft/12/beitrag/step-ein-paradigmenwechsel-in-der-europaeischen-wirtschaftspolitik.html)
 
-```{r qr,  echo=FALSE, warning=FALSE}
-library(qrcode)
 
-qr <- qr_code('https://www.wirtschaftsdienst.eu/inhalt/jahr/2024/heft/12/beitrag/step-ein-paradigmenwechsel-in-der-europaeischen-wirtschaftspolitik.html')
-#plot(qr)
+::: {.cell}
 
-generate_svg(qr, filename = "qr-STEP.svg")
+:::
 
-```
 
 ![QR-Code](qr-STEP.svg){width="30%"}
 
@@ -149,3 +162,4 @@ generate_svg(qr, filename = "qr-STEP.svg")
 
 
 ## Sozialpolitik
+
