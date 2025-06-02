@@ -1,4 +1,4 @@
-# Wirtschaftspolitik und Wirtschaftspsychologie in der Transformation
+https://www.wirtschaftsdienst.eu/inhalt/jahr/2024/heft/12/beitrag/step-ein-paradigmenwechsel-in-der-europaeischen-wirtschaftspolitik.html# Wirtschaftspolitik und Wirtschaftspsychologie in der Transformation
 
 
 ## Einleitung 
@@ -52,6 +52,23 @@
 - Positive Erwartungen wecken/adressieren/bestärken
 
 - Verlässlichkeit
+
+
+### Aktuelle Debatte
+
+[Vöpel (2025): Grundzüge einer transformativen Ordnungspolitik](https://www.cep.eu/fileadmin/user_upload/cep.eu/Studien/cepInput_Grundzuege_einer_transformativen_Ordnungspolitik/cepInput_Grundzuege_einer_transformativen_Ordnungspolitik.pdf)
+
+```{r qr,  echo=FALSE, warning=FALSE}
+library(qrcode)
+
+qr <- qr_code('https://www.cep.eu/fileadmin/user_upload/cep.eu/Studien/cepInput_Grundzuege_einer_transformativen_Ordnungspolitik/cepInput_Grundzuege_einer_transformativen_Ordnungspolitik.pdf')
+#plot(qr)
+
+generate_svg(qr, filename = "qr-Voepel.svg")
+
+```
+
+![QR-Code](qr-Voepel.svg){width="30%"}
 
 
 ## Industriepolitik
