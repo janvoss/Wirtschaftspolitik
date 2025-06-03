@@ -1,6 +1,5 @@
 # Wirtschaftspolitik und Wirtschaftspsychologie in der Transformation
 
-
 ## Einleitung 
 
 ### Welche Transformationsherausforderungen bestehen?
@@ -58,17 +57,23 @@
 
 [Vöpel (2025): Grundzüge einer transformativen Ordnungspolitik](https://www.cep.eu/fileadmin/user_upload/cep.eu/Studien/cepInput_Grundzuege_einer_transformativen_Ordnungspolitik/cepInput_Grundzuege_einer_transformativen_Ordnungspolitik.pdf)
 
-```{r qr,  echo=FALSE, warning=FALSE}
+```{r qr1,  echo=FALSE, warning=FALSE}
+
 library(qrcode)
 
-qr <- qr_code('https://www.cep.eu/fileadmin/user_upload/cep.eu/Studien/cepInput_Grundzuege_einer_transformativen_Ordnungspolitik/cepInput_Grundzuege_einer_transformativen_Ordnungspolitik.pdf')
+qr1 <- qr_code('https://www.cep.eu/fileadmin/user_upload/cep.eu/Studien/cepInput_Grundzuege_einer_transformativen_Ordnungspolitik/cepInput_Grundzuege_einer_transformativen_Ordnungspolitik.pdf')
 #plot(qr)
 
-generate_svg(qr, filename = "qr-Voepel.svg")
+generate_svg(qr1, filename = "qr-Voepel.svg")
+
 
 ```
 
+
 ![QR-Code](qr-Voepel.svg){width="30%"}
+
+
+
 
 
 ## Industriepolitik
