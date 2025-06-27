@@ -193,3 +193,184 @@ generate_svg(qr, filename = "qr-STEP.svg")
 
 
 ## Sozialpolitik
+
+## Psychologie der Transformation
+
+### Einleitung
+
+- Die Transformation verlangt eine simultane Neuorientierung auf vielen Feldern Gleichzeitig
+
+- Dies ist eine komplexe Aufgabe, für die es in privaten Entscheidungen, in Unternehmen und in der Politik keine erprobten Routinen gibt
+
+- Es ist naheliegend, dass wirtschaftspsychologische/verhaltensökonomische Effekte hier eine Rolle spielen
+
+### Einige Grundkonzepte
+
+#### Mental Accounting
+
+s. Tafelautschrieb
+
+##### Konsequenzen für die Transformation
+
+- Wirkung von Preissignalen?
+
+- Neuausrichtung der "Accounts" nötig (mehr fixe, höhere variable Ausgaben)
+
+- $\dots$
+
+#### Denken in Wahrscheinlichkeiten
+
+- Es gibt hinweise darauf, dass in Entscheidungsprouzessen Entscheidungen nicht auf Wahrscheinlichkeiten ($p$), sondern auf auf Wahrscheinlichkeiten beruhenden Gewichtungen ($w(p)$) basieren. 
+
+- Hierbei gilt wohl, dass niedrige Wahrscheinlichkeiten ein systematisch zu hohes Gewicht erhalten ($w(p_{niedrig})>p_{niedrig}$) und hohe Wahrscheinlichkeiten ein zu niedriges ($w(p_{hoch})<p_{hoch}$)
+
+
+```{r}
+#| message: false
+#| warning: false
+#| fig-cap: Wahrscheinlichkeitsgewichtung
+
+library(ggplot2)
+
+# Definition der Gewichtungsfunktion nach Kahneman/Tversky
+weighting_function <- function(p, gamma = 0.61) {
+  p^gamma / (p^gamma + (1-p)^gamma)^(1/gamma)
+}
+
+# Daten erstellen
+probabilities <- seq(0.01, 0.99, by = 0.01)
+weights <- weighting_function(probabilities)
+df <- data.frame(p = probabilities, w = weights)
+
+# Plot erstellen
+ggplot(df, aes(x = p)) +
+  geom_line(aes(y = w), color = "blue", linewidth = 1) +  # Gewichtungsfunktion
+  geom_line(aes(y = p), color = "black", linetype = "dashed") +  # Referenzdiagonale
+  geom_ribbon(aes(ymin = p, ymax = ifelse(w > p, w, p)),
+              fill = "green", alpha = 0.3) +  # Übergewichtungsbereich
+  geom_ribbon(aes(ymin = ifelse(w < p, w, p), ymax = p),
+              fill = "red", alpha = 0.3) +  # Untergewichtungsbereich
+  labs(title = "Wahrscheinlichkeitsgewichtungsfunktion nach Kahneman & Tversky",
+     #  subtitle = expression(paste("Parameter ", gamma, " = 0.61")),
+       x = "Objektive Wahrscheinlichkeit (p)",
+       y = "Subjektive Gewichtung w(p)",
+       caption = "Abbildung: Jan S. Voßwinkel") +
+  #scale_x_continuous(breaks = seq(0, 1, 0.1)) +
+  #scale_y_continuous(breaks = seq(0, 1, 0.1)) +
+  theme_minimal()
+```
+
+
+
+- Dieser Effekt ist tendenziell für positive Ereignisse stärker ausgeprägt als für negative Ereignisse
+
+- Eine mögliche Operationalisierung:  
+  - $w(p) = \frac{p^{\gamma}}{\left[ p^{\gamma} + (1-p)^{\gamma} \right]^{1/\gamma}}$
+  
+  - Mit $\gamma_{positiv}<\gamma_{negativ}$
+
+```{r}
+#| message: false
+#| warning: false
+#| fig-cap: Wahrscheinlichkeitsgewichtung bei positiven und negativen Ereignissen
+
+library(ggplot2)
+
+# Definition der Gewichtungsfunktion nach Kahneman/Tversky
+weighting_function <- function(p, gamma) {
+  p^gamma / (p^gamma + (1-p)^gamma)^(1/gamma)
+}
+
+# Daten erstellen
+probabilities <- seq(0.01, 0.99, by = 0.01)
+df <- data.frame(
+  p = rep(probabilities, 2),
+  w = c(weighting_function(probabilities, gamma = 0.61),
+        weighting_function(probabilities, gamma = 0.69)),
+  gamma = factor(rep(c("positive Ereignisse", "negative Ereignisse"), each = length(probabilities)))
+)
+
+# Plot erstellen
+ggplot(df, aes(x = p, y = w, color = gamma)) +
+  geom_line(linewidth = 1) +
+  geom_line(aes(x = p, y = p), color = "black", linetype = "dashed", linewidth = 0.8, inherit.aes = FALSE) +
+  labs(
+    title = "Wahrscheinlichkeitsgewichtungsfunktion nach Kahneman & Tversky",
+    subtitle="Unterschiedliche Gewichtungen bei positiven und negativen Ereignissen",
+    x = "Objektive Wahrscheinlichkeit p",
+    y = "Subjektive Gewichtung w(p)",
+    color = "Ereignisart",
+    caption = "Abbildung: Jan S. Voßwinkel"
+  ) +
+  theme_minimal()
+
+```
+
+
+#### Asymmetrische Berücksichtigung von Gewinnen und Verlusten
+
+```{r}
+#| message: false
+#| warning: false
+#| fig-cap: Eine Nutzenfunktion
+
+library(ggplot2)
+
+#  Sigmoid-Funktion
+sigmoid_sym <- function(x, k, lambda) {
+  ifelse(x>=0, x / (1 + abs(x)^k)^(1/k),
+         (lambda)*x / (1 + abs(x)^k)^(1/k))
+}
+
+# Daten erzeugen
+df <- data.frame(x = seq(-5, 5, length.out = 200))
+df$y <- sigmoid_sym(df$x, k = .88, lambda=2.25)
+
+# Hilfslinien und Achsen-Breaks
+x_vals <- c(-3, -2, -1, 1, 2, 3)
+y_vals <- sigmoid_sym(x_vals, k = .88, lambda=2.25)
+lines_df <- data.frame(x = x_vals, y = y_vals)
+
+p <- ggplot(df, aes(x, y)) +
+  geom_line(size = 1.2, color = "blue") +
+  # Vertikale Hilfslinien
+  geom_segment(
+    data = lines_df,
+    aes(x = x, xend = x, y = 0, yend = y),
+    linetype = "dashed", color = "red"
+  ) +
+  # Horizontale Hilfslinien
+  geom_segment(
+    data = lines_df,
+    aes(x = x, xend = 0, y = y, yend = y),
+    linetype = "dashed", color = "red"
+  ) +
+  # Achsen durch den Ursprung
+  geom_hline(yintercept = 0, color = "black", linewidth = 0.8) +
+  geom_vline(xintercept = 0, color = "black", linewidth = 0.8) +
+  # Achsen-Breaks
+  scale_x_continuous(breaks = c(-2, -1, 0, 1, 2)) +
+  scale_y_continuous(breaks = c(round(y_vals, 2), 0)) +
+  labs(title = "Eine Nutzenfunktion nach der Prospect Theory",
+       x = "Zugang von Gütern", y = "Nutzen") +
+  theme_light() +
+  theme(panel.border = element_blank(),
+        axis.line = element_blank())
+
+# p
+
+p+ coord_cartesian(xlim = c(0, 5), ylim = c(0, 1))+
+  ggtitle("Eine Nutzenfunktion")
+```
+
+
+```{r}
+#| message: false
+#| warning: false
+#| fig-cap: Eine Wertefunktion nach der Prospect Theory
+
+p
+```
+
+
+#### Expressives Wählerverhalten
