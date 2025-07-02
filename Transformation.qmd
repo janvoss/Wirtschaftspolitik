@@ -208,7 +208,7 @@ generate_svg(qr, filename = "qr-STEP.svg")
 
 #### Mental Accounting
 
-s. Tafelautschrieb
+s. Tafelaufschrieb
 
 ##### Konsequenzen für die Transformation
 
@@ -220,7 +220,7 @@ s. Tafelautschrieb
 
 #### Denken in Wahrscheinlichkeiten
 
-- Es gibt hinweise darauf, dass in Entscheidungsprouzessen Entscheidungen nicht auf Wahrscheinlichkeiten ($p$), sondern auf auf Wahrscheinlichkeiten beruhenden Gewichtungen ($w(p)$) basieren. 
+- Es gibt hinweise darauf, dass in Entscheidungsprozessen Entscheidungen nicht auf Wahrscheinlichkeiten ($p$), sondern auf auf Wahrscheinlichkeiten beruhenden Gewichtungen ($w(p)$) basieren. 
 
 - Hierbei gilt wohl, dass niedrige Wahrscheinlichkeiten ein systematisch zu hohes Gewicht erhalten ($w(p_{niedrig})>p_{niedrig}$) und hohe Wahrscheinlichkeiten ein zu niedriges ($w(p_{hoch})<p_{hoch}$)
 
@@ -373,4 +373,57 @@ p
 ```
 
 
+#### Status quo Bias
+
+s. Tafelaufschrieb
+
 #### Expressives Wählerverhalten
+
+```{python}
+#| message: false
+#| warning: false
+
+# Python
+
+
+A= 0
+a= 0
+B= 1
+b= 0
+C= 0
+c= 1
+D= -1
+d= -1
+
+
+from lets_plot import *
+
+LetsPlot.setup_html()
+
+ggplot() + \
+geom_text(x=- .5, y= 2   , label=a) +\
+geom_text(x=-1.5, y=  .75, label=A) +\
+geom_text(x=- .5, y=-1   , label=b) +\
+geom_text(x=-1.5, y=-2.25, label=B) +\
+geom_text(x= 1.5, y= 2   , label=c) +\
+geom_text(x=  .5, y=  .75, label=C) +\
+geom_text(x= 1.5, y=-1   , label=d) +\
+geom_text(x=  .5, y=-2.25, label=D) +\
+geom_text(x=-1  , y= 3.3 , label='dagegen')+\
+geom_text(x= 1  , y= 3.3 , label='dafür')+\
+geom_text(x=-2.2, y= 1.375, angle=90, label='dagegen')+\
+geom_text(x=-2.2, y=-1.625, angle=90, label='dafür')+\
+geom_text(x= 0 , y= 4 ,
+          fontface = "bold", label='Wähler 2')+\
+geom_text(x=-2.7 , y= 0 , angle=90,
+          fontface = "bold", label='Wähler 1')+\
+geom_segment(x=-2,  xend= 2, y= 0, yend= 0) +\
+geom_segment(x=-2,  xend= 2, y= 3, yend= 3) +\
+geom_segment(x=-2,  xend= 2, y=-3, yend=-3) +\
+geom_segment(x=-2,  xend=-2, y=-3, yend= 3) +\
+geom_segment(x= 0,  xend= 0, y=-3, yend= 3) +\
+geom_segment(x= 2,  xend= 2, y=-3, yend= 3) +\
+theme_void()+\
+labs(title='Auszahlungen bei expressivem Wählerverhalten')
+```
+
