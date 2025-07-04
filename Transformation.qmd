@@ -427,3 +427,32 @@ theme_void()+\
 labs(title='Auszahlungen bei expressivem Wählerverhalten')
 ```
 
+### Werden Erkenntnisse der Wirtschaftspsychologie/Verhaltensökonomik auch umgesetzt?
+
+#### Literatur
+
+@urios_behavioural_2022 untersuchen genau diese Frage
+
+```{r qr-behavioral,  echo=FALSE, warning=FALSE}
+library(qrcode)
+
+qr <- qr_code('https://sharedgreendeal.eu/resources/behavioural-cultural-and-social-issues-eu-green-deal-policy-documents')
+#plot(qr)
+
+generate_svg(qr, filename = "qr-behavioral-green-deal.svg")
+
+```
+
+![Behavioural, Cultural and Social issues in EU Green Deal policy documents](qr-behavioral-green-deal.svg){width="50%"}
+
+#### Strukturierende Fragen
+
+1. Was ist der European Green Deal?
+
+1. Was sind verhaltensbezogene, soziale und kulturelle (BSC) Themen im Kontext des EU Green Deal?
+
+1. Warum sind sie wichtig?
+
+1. Inwieweit berücksichtigen die EU-Politikdokumente zu Green Deal-Themen BSC-Aspekte?
+
+1. Werden einige Aspekte aus dem Kontext BSC besonders gewürdigt?
