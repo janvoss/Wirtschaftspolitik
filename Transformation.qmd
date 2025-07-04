@@ -453,7 +453,7 @@ generate_svg(qr, filename = "qr-behavioral-green-deal.svg")
   
   - Strategie für Wachstum und Prosperität
 
-1. Was sind verhaltensbezogene, soziale und kulturelle (BSC) Themen im Kontext des EU Green Deal?
+2. Was sind verhaltensbezogene, soziale und kulturelle (BSC) Themen im Kontext des EU Green Deal?
 
   - Betroffenheit unterschiedlicher Einkommensgruppen
   
@@ -461,7 +461,7 @@ generate_svg(qr, filename = "qr-behavioral-green-deal.svg")
   
   - Berücksichtigung verhaltensökonomischer Aspekte
 
-1. Warum sind sie wichtig?
+3. Warum sind sie wichtig?
 
   - Umfassende Transformation der Gesellschaft/Wirtschaft
   
@@ -469,7 +469,7 @@ generate_svg(qr, filename = "qr-behavioral-green-deal.svg")
   
   - Kein Ausspielen Klima vs. soziale Gerechtigkeit
 
-1. Inwieweit berücksichtigen die EU-Politikdokumente zu Green Deal-Themen BSC-Aspekte?
+4. Inwieweit berücksichtigen die EU-Politikdokumente zu Green Deal-Themen BSC-Aspekte?
 
   - Gemischte Bilanz. Bei einigen Themen stärkere Berücksichtigung als bei anderen
   

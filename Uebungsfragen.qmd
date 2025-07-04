@@ -91,21 +91,23 @@
     kann das Borda-Wahlverfahren nicht erfüllen?
 
 
+1. Welche Formen von Stimmentausch kennen Sie?
+
+1. Führt Stimmentausch zu mehr Effizienz?
+
 1. Warum ist selbst unter der Rationalitätsannahme nicht zu erwarten,
     dass Individuen permanent optimierende Entscheidungen treffen?
 
-1. Erläutern Sie anhand einer geeigneten und kommentierten Grafik, wie
-    im neoklassischen Standardmodell mit zwei Gütern das optimale
-    Güterbündel ermittelt wird, wenn für eines der Güter ein sogenannter
-    Flatrate\" Tarif gilt.
+1. Was ist mit mental-accounting gemeint?
 
-    Zeigen Sie hierbei zwei Fälle:
+1. Welche Konsequenzen sind damit verbunden in Bezug auf die Reaktion auf Preissignale?
 
-    1.  Im Vergleich eines normalen Tarifs und eines Flatratetarifs wird
-        der normale Tarif (Abrechnung pro Einzeleinheit) bevorzugt.
+1. Was heißt das für die grüne Transformation?
 
-    2.  Es wird der Flatratetarif bevorzugt.
+1. Was besagt der Status-quo Bias?
 
-1. Erläutern Sie, warum es plausibel sein könnte, dass Individuen einen
-    Flatrate\" Tarif bevorzugen, obwohl im neoklassischen Standardmodell
-    eine Einzelabrechnung einen höheren Nutzen verspricht.
+1. Inwieweit könnte der Status-quo Bias ein Risiko und eine Chance für die Transformatin darstellen?
+
+1. Was ist mit expressivem Wahlverhalten gemeint?
+
+1. Welche Konsequenzen für die grüne Transformation könnten damit verbunden sein?
