@@ -447,16 +447,31 @@ generate_svg(qr, filename = "qr-behavioral-green-deal.svg")
 
 #### Strukturierende Fragen
 
-1. Was ist der European Green Deal?
+1. Was ist der European New Green Deal?
   
+  - Ziel: Klimaneutralität
   
+  - Strategie für Wachstum und Prosperität
 
 1. Was sind verhaltensbezogene, soziale und kulturelle (BSC) Themen im Kontext des EU Green Deal?
 
-[individuelle und kollektive Treiber von Verhaltensänderungen]::
+  - Betroffenheit unterschiedlicher Einkommensgruppen
+  
+  - Berücksichtigung kultureller Prägungen
+  
+  - Berücksichtigung verhaltensökonomischer Aspekte
 
 1. Warum sind sie wichtig?
 
+  - Umfassende Transformation der Gesellschaft/Wirtschaft
+  
+  - Berücksichtigung kultureller Vorprägungen bestimmt bedeutsam
+  
+  - Kein Ausspielen Klima vs. soziale Gerechtigkeit
+
 1. Inwieweit berücksichtigen die EU-Politikdokumente zu Green Deal-Themen BSC-Aspekte?
 
-1. Werden einige Aspekte aus dem Kontext BSC besonders gewürdigt?
+  - Gemischte Bilanz. Bei einigen Themen stärkere Berücksichtigung als bei anderen
+  
+  - Tendenziell ausführlichere Berücksichtigung in Mitteilungen als in Folgenabschätzungen
+  

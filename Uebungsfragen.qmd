@@ -1,8 +1,10 @@
 # Übungsfragen {-}
 
-1.  Was meint der Begriff Marktversagen'? Zeigen Sie auf, welche
-    positiven und welche normativen Aussagen erforderlich sind, um ein
-    Marktversagen festzustellen.
+1. Welche drei Bereiche der Wirtschaftspolitik kennen Sie? Welche Themen fallen jeweils beispielsweise darunter?
+
+1. Welche wirtschaftspsychologischen Themen mit Bezug zur Wirtschaftspolitik kennnen Sie?
+
+
 
 1.  Zeigen Sie anhand einer Edgeworth-Box die Menge der Tauschoptima!
 
@@ -11,6 +13,12 @@
 
 1.  Reicht die getrennte Ermittlung von Tausch- und Produktionsoptima
     aus, um etwas über die Effizienz einer Volkswirtschaft auszusagen?
+
+1. Inwieweit sollten/könnte es sinnvoll sein, die neoklassische Sichtweise auf die Bedingungen für Effizienz auch wirtschaftspsychologisch zu ergänzen?
+
+1.  Was meint der Begriff Marktversagen'? Zeigen Sie auf, welche
+    positiven und welche normativen Aussagen erforderlich sind, um ein
+    Marktversagen festzustellen.
 
 11.  Was sind soziale Wohlfahrtsfunktionen?
 
