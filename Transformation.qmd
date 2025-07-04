@@ -448,8 +448,12 @@ generate_svg(qr, filename = "qr-behavioral-green-deal.svg")
 #### Strukturierende Fragen
 
 1. Was ist der European Green Deal?
+  
+  
 
 1. Was sind verhaltensbezogene, soziale und kulturelle (BSC) Themen im Kontext des EU Green Deal?
+
+[individuelle und kollektive Treiber von Verhaltensänderungen]::
 
 1. Warum sind sie wichtig?
 
