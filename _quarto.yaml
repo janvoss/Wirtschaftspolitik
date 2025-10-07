@@ -6,7 +6,7 @@ book:
   title: "Wirtschaftspolitik und Wirtschaftspsychologie"
   author: "Prof. Dr. Jan S. Voßwinkel"
   # date: "2024"
-  subtitle: "Sommersemester 2025"
+  subtitle: "Wintersemester 2025/26"
   #lang: de
   language:  _language.yml
   repo-url: https://github.com/janvoss/Wirtschaftsolitik.git
@@ -19,9 +19,10 @@ book:
     - Marktversagen.qmd
     - Zweitbeste.qmd
     - Akteure.qmd
+    - Wirtschaftspsychologie.qmd
     - Poloek.qmd
     - Transformation.qmd
-    - Fallbeispiele.qmd
+    # - Fallbeispiele.qmd
     - Ausblick.qmd
    # - summary.qmd
     - literatur.qmd

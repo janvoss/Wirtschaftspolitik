@@ -1,5 +1,7 @@
 # Einleitung
 
+## Grundbegriffe
+
 - **Wirtschaftspolitik** aus vielen Gründen erforderlich und praktiziert
 
   - Besondere Herausforderung der Gegenwart und Zukunft: Die Transformation zur Klimaneutralität
@@ -14,5 +16,54 @@
 
   - Wirtschaftspsychologie leistet auch einen Beitrag zur Erklärung des Zustandekommens wirtschaftspolitischen Entscheidungen 
 
+## Wo stehen wir?
 
+### BIP
+
+### Unsicherheit
+
+```{r}
+#| message: false
+#| warning: false
+#| fig-cap: Economic Policy Uncertainty Index
+
+library(tidyverse)
+library(readxl)
+
+url <- "https://www.policyuncertainty.com/media/Europe_Policy_Uncertainty_Data.xlsx"
+destfile <- "Europe_Policy_Uncertainty_Data.xlsx"
+
+download.file(url, destfile, mode = "wb")
+
+df <- read_excel(destfile)
+
+df_long <- df %>%
+  pivot_longer(
+    cols = ends_with("_News_Index"),
+    names_to = "country",
+    values_to = "index"
+  )
+
+# head(df_long)
+
+df <- df_long %>%
+  mutate(date = make_date(Year, Month)) %>%
+  filter(country %in% c("Germany_News_Index", "European_News_Index", "France_News_Index"))
+
+df$country[df$country=="Germany_News_Index"] <- "Deutschland"
+df$country[df$country=="European_News_Index"] <- "Europa"
+df$country[df$country=="France_News_Index"] <- "Frankreich"
+
+ggplot(df, aes(x = date, y = index, color= country)) +
+  geom_line() +
+  theme_light()+
+  labs(title = "Policy Uncertainty Index für Deutschland, Frankreich und Europa",
+       x = "Datum",
+       y = "Index",
+       color = "Region",
+       caption = "Darstellung: Jan S. Voßwinkel. Daten: https://www.policyuncertainty.com")
+```
+
+
+### Polarisierung
 
