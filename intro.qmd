@@ -20,6 +20,51 @@
 
 ### BIP
 
+```{r}
+#| message: false
+#| warning: false
+#| include: false
+
+
+library(tidyverse)
+library(eurostat)
+
+table <- "nama_10_gdp"
+
+df <- get_eurostat(table,
+                   type = "label",
+                   time_format = "num",
+                   select_time="Y",
+                    cache = F) %>%
+             filter(unit == 'Chain linked volumes (2020), million euro',
+                    na_item == 'Gross domestic product at market prices'
+)
+
+# head(df)
+
+```
+
+```{r}
+#| warning: false
+#| message: false
+#| fig-cap: "Entwicklung des BIPs in Deutschland"
+
+df %>% filter(geo == 'Germany') %>%
+   ggplot(aes(TIME_PERIOD, values))+
+   geom_point()+
+   geom_smooth(method = 'glm')+
+  
+   scale_y_log10()+
+   theme_light()+
+  labs(title="Entwicklung des BIPs in Deutschland",
+       x= "Jahr",
+       y= "BIP (Mio Euro)",
+       caption= "Darstellung: Jan S. Voßwinkel, Daten: Eurostat Tabelle nama_10_gdp")
+
+
+```
+
+
 ### Unsicherheit
 
 ```{r}
