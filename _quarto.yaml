@@ -1,6 +1,6 @@
 project:
   type: book
-  output-dir: docs
+  output-dir: docs 
 
 book:
   title: "Wirtschaftspolitik und Wirtschaftspsychologie"
@@ -22,7 +22,7 @@ book:
     - Wirtschaftspsychologie.qmd
     - Poloek.qmd
     - Transformation.qmd
-    # - Fallbeispiele.qmd
+    #  - Fallbeispiele.qmd
     - Ausblick.qmd
    # - summary.qmd
     - literatur.qmd
