@@ -35,7 +35,7 @@ df <- get_eurostat(table,
                    type = "label",
                    time_format = "num",
                    select_time="Y",
-                    cache = F) %>%
+                    cache = T) %>%
              filter(unit == 'Chain linked volumes (2020), million euro',
                     na_item == 'Gross domestic product at market prices'
 )
@@ -47,6 +47,7 @@ df <- get_eurostat(table,
 ```{r}
 #| warning: false
 #| message: false
+#| cache: true
 #| fig-cap: "Entwicklung des BIPs in Deutschland"
 
 df %>% filter(geo == 'Germany') %>%
@@ -93,22 +94,55 @@ df_long <- df %>%
 
 df <- df_long %>%
   mutate(date = make_date(Year, Month)) %>%
-  filter(country %in% c("Germany_News_Index", "European_News_Index", "France_News_Index"))
+  filter(country %in% c("Germany_News_Index", # "European_News_Index", 
+                        "France_News_Index"))
 
 df$country[df$country=="Germany_News_Index"] <- "Deutschland"
-df$country[df$country=="European_News_Index"] <- "Europa"
+# df$country[df$country=="European_News_Index"] <- "Europa"
 df$country[df$country=="France_News_Index"] <- "Frankreich"
 
-ggplot(df, aes(x = date, y = index, color= country)) +
+url <- "https://www.policyuncertainty.com/media/US_Policy_Uncertainty_Data.xlsx"
+destfile <- "US_Policy_Uncertainty_Data.xlsx"
+
+download.file(url, destfile, mode = "wb")
+
+df_usa <- read_excel(destfile)
+
+# head(df_usa)
+
+df_long <- df_usa %>%
+  pivot_longer(
+    cols = ends_with("Index"),
+    names_to = "country",
+    values_to = "index"
+  )
+
+
+df_long$country[df_long$country=="News_Based_Policy_Uncert_Index"] <- "USA"
+
+# head(df_long)
+
+df_usa <- df_long %>%
+     mutate(date = make_date(Year, Month))
+
+# head(df_usa)
+
+df <- rbind(df, df_usa)
+
+df %>% filter(Year >= 2000) %>%
+ggplot(aes(x = date, y = index, color= country)) +
   geom_line() +
   theme_light()+
-  labs(title = "Policy Uncertainty Index für Deutschland, Frankreich und Europa",
+  labs(title = "Policy Uncertainty Index für Deutschland, Frankreich und die USA",
        x = "Datum",
        y = "Index",
-       color = "Region",
+       color = "Land",
        caption = "Darstellung: Jan S. Voßwinkel. Daten: https://www.policyuncertainty.com")
+
+
 ```
 
 
 ### Polarisierung
 
+![Index der politischen Polarisierung](Polarisierung.png)
