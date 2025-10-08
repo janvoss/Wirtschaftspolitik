@@ -1,6 +1,6 @@
 # Begriffe, Verhältnisse und Bereiche
 
-## Begriffe
+## Begriffe 
 
 ```{python}
 #| warning: false
