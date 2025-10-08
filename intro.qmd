@@ -23,7 +23,7 @@
 ```{r}
 #| message: false
 #| warning: false
-#| include: false
+#| output: false
 
 
 library(tidyverse)
