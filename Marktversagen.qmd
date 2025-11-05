@@ -22,7 +22,7 @@ Hier: Kurzfassung
   
   - $\dots$
 
-```{r echo=F, message=F, warning=F}
+```{r echo=T, message=F, warning=F}
 # Bibliotheken laden
 library(tidyverse)
 library(ggtext)
@@ -79,7 +79,7 @@ chart <- ggplot() +
   geom_ribbon(aes(x = z, ymin = supply(z), ymax = p,
                   fill = "Produzentenrente"), alpha = 0.25) +
   stat_function(aes(color = "Soziale Grenzkosten"), fun = supply_ext, xlim = c(0,3.5))+
-  annotate(geom = "text", x=3.5, y=supply_ext(3.5), hjust=-0.1, label=expression("MC"[pr]~+MC[ext]),color = "grey30")+
+  annotate(geom = "text", x=3.5, y=supply_ext(3.5)+.5, hjust=0.8, label=expression("MC"[pr]~+MC[ext]),color = "grey30")+
   annotate("point", x = q_t, y = p_t, color = "grey30")+
   annotate("segment", x = q_t, xend = q_t, y = 0, yend = p_t,
            linetype = "dashed", color = "grey30") +
@@ -141,6 +141,8 @@ chart
 
 
 ### Regulierungsstrategien: Rate-of-Return-Regulierung (RoR)
+
+Vgl. @weimann_wirtschaftspolitik_2006
 
 - Die RoR gewährt den Unternehmen eine bestimmte Verzinsung auf das eingesetzte Kapital  
 - $\frac{px - C}{K} \leq s$, mit $s$: genehmigte Maximalverzinsung  
