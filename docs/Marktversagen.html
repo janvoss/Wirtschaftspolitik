@@ -291,6 +291,10 @@ window.Quarto = {
   <li><a href="#informationsasymmetrien" id="toc-informationsasymmetrien" class="nav-link" data-scroll-target="#informationsasymmetrien"><span class="header-section-number">4.3</span> Informationsasymmetrien</a></li>
   <li><a href="#öffentliche-güter" id="toc-öffentliche-güter" class="nav-link" data-scroll-target="#öffentliche-güter"><span class="header-section-number">4.4</span> Öffentliche Güter</a></li>
   <li><a href="#unvollständige-märkte" id="toc-unvollständige-märkte" class="nav-link" data-scroll-target="#unvollständige-märkte"><span class="header-section-number">4.5</span> Unvollständige Märkte</a></li>
+  <li><a href="#pfadabhängigkeit" id="toc-pfadabhängigkeit" class="nav-link" data-scroll-target="#pfadabhängigkeit"><span class="header-section-number">4.6</span> Pfadabhängigkeit</a>
+  <ul class="collapse">
+  <li><a href="#veranschaulichung-anhand-einer-pólya-urne" id="toc-veranschaulichung-anhand-einer-pólya-urne" class="nav-link" data-scroll-target="#veranschaulichung-anhand-einer-pólya-urne"><span class="header-section-number">4.6.1</span> Veranschaulichung anhand einer Pólya-Urne</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -528,6 +532,129 @@ mit <span class="math inline">\(w_{t}^{i}\)</span>: Umsatzanteil des Gutes <span
 <li><p>Private Absicherung durch Eigenkapital</p></li>
 </ul></li>
 </ul>
+</section>
+<section id="pfadabhängigkeit" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="pfadabhängigkeit"><span class="header-section-number">4.6</span> Pfadabhängigkeit</h2>
+<p>Wettbewerb kann durch selbst-verstärkende Prozesse geprägt sein. Zufälle in frühen Perioden können dann zu verfestigten Wettbewerbsstrukturen führen.</p>
+<section id="veranschaulichung-anhand-einer-pólya-urne" class="level3" data-number="4.6.1">
+<h3 data-number="4.6.1" class="anchored" data-anchor-id="veranschaulichung-anhand-einer-pólya-urne"><span class="header-section-number">4.6.1</span> Veranschaulichung anhand einer Pólya-Urne</h3>
+<ul>
+<li><p>Es gibt Kugeln verschiedener Farben in einer Urne.</p></li>
+<li><p>Es wird zufällig eine Kugel gezogen</p></li>
+<li><p>Die gezogene Kugel wird zurückgelegt</p></li>
+<li><p>Es wird eine zusätzliche Kugel (oder mehrere zusätzliche Kugeln) der Urne hinzugefügt, die die gleiche Farbe hat (haben), wie die zuvor gehogene Kugel.</p></li>
+</ul>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Original [https://www.r-bloggers.com/2021/09/the-polya-urn-model-a-simple-simulation-of-the-rich-get-richer/]</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Nun mit ggplot</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Matrix aufbauen</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>cols <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"black"</span>, <span class="st">"blue"</span>, <span class="st">"green"</span>, <span class="st">"red"</span>, <span class="st">"yellow"</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>n<span class="ot">=</span><span class="dv">1000</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>urn <span class="ot">&lt;-</span> cols <span class="sc">|&gt;</span> <span class="fu">table</span>() <span class="sc">|&gt;</span> <span class="fu">as.matrix</span>() <span class="sc">|&gt;</span> <span class="fu">t</span>()</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>urn <span class="ot">&lt;-</span> <span class="fu">rbind</span>(urn, <span class="fu">matrix</span>(<span class="cn">NA</span>, <span class="at">nrow =</span> n<span class="dv">-1</span>, <span class="at">ncol =</span> <span class="fu">ncol</span>(urn)))</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>cols_unique <span class="ot">&lt;-</span> <span class="fu">colnames</span>(urn)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># n-1 draws from Dirichelet distribution</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(j <span class="cf">in</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)){</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span><span class="sc">+</span>j)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_len</span>(n<span class="dv">-1</span>)) {</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  urn[i<span class="sc">+</span><span class="dv">1</span>, ] <span class="ot">&lt;-</span> urn[i, ]</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  col_sample <span class="ot">&lt;-</span> <span class="fu">sample</span>(cols_unique, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> (urn[i, ] <span class="sc">/</span> <span class="fu">sum</span>(urn[i, ]))                       ) <span class="co"># sample ball</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  urn[i<span class="sc">+</span><span class="dv">1</span>, col_sample] <span class="ot">&lt;-</span> urn[i<span class="sc">+</span><span class="dv">1</span>, col_sample] <span class="sc">+</span> <span class="dv">1</span> <span class="co"># add ball with same colour</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Data frame erzeugen</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(urn) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(Züge<span class="ot">=</span><span class="fu">seq</span>(<span class="dv">1</span><span class="sc">:</span>n))</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Rundenanzahl</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="co"># long format</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span>   </span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>( <span class="sc">!</span><span class="fu">starts_with</span>(<span class="st">"Z"</span>) ,</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"Farbe"</span>, <span class="at">values_to =</span> <span class="st">"Anzahl"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Züge) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Anteil=</span>Anzahl<span class="sc">/</span><span class="fu">sum</span>(Anzahl))</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> df1 <span class="sc">%&gt;%</span> </span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Züge, <span class="at">y=</span>Anzahl, <span class="at">group=</span>Farbe, <span class="at">color=</span>Farbe))<span class="sc">+</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size=</span><span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="fu">unique</span>(df1<span class="sc">$</span>Farbe)),</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"schwarz"</span>, <span class="st">"blau"</span>, <span class="st">"grün"</span>, <span class="st">"rot"</span>, <span class="st">"gelb"</span>))<span class="sc">+</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>()</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>  <span class="co">#theme(legend.position = 'bottom', legend.direction = "horizontal")+</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>  <span class="co">#theme(legend.position = NULL)</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> df1 <span class="sc">%&gt;%</span> </span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Züge, <span class="at">y=</span>Anteil, <span class="at">group=</span>Farbe, <span class="at">color=</span>Farbe))<span class="sc">+</span></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size=</span><span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="fu">unique</span>(df1<span class="sc">$</span>Farbe)),</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"schwarz"</span>, <span class="st">"blau"</span>, <span class="st">"grün"</span>, <span class="st">"rot"</span>, <span class="st">"gelb"</span>))<span class="sc">+</span></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>()</span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>  <span class="co">#theme(legend.position = 'bottom', legend.direction = "horizontal")#+</span></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>  <span class="co">#theme(legend.position = NULL)</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="co">#p1 &lt;- p1+theme(legend.position = NULL)</span></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(p1<span class="sc">+</span> p2<span class="sc">+</span><span class="fu">plot_layout</span>(<span class="at">guides =</span> <span class="st">'collect'</span>) <span class="sc">+</span></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_annotation</span>(<span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">'Pfadabhängigkeit in der Póliya-Urne'</span>),</span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>                  <span class="at">subtitle=</span><span class="fu">paste0</span>(<span class="st">'Durchlauf Nr. '</span>, j)))</span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Marktversagen_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Ziehungen aus einer Pólya-Urne</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Marktversagen_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Ziehungen aus einer Pólya-Urne</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Marktversagen_files/figure-html/unnamed-chunk-4-3.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Ziehungen aus einer Pólya-Urne</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Marktversagen_files/figure-html/unnamed-chunk-4-4.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Ziehungen aus einer Pólya-Urne</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Marktversagen_files/figure-html/unnamed-chunk-4-5.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Ziehungen aus einer Pólya-Urne</figcaption>
+</figure>
+</div>
+</div>
+</div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
@@ -535,6 +662,7 @@ mit <span class="math inline">\(w_{t}^{i}\)</span>: Umsatzanteil des Gutes <span
 Weimann, Joachim. 2006. <em>Wirtschaftspolitik</em>. Springer-Lehrbuch. Berlin, Heidelberg: Springer. <a href="https://doi.org/10.1007/3-540-28857-0">https://doi.org/10.1007/3-540-28857-0</a>.
 </div>
 </div>
+</section>
 </section>
 
 </main> <!-- /main -->
