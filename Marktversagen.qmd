@@ -398,3 +398,16 @@ print(p1+ p2+plot_layout(guides = 'collect') +
 }
 ```
 
+### Ergebnis
+
+- Zufälle bei den ersten Zügen haben großen Einfluss auf die Verteilung der Kugelfarben in der Urne
+
+- Eine oder mehrere Farben erhalten auch bei Gleichverteilung der Farben zu Beginn eine dominante Position
+
+### Interpretation
+
+- Netzwerkeffekte (Vorteile großer Nutzerzahlen)
+
+- Lock-in-Effekte (Tastaturlayout, Betriebssysteme, politischer Wettbewerb)
+
+- Superstarphänomene (Michael Jackson war ein Star, weil er gute Musik machte. Er war auch ein Star, weil er ein Star war)
