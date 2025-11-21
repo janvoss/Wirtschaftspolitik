@@ -11,11 +11,10 @@ s. Tafelaufschrieb
 - Hierbei gilt wohl, dass niedrige Wahrscheinlichkeiten ein systematisch zu hohes Gewicht erhalten ($w(p_{niedrig})>p_{niedrig}$) und hohe Wahrscheinlichkeiten ein zu niedriges ($w(p_{hoch})<p_{hoch}$)
 
 
-```{r}
-#| message: false
-#| warning: false
-#| fig-cap: Wahrscheinlichkeitsgewichtung
 
+::: {.cell}
+
+```{.r .cell-code}
 library(ggplot2)
 
 # Definition der Gewichtungsfunktion nach Kahneman/Tversky
@@ -46,6 +45,12 @@ ggplot(df, aes(x = p)) +
   theme_minimal()
 ```
 
+::: {.cell-output-display}
+![Wahrscheinlichkeitsgewichtung](Wirtschaftspsychologie_files/figure-html/unnamed-chunk-1-1.png){width=672}
+:::
+:::
+
+
 
 
 - Dieser Effekt ist tendenziell für positive Ereignisse stärker ausgeprägt als für negative Ereignisse
@@ -55,11 +60,10 @@ ggplot(df, aes(x = p)) +
   
   - Mit $\gamma_{positiv}<\gamma_{negativ}$
 
-```{r}
-#| message: false
-#| warning: false
-#| fig-cap: Wahrscheinlichkeitsgewichtung bei positiven und negativen Ereignissen
 
+::: {.cell}
+
+```{.r .cell-code}
 library(ggplot2)
 
 # Definition der Gewichtungsfunktion nach Kahneman/Tversky
@@ -89,19 +93,23 @@ ggplot(df, aes(x = p, y = w, color = gamma)) +
     caption = "Abbildung: Jan S. Voßwinkel"
   ) +
   theme_minimal()
-
 ```
+
+::: {.cell-output-display}
+![Wahrscheinlichkeitsgewichtung bei positiven und negativen Ereignissen](Wirtschaftspsychologie_files/figure-html/unnamed-chunk-2-1.png){width=672}
+:::
+:::
+
 
 
 
 ## Asymmetrie von Gewinnen und Verlusten
 
 
-```{r}
-#| message: false
-#| warning: false
-#| fig-cap: Eine Nutzenfunktion
 
+::: {.cell}
+
+```{.r .cell-code}
 library(ggplot2)
 
 #  Sigmoid-Funktion
@@ -151,23 +159,34 @@ p+ coord_cartesian(xlim = c(0, 5), ylim = c(0, 1))+
   ggtitle("Eine Nutzenfunktion")
 ```
 
+::: {.cell-output-display}
+![Eine Nutzenfunktion](Wirtschaftspsychologie_files/figure-html/unnamed-chunk-3-1.png){width=672}
+:::
+:::
 
-```{r}
-#| message: false
-#| warning: false
-#| fig-cap: Eine Wertefunktion nach der Prospect Theory
 
+
+
+::: {.cell}
+
+```{.r .cell-code}
 p
 ```
+
+::: {.cell-output-display}
+![Eine Wertefunktion nach der Prospect Theory](Wirtschaftspsychologie_files/figure-html/unnamed-chunk-4-1.png){width=672}
+:::
+:::
+
 
 ## Status quo Bias
 
 ## Expressives Wählerverhalten
 
-```{python}
-#| message: false
-#| warning: false
 
+::: {.cell}
+
+```{.python .cell-code}
 # Python
 
 
@@ -211,6 +230,345 @@ geom_segment(x= 2,  xend= 2, y=-3, yend= 3) +\
 theme_void()+\
 labs(title='Auszahlungen bei expressivem Wählerverhalten')
 ```
+
+::: {.cell-output-display}
+
+```{=html}
+<html lang="en">
+   <head>
+       <meta charset="UTF-8">
+       <style> html, body { margin: 0; padding: 0; } </style>
+       <script type="text/javascript" data-lets-plot-script="library" src="https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.2/js-package/distr/lets-plot.min.js"></script>
+   </head>
+   <body>
+          <div id="GEz7wv"></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("GEz7wv");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"mapping":{
+},
+"data_meta":{
+},
+"theme":{
+"name":"classic",
+"line":"blank",
+"axis":"blank"
+},
+"ggtitle":{
+"text":"Auszahlungen bei expressivem Wählerverhalten"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":-0.5,
+"y":2.0,
+"label":0.0,
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":-1.5,
+"y":0.75,
+"label":0.0,
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":-0.5,
+"y":-1.0,
+"label":0.0,
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":-1.5,
+"y":-2.25,
+"label":1.0,
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":1.5,
+"y":2.0,
+"label":1.0,
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":0.5,
+"y":0.75,
+"label":0.0,
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":1.5,
+"y":-1.0,
+"label":-1.0,
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":0.5,
+"y":-2.25,
+"label":-1.0,
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":-1.0,
+"y":3.3,
+"label":"dagegen",
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":1.0,
+"y":3.3,
+"label":"dafür",
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":-2.2,
+"y":1.375,
+"angle":90.0,
+"label":"dagegen",
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":-2.2,
+"y":-1.625,
+"angle":90.0,
+"label":"dafür",
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":0.0,
+"y":4.0,
+"fontface":"bold",
+"label":"Wähler 2",
+"data":{
+}
+},{
+"geom":"text",
+"mapping":{
+},
+"data_meta":{
+},
+"x":-2.7,
+"y":0.0,
+"angle":90.0,
+"fontface":"bold",
+"label":"Wähler 1",
+"data":{
+}
+},{
+"geom":"segment",
+"mapping":{
+},
+"data_meta":{
+},
+"x":-2.0,
+"xend":2.0,
+"y":0.0,
+"yend":0.0,
+"data":{
+}
+},{
+"geom":"segment",
+"mapping":{
+},
+"data_meta":{
+},
+"x":-2.0,
+"xend":2.0,
+"y":3.0,
+"yend":3.0,
+"data":{
+}
+},{
+"geom":"segment",
+"mapping":{
+},
+"data_meta":{
+},
+"x":-2.0,
+"xend":2.0,
+"y":-3.0,
+"yend":-3.0,
+"data":{
+}
+},{
+"geom":"segment",
+"mapping":{
+},
+"data_meta":{
+},
+"x":-2.0,
+"xend":-2.0,
+"y":-3.0,
+"yend":3.0,
+"data":{
+}
+},{
+"geom":"segment",
+"mapping":{
+},
+"data_meta":{
+},
+"x":0.0,
+"xend":0.0,
+"y":-3.0,
+"yend":3.0,
+"data":{
+}
+},{
+"geom":"segment",
+"mapping":{
+},
+"data_meta":{
+},
+"x":2.0,
+"xend":2.0,
+"y":-3.0,
+"yend":3.0,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"1"
+};
+           fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing);
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script>
+   </body>
+</html>
+```
+
+:::
+:::
+
 
 
 ## Hyperbolisches Diskontieren
