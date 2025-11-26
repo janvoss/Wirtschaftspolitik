@@ -215,6 +215,20 @@ labs(title='Auszahlungen bei expressivem Wählerverhalten')
 
 ## Hyperbolisches Diskontieren
 
+- Im Rahmen der neoklassischen Vorstellung von rationalem Verhalten wird üblicherweise unterstellt, dass Individuen konsistent diskontieren, etwa indem Nutzen- und Kostenwirkungen einer Entscheidung, die in Periode $t$ anfallen, mit einem Faktor $\boxed{\frac{1}{(1+i)^t}}$ diskontiert werden (**exponentielles Diskontieren**).
+
+- Hierdurch wird sichergestellt, dass Entscheidungen konsistent sind und die Bewertung einer Aktion mit künftigen Kosten- odee Nutzenwirkungen unabhängig davon ist, wann eine Entscheidung getroffen wird bzw. wann die erste Wirkung der Entscheidung entsteht (wenn die zeitliche Reihenfolge und der Abstand der Wirkungen zueinander eingehalten wird)
+
+- Wenn einem eine Aktion als nicht vorteilhaft (nachteilig) erscheint, gilt das unabhängig davon, ob die Aktion heute, morgen oder übermorgen startet.
+
+- Empirisch gibt es aber immer wieder Fälle, in denen Individuen heute eine bestimmte Handlung noch nicht vornehmen möchten, sie ihnen aber vorteilhaft erscheint, wenn sie sie in der Zukunft durchführen. 
+
+- Wenn dann Zeit vergangen ist und eigentlich der Zeitpunkt für die Handlung da ist, erscheint sie einem abermals nicht vorteilhaft.
+
+- Beispiele: Trainingsplan, Diätplan, Lernplan, Altersvorsorge, $\dots$
+
+- Dies kann nachvollziehbar modelliert werden, indem man annimmt, dass anders als oben beschrieben mit $\boxed{\frac{1}{1+ti}}$ diskontiert wird diskontiert wird (**hyperbolisches Diskontieren**). 
+
 <iframe 
   src="https://janvoss.shinyapps.io/Hyperbolisches-Diskontieren/" 
   width="100%" 
