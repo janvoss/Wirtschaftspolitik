@@ -215,7 +215,7 @@ labs(title='Auszahlungen bei expressivem Wählerverhalten')
 
 ## Hyperbolisches Diskontieren
 
-- Im Rahmen der neoklassischen Vorstellung von rationalem Verhalten wird üblicherweise unterstellt, dass Individuen konsistent diskontieren, etwa indem Nutzen- und Kostenwirkungen einer Entscheidung, die in Periode $t$ anfallen, mit einem Faktor $\boxed{\frac{1}{(1+i)^t}}$ diskontiert werden (**exponentielles Diskontieren**).
+- Im Rahmen der neoklassischen Vorstellung von rationalem Verhalten wird üblicherweise unterstellt, dass Individuen konsistent diskontieren, etwa indem Nutzen- und Kostenwirkungen einer Entscheidung, die in Periode $t$ anfallen, mit einem Faktor $$\boxed{\frac{1}{(1+i)^t}}$$ diskontiert werden (**exponentielles Diskontieren**).
 
 - Hierdurch wird sichergestellt, dass Entscheidungen konsistent sind und die Bewertung einer Aktion mit künftigen Kosten- odee Nutzenwirkungen unabhängig davon ist, wann eine Entscheidung getroffen wird bzw. wann die erste Wirkung der Entscheidung entsteht (wenn die zeitliche Reihenfolge und der Abstand der Wirkungen zueinander eingehalten wird)
 
@@ -227,7 +227,15 @@ labs(title='Auszahlungen bei expressivem Wählerverhalten')
 
 - Beispiele: Trainingsplan, Diätplan, Lernplan, Altersvorsorge, $\dots$
 
-- Dies kann nachvollziehbar modelliert werden, indem man annimmt, dass anders als oben beschrieben mit $\boxed{\frac{1}{1+ti}}$ diskontiert wird diskontiert wird (**hyperbolisches Diskontieren**). 
+- Dies kann nachvollziehbar modelliert werden, indem man annimmt, dass anders als oben beschrieben mit $$\boxed{\frac{1}{1+ti}}$$ diskontiert wird diskontiert wird (**hyperbolisches Diskontieren**). 
+
+- Hier betrachtet: Kosten von $100$ zum Zeitpunkt $t_j$, Nutzen von $100\times (1+r)$ zum Zeitpunkt $t_{j+1}$
+
+- Bewertung nach exponentieller Diskontierung: $$-100 \times \frac{1}{(1+i)^{t_j}} + 100 \times \frac{1+r}{(1+i)^{t_j+1}}$$
+
+- Bewertung nach hyperbolischer Diskontierung: $$-100 \times \frac{1}{(1+it_j)} + 100 \times \frac{1+r}{(1+i(t_j+1))}$$
+
+- Sofern $i>r$ gilt, erscheint eine Aktion bei der hier dargestellten hyperbolischen Diskontierung als vorteilhaft ab dem Zeitpunkt $$\boxed{t^*=\frac{1}{r}-\frac{1}{i}}$$
 
 <iframe 
   src="https://janvoss.shinyapps.io/Hyperbolisches-Diskontieren/" 

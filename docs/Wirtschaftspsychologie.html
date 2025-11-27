@@ -533,7 +533,7 @@ window.Quarto = {
        <script type="text/javascript" data-lets-plot-script="library" src="https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.2/js-package/distr/lets-plot.min.js"></script>
    
    
-          <div id="yh4Eq7"></div>
+          <div id="RbDo3a"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
    
    (function() {
@@ -558,7 +558,7 @@ window.Quarto = {
        };
    }
    
-   const containerDiv = document.getElementById("yh4Eq7");
+   const containerDiv = document.getElementById("RbDo3a");
    let fig = null;
    
    function renderPlot() {
@@ -862,13 +862,17 @@ window.Quarto = {
 <section id="hyperbolisches-diskontieren" class="level2" data-number="7.6">
 <h2 data-number="7.6" class="anchored" data-anchor-id="hyperbolisches-diskontieren"><span class="header-section-number">7.6</span> Hyperbolisches Diskontieren</h2>
 <ul>
-<li><p>Im Rahmen der neoklassischen Vorstellung von rationalem Verhalten wird üblicherweise unterstellt, dass Individuen konsistent diskontieren, etwa indem Nutzen- und Kostenwirkungen einer Entscheidung, die in Periode <span class="math inline">\(t\)</span> anfallen, mit einem Faktor <span class="math inline">\(\boxed{\frac{1}{(1+i)^t}}\)</span> diskontiert werden (<strong>exponentielles Diskontieren</strong>).</p></li>
+<li><p>Im Rahmen der neoklassischen Vorstellung von rationalem Verhalten wird üblicherweise unterstellt, dass Individuen konsistent diskontieren, etwa indem Nutzen- und Kostenwirkungen einer Entscheidung, die in Periode <span class="math inline">\(t\)</span> anfallen, mit einem Faktor <span class="math display">\[\boxed{\frac{1}{(1+i)^t}}\]</span> diskontiert werden (<strong>exponentielles Diskontieren</strong>).</p></li>
 <li><p>Hierdurch wird sichergestellt, dass Entscheidungen konsistent sind und die Bewertung einer Aktion mit künftigen Kosten- odee Nutzenwirkungen unabhängig davon ist, wann eine Entscheidung getroffen wird bzw. wann die erste Wirkung der Entscheidung entsteht (wenn die zeitliche Reihenfolge und der Abstand der Wirkungen zueinander eingehalten wird)</p></li>
 <li><p>Wenn einem eine Aktion als nicht vorteilhaft (nachteilig) erscheint, gilt das unabhängig davon, ob die Aktion heute, morgen oder übermorgen startet.</p></li>
 <li><p>Empirisch gibt es aber immer wieder Fälle, in denen Individuen heute eine bestimmte Handlung noch nicht vornehmen möchten, sie ihnen aber vorteilhaft erscheint, wenn sie sie in der Zukunft durchführen.</p></li>
 <li><p>Wenn dann Zeit vergangen ist und eigentlich der Zeitpunkt für die Handlung da ist, erscheint sie einem abermals nicht vorteilhaft.</p></li>
 <li><p>Beispiele: Trainingsplan, Diätplan, Lernplan, Altersvorsorge, <span class="math inline">\(\dots\)</span></p></li>
-<li><p>Dies kann nachvollziehbar modelliert werden, indem man annimmt, dass anders als oben beschrieben mit <span class="math inline">\(\boxed{\frac{1}{1+ti}}\)</span> diskontiert wird diskontiert wird (<strong>hyperbolisches Diskontieren</strong>).</p></li>
+<li><p>Dies kann nachvollziehbar modelliert werden, indem man annimmt, dass anders als oben beschrieben mit <span class="math display">\[\boxed{\frac{1}{1+ti}}\]</span> diskontiert wird diskontiert wird (<strong>hyperbolisches Diskontieren</strong>).</p></li>
+<li><p>Hier betrachtet: Kosten von <span class="math inline">\(100\)</span> zum Zeitpunkt <span class="math inline">\(t_j\)</span>, Nutzen von <span class="math inline">\(100\times (1+r)\)</span> zum Zeitpunkt <span class="math inline">\(t_{j+1}\)</span></p></li>
+<li><p>Bewertung nach exponentieller Diskontierung: <span class="math display">\[-100 \times \frac{1}{(1+i)^{t_j}} + 100 \times \frac{1+r}{(1+i)^{t_j+1}}\]</span></p></li>
+<li><p>Bewertung nach hyperbolischer Diskontierung: <span class="math display">\[-100 \times \frac{1}{(1+it_j)} + 100 \times \frac{1+r}{(1+i(t_j+1))}\]</span></p></li>
+<li><p>Sofern <span class="math inline">\(i&gt;r\)</span> gilt, erscheint eine Aktion bei der hier dargestellten hyperbolischen Diskontierung als vorteilhaft ab dem Zeitpunkt <span class="math display">\[\boxed{t^*=\frac{1}{r}-\frac{1}{i}}\]</span></p></li>
 </ul>
 <iframe src="https://janvoss.shinyapps.io/Hyperbolisches-Diskontieren/" width="100%" height="900" title="Spielegenerator">
 </iframe>
