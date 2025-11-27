@@ -5,7 +5,7 @@ account: janvoss
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 16135951
-bundleId: 11211899
+bundleId: 11243201
 url: https://janvoss.shinyapps.io/Hyperbolisches-Diskontieren/
 version: 1
 asMultiple: FALSE

@@ -1,5 +1,4 @@
 # Lade notwendige Bibliotheken
-# (Stellen Sie sicher, dass diese Pakete in Ihrer R-Umgebung installiert sind: install.packages(c("shiny", "dplyr", "ggplot2", "tidyr")))
 library(shiny)
 library(dplyr)
 library(ggplot2)
@@ -43,9 +42,11 @@ ui <- fluidPage(
       p("- Ertrag der Aktion: Kosten * (1 + r)")
     ),
     
-    # Hauptpanel für die Ausgabe (Plot)
+    # Hauptpanel für die Ausgabe (Plot und Text)
     mainPanel(
-      plotOutput("diskontierungsPlot")
+      plotOutput("diskontierungsPlot"),
+      hr(), # Horizontale Trennlinie
+      htmlOutput("tc_output") # Ausgabe für den t_c Wert
     )
   )
 )
@@ -53,35 +54,26 @@ ui <- fluidPage(
 # Server-Logik
 server <- function(input, output) {
   
-  # Reaktiv: Datenrahmen basierend auf Eingaben berechnen
+  # 1. Reaktiv: Datenrahmen basierend auf Eingaben berechnen (Unverändert)
   data_df <- reactive({
-    # Benutzerdefinierte Variablen aus den UI-Inputs
     t_max_val <- input$t_max
     i_val <- input$i_rate
     r_val <- input$r_rate
-    kosten <- 100 # Kosten sind im Originalcode fix
+    kosten <- 100 
     
-    # 1. Datenrahmen erstellen und Barwert-Werte berechnen
     df <- data.frame(t = 0:t_max_val) %>%
       mutate(
         Kosten = kosten,
         Ertrag = Kosten * (1 + r_val),
-        
-        # Standard-Barwert (exponentielles Diskontieren)
         Barwert = -Kosten / (1 + i_val)^t + Ertrag / (1 + i_val)^(t + 1),
-        
-        # Hyperbolischer Barwert (näherungsweise)
         Barwert_hyper = -Kosten / (1 + i_val * t) + Ertrag / (1 + i_val * (t + 1)),
-        
-        # Die Verhältnisse aus dem Originalcode werden ebenfalls berechnet
         Verhaeltnis_1 = (Kosten / (1 + i_val)^t) / (Ertrag / (1 + i_val)^(t + 1)),
         Verhaeltnis_2 = (Kosten / (1 + i_val * t)) / (Ertrag / (1 + i_val * (t + 1)))
       )
     
-    # 2. Pivot Longer für ggplot, um die Barwert-Funktionen zu plotten
     df_long <- df %>%
       pivot_longer(
-        cols = starts_with("Barwert"), # Wir brauchen nur die Barwert-Werte für den Plot
+        cols = starts_with("Barwert"), 
         names_to = "Funktion",
         values_to = "Werte"
       )
@@ -89,18 +81,36 @@ server <- function(input, output) {
     return(df_long)
   })
   
-  # Output: Plot generieren
+  # 2. Reaktiv: Cross-over time (t_c) berechnen
+  tc_calc <- reactive({
+    i <- input$i_rate
+    r <- input$r_rate
+    
+    if (i > r) {
+      t_c <- (i - r) / (i * r)
+      # Nur positive t_c Werte sind sinnvoll
+      return(ifelse(t_c >= 0, t_c, NA))
+    } else {
+      return(NA)
+    }
+  })
+  
+  # 3. Output: Plot generieren
   output$diskontierungsPlot <- renderPlot({
     df_long <- data_df()
+    t_c <- tc_calc() # t_c aus der reaktiven Berechnung abrufen
     
-    # Plot erstellen
-    df_long %>%
+    i <- input$i_rate
+    r <- input$r_rate
+    
+    # Basis-Plot erstellen
+    p <- df_long %>%
       ggplot(aes(t, Werte, color = Funktion)) +
-      geom_line(linewidth = 1.2) + # Linie etwas dicker machen
+      geom_line(linewidth = 1.2) + 
       geom_hline(yintercept = 0, color = "red", linetype = "dashed", linewidth = 1) +
       labs(
         title = "Vergleich: Exponentielles vs. Hyperbolisches Diskontieren",
-        subtitle = paste0("i = ", input$i_rate, ", r = ", input$r_rate),
+        subtitle = paste0("i = ", i, ", r = ", r),
         x = "Startzeitpunkt der Aktion (t)",
         y = "Bewertung (Barwert/Gegenwartswert)",
         color = "Diskontierungsmodell"
@@ -114,6 +124,30 @@ server <- function(input, output) {
         plot.title = element_text(face = "bold", hjust = 0.5),
         legend.position = "bottom"
       )
+    
+    # Bedingtes Hinzufügen von geom_vline
+    if (!is.na(t_c)) {
+      p <- p + geom_vline(xintercept = t_c, linetype = "dotted", color = "darkgreen", linewidth = 1)
+    }
+    
+    print(p)
+  })
+  
+  # 4. Output: Textausgabe für t_c
+  output$tc_output <- renderUI({
+    t_c <- tc_calc() # t_c aus der reaktiven Berechnung abrufen
+    
+    if (!is.na(t_c)) {
+      # Wenn t_c gültig ist, geben wir den formatierten Text aus
+      text <- paste0("Bei hyperbolischem Diskontieren erscheint die Aktion als vorteilhaft, wenn sie mindestens im Zeitpunkt ", 
+                     round(t_c, 2), 
+                     " liegt.")
+      # Verwenden von HTML, um Fettdruck und Symbole zu ermöglichen
+      HTML(text) 
+    } else {
+      # Wenn t_c nicht gültig ist (i <= r), geben wir eine Erklärung aus
+      HTML("Hinweis: Die Diskontierungsrate (i) ist nicht größer als die Rendite (r).")
+    }
   })
 }
 
