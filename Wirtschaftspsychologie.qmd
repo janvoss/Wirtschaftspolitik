@@ -162,6 +162,81 @@ p
 
 ## Status quo Bias
 
+- Menschen scheinen dazu zu neigen, den Zustand, in dem sie sich befinden, gegenüber anderen Zuständen zu bevorzugen, ganz einfach *weil* sie sich in ihm befinden.
+
+- Es braucht daher eine überproportionale Entschädigung dafür, Menschen aus ihrem Status quo herauszulocken
+
+- Dies hat Einfluss auf die Form von Indifferenzkurven 
+
+- Die gängigen Anforderungen an Rationalität sind jetzt nicht mehr ohne weiteres erfüllt.
+
+```{r}
+#| message: false
+#| warning: false
+
+library(ggplot2)
+#library(dplyr)
+
+# Parameter: Knick und Werte
+lambda <- 2.25   # Verlustaversion
+alpha <- 0.88    # Diminishing sensitivity
+
+# Parameters for the first curve
+r1_1 <- 5          # Referenzpunkt x1
+r2_1 <- 5          # Referenzpunkt x2
+V0_1 <- 0          # gewünschtes Nutzenniveau
+
+# Parameters for the second curve
+r1_2 <- 2.5        # Referenzpunkt x1
+r2_2 <- 7.5        # Referenzpunkt x2
+V0_2 <- 0          # gewünschtes Nutzenniveau
+
+
+# Hilfsfunktion für Wertfunktion (Prospect Theory)
+pt_value <- function(x, r, lambda, alpha) {
+  ifelse(x >= r, (x - r)^alpha, -lambda * (r - x)^alpha)
+}
+
+# Function for x2 (die analytische Lösung in den Code endogenisieren?)
+indiff_curve <- function(x1, r1, r2, V0) {
+  V1 <- pt_value(x1, r1, lambda, alpha)
+  V2 <- V0 - V1
+
+  ifelse(V2 >= 0,
+    r2 + (V2)^(1/alpha),
+    r2 - ((-V2) / lambda)^(1/alpha)
+  )
+}
+
+# Data generation for the first curve
+x1_values <- seq(0, 10, length.out = 200)
+x2_values_1 <- sapply(x1_values, indiff_curve, r1 = r1_1, r2 = r2_1, V0 = V0_1)
+dat1 <- data.frame(x1 = x1_values, x2 = x2_values_1, Indifferenzkurven = "Referenzpunkt 1")
+
+# Data generation for the second curve
+x2_values_2 <- sapply(x1_values, indiff_curve, r1 = r1_2, r2 = r2_2, V0 = V0_2)
+dat2 <- data.frame(x1 = x1_values, x2 = x2_values_2, Indifferenzkurven = "Referenzpunkt 2")
+
+# Combine dataframes
+dat <- rbind(dat1, dat2)
+
+# Plot
+ggplot(dat, aes(x = x1, y = x2, color = Indifferenzkurven)) +
+  geom_line(linewidth = 1.2) +
+ # geom_vline(xintercept = r1_1, linetype = "dashed", color = "grey40") +
+ # geom_hline(yintercept = r2_1, linetype = "dashed", color = "grey40") +
+ # geom_vline(xintercept = r1_2, linetype = "dashed", color = "grey60") +
+ # geom_hline(yintercept = r2_2, linetype = "dashed", color = "grey60") +
+  labs(title = "Geknickte Indifferenzkurven (Verlustaversion)",
+       x = expression(x[1]),
+       y = expression(x[2])
+       ) +
+  theme_light() +
+  scale_color_manual(values = c("Referenzpunkt 1" = "royalblue", "Referenzpunkt 2" = "darkgreen"))
+
+```
+
+
 ## Expressives Wählerverhalten
 
 ```{python}

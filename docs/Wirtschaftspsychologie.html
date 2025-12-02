@@ -476,54 +476,131 @@ window.Quarto = {
 </section>
 <section id="status-quo-bias" class="level2" data-number="7.4">
 <h2 data-number="7.4" class="anchored" data-anchor-id="status-quo-bias"><span class="header-section-number">7.4</span> Status quo Bias</h2>
+<ul>
+<li><p>Menschen scheinen dazu zu neigen, den Zustand, in dem sie sich befinden, gegenüber anderen Zuständen zu bevorzugen, ganz einfach <em>weil</em> sie sich in ihm befinden.</p></li>
+<li><p>Es braucht daher eine überproportionale Entschädigung dafür, Menschen aus ihrem Status quo herauszulocken</p></li>
+<li><p>Dies hat Einfluss auf die Form von Indifferenzkurven</p></li>
+<li><p>Die gängigen Anforderungen an Rationalität sind jetzt nicht mehr ohne weiteres erfüllt.</p></li>
+</ul>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#library(dplyr)</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Parameter: Knick und Werte</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="fl">2.25</span>   <span class="co"># Verlustaversion</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.88</span>    <span class="co"># Diminishing sensitivity</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Parameters for the first curve</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>r1_1 <span class="ot">&lt;-</span> <span class="dv">5</span>          <span class="co"># Referenzpunkt x1</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>r2_1 <span class="ot">&lt;-</span> <span class="dv">5</span>          <span class="co"># Referenzpunkt x2</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>V0_1 <span class="ot">&lt;-</span> <span class="dv">0</span>          <span class="co"># gewünschtes Nutzenniveau</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Parameters for the second curve</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>r1_2 <span class="ot">&lt;-</span> <span class="fl">2.5</span>        <span class="co"># Referenzpunkt x1</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>r2_2 <span class="ot">&lt;-</span> <span class="fl">7.5</span>        <span class="co"># Referenzpunkt x2</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>V0_2 <span class="ot">&lt;-</span> <span class="dv">0</span>          <span class="co"># gewünschtes Nutzenniveau</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Hilfsfunktion für Wertfunktion (Prospect Theory)</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>pt_value <span class="ot">&lt;-</span> <span class="cf">function</span>(x, r, lambda, alpha) {</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ifelse</span>(x <span class="sc">&gt;=</span> r, (x <span class="sc">-</span> r)<span class="sc">^</span>alpha, <span class="sc">-</span>lambda <span class="sc">*</span> (r <span class="sc">-</span> x)<span class="sc">^</span>alpha)</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Function for x2 (die analytische Lösung in den Code endogenisieren?)</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>indiff_curve <span class="ot">&lt;-</span> <span class="cf">function</span>(x1, r1, r2, V0) {</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>  V1 <span class="ot">&lt;-</span> <span class="fu">pt_value</span>(x1, r1, lambda, alpha)</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>  V2 <span class="ot">&lt;-</span> V0 <span class="sc">-</span> V1</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ifelse</span>(V2 <span class="sc">&gt;=</span> <span class="dv">0</span>,</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    r2 <span class="sc">+</span> (V2)<span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span>alpha),</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>    r2 <span class="sc">-</span> ((<span class="sc">-</span>V2) <span class="sc">/</span> lambda)<span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span>alpha)</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Data generation for the first curve</span></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>x1_values <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="at">length.out =</span> <span class="dv">200</span>)</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>x2_values_1 <span class="ot">&lt;-</span> <span class="fu">sapply</span>(x1_values, indiff_curve, <span class="at">r1 =</span> r1_1, <span class="at">r2 =</span> r2_1, <span class="at">V0 =</span> V0_1)</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>dat1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x1 =</span> x1_values, <span class="at">x2 =</span> x2_values_1, <span class="at">Indifferenzkurven =</span> <span class="st">"Referenzpunkt 1"</span>)</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Data generation for the second curve</span></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>x2_values_2 <span class="ot">&lt;-</span> <span class="fu">sapply</span>(x1_values, indiff_curve, <span class="at">r1 =</span> r1_2, <span class="at">r2 =</span> r2_2, <span class="at">V0 =</span> V0_2)</span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>dat2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x1 =</span> x1_values, <span class="at">x2 =</span> x2_values_2, <span class="at">Indifferenzkurven =</span> <span class="st">"Referenzpunkt 2"</span>)</span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine dataframes</span></span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">rbind</span>(dat1, dat2)</span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat, <span class="fu">aes</span>(<span class="at">x =</span> x1, <span class="at">y =</span> x2, <span class="at">color =</span> Indifferenzkurven)) <span class="sc">+</span></span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a> <span class="co"># geom_vline(xintercept = r1_1, linetype = "dashed", color = "grey40") +</span></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a> <span class="co"># geom_hline(yintercept = r2_1, linetype = "dashed", color = "grey40") +</span></span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a> <span class="co"># geom_vline(xintercept = r1_2, linetype = "dashed", color = "grey60") +</span></span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a> <span class="co"># geom_hline(yintercept = r2_2, linetype = "dashed", color = "grey60") +</span></span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Geknickte Indifferenzkurven (Verlustaversion)"</span>,</span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="fu">expression</span>(x[<span class="dv">1</span>]),</span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="fu">expression</span>(x[<span class="dv">2</span>])</span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>       ) <span class="sc">+</span></span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span></span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Referenzpunkt 1"</span> <span class="ot">=</span> <span class="st">"royalblue"</span>, <span class="st">"Referenzpunkt 2"</span> <span class="ot">=</span> <span class="st">"darkgreen"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Wirtschaftspsychologie_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="expressives-wählerverhalten" class="level2" data-number="7.5">
 <h2 data-number="7.5" class="anchored" data-anchor-id="expressives-wählerverhalten"><span class="header-section-number">7.5</span> Expressives Wählerverhalten</h2>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Python</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>A<span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>B<span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>b<span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>C<span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>c<span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>D<span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>d<span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> lets_plot <span class="im">import</span> <span class="op">*</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>LetsPlot.setup_html()</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>ggplot() <span class="op">+</span> <span class="op">\</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>geom_text(x<span class="op">=-</span> <span class="fl">.5</span>, y<span class="op">=</span> <span class="dv">2</span>   , label<span class="op">=</span>a) <span class="op">+\</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>geom_text(x<span class="op">=-</span><span class="fl">1.5</span>, y<span class="op">=</span>  <span class="fl">.75</span>, label<span class="op">=</span>A) <span class="op">+\</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>geom_text(x<span class="op">=-</span> <span class="fl">.5</span>, y<span class="op">=-</span><span class="dv">1</span>   , label<span class="op">=</span>b) <span class="op">+\</span></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>geom_text(x<span class="op">=-</span><span class="fl">1.5</span>, y<span class="op">=-</span><span class="fl">2.25</span>, label<span class="op">=</span>B) <span class="op">+\</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>geom_text(x<span class="op">=</span> <span class="fl">1.5</span>, y<span class="op">=</span> <span class="dv">2</span>   , label<span class="op">=</span>c) <span class="op">+\</span></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>geom_text(x<span class="op">=</span>  <span class="fl">.5</span>, y<span class="op">=</span>  <span class="fl">.75</span>, label<span class="op">=</span>C) <span class="op">+\</span></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>geom_text(x<span class="op">=</span> <span class="fl">1.5</span>, y<span class="op">=-</span><span class="dv">1</span>   , label<span class="op">=</span>d) <span class="op">+\</span></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>geom_text(x<span class="op">=</span>  <span class="fl">.5</span>, y<span class="op">=-</span><span class="fl">2.25</span>, label<span class="op">=</span>D) <span class="op">+\</span></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>geom_text(x<span class="op">=-</span><span class="dv">1</span>  , y<span class="op">=</span> <span class="fl">3.3</span> , label<span class="op">=</span><span class="st">'dagegen'</span>)<span class="op">+\</span></span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>geom_text(x<span class="op">=</span> <span class="dv">1</span>  , y<span class="op">=</span> <span class="fl">3.3</span> , label<span class="op">=</span><span class="st">'dafür'</span>)<span class="op">+\</span></span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>geom_text(x<span class="op">=-</span><span class="fl">2.2</span>, y<span class="op">=</span> <span class="fl">1.375</span>, angle<span class="op">=</span><span class="dv">90</span>, label<span class="op">=</span><span class="st">'dagegen'</span>)<span class="op">+\</span></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>geom_text(x<span class="op">=-</span><span class="fl">2.2</span>, y<span class="op">=-</span><span class="fl">1.625</span>, angle<span class="op">=</span><span class="dv">90</span>, label<span class="op">=</span><span class="st">'dafür'</span>)<span class="op">+\</span></span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>geom_text(x<span class="op">=</span> <span class="dv">0</span> , y<span class="op">=</span> <span class="dv">4</span> ,</span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>          fontface <span class="op">=</span> <span class="st">"bold"</span>, label<span class="op">=</span><span class="st">'Wähler 2'</span>)<span class="op">+\</span></span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>geom_text(x<span class="op">=-</span><span class="fl">2.7</span> , y<span class="op">=</span> <span class="dv">0</span> , angle<span class="op">=</span><span class="dv">90</span>,</span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>          fontface <span class="op">=</span> <span class="st">"bold"</span>, label<span class="op">=</span><span class="st">'Wähler 1'</span>)<span class="op">+\</span></span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>geom_segment(x<span class="op">=-</span><span class="dv">2</span>,  xend<span class="op">=</span> <span class="dv">2</span>, y<span class="op">=</span> <span class="dv">0</span>, yend<span class="op">=</span> <span class="dv">0</span>) <span class="op">+\</span></span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>geom_segment(x<span class="op">=-</span><span class="dv">2</span>,  xend<span class="op">=</span> <span class="dv">2</span>, y<span class="op">=</span> <span class="dv">3</span>, yend<span class="op">=</span> <span class="dv">3</span>) <span class="op">+\</span></span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>geom_segment(x<span class="op">=-</span><span class="dv">2</span>,  xend<span class="op">=</span> <span class="dv">2</span>, y<span class="op">=-</span><span class="dv">3</span>, yend<span class="op">=-</span><span class="dv">3</span>) <span class="op">+\</span></span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>geom_segment(x<span class="op">=-</span><span class="dv">2</span>,  xend<span class="op">=-</span><span class="dv">2</span>, y<span class="op">=-</span><span class="dv">3</span>, yend<span class="op">=</span> <span class="dv">3</span>) <span class="op">+\</span></span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>geom_segment(x<span class="op">=</span> <span class="dv">0</span>,  xend<span class="op">=</span> <span class="dv">0</span>, y<span class="op">=-</span><span class="dv">3</span>, yend<span class="op">=</span> <span class="dv">3</span>) <span class="op">+\</span></span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>geom_segment(x<span class="op">=</span> <span class="dv">2</span>,  xend<span class="op">=</span> <span class="dv">2</span>, y<span class="op">=-</span><span class="dv">3</span>, yend<span class="op">=</span> <span class="dv">3</span>) <span class="op">+\</span></span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>theme_void()<span class="op">+\</span></span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>labs(title<span class="op">=</span><span class="st">'Auszahlungen bei expressivem Wählerverhalten'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Python</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>A<span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>a<span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>B<span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>b<span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>C<span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>c<span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>D<span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>d<span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> lets_plot <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>LetsPlot.setup_html()</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>ggplot() <span class="op">+</span> <span class="op">\</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>geom_text(x<span class="op">=-</span> <span class="fl">.5</span>, y<span class="op">=</span> <span class="dv">2</span>   , label<span class="op">=</span>a) <span class="op">+\</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>geom_text(x<span class="op">=-</span><span class="fl">1.5</span>, y<span class="op">=</span>  <span class="fl">.75</span>, label<span class="op">=</span>A) <span class="op">+\</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>geom_text(x<span class="op">=-</span> <span class="fl">.5</span>, y<span class="op">=-</span><span class="dv">1</span>   , label<span class="op">=</span>b) <span class="op">+\</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>geom_text(x<span class="op">=-</span><span class="fl">1.5</span>, y<span class="op">=-</span><span class="fl">2.25</span>, label<span class="op">=</span>B) <span class="op">+\</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>geom_text(x<span class="op">=</span> <span class="fl">1.5</span>, y<span class="op">=</span> <span class="dv">2</span>   , label<span class="op">=</span>c) <span class="op">+\</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>geom_text(x<span class="op">=</span>  <span class="fl">.5</span>, y<span class="op">=</span>  <span class="fl">.75</span>, label<span class="op">=</span>C) <span class="op">+\</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>geom_text(x<span class="op">=</span> <span class="fl">1.5</span>, y<span class="op">=-</span><span class="dv">1</span>   , label<span class="op">=</span>d) <span class="op">+\</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>geom_text(x<span class="op">=</span>  <span class="fl">.5</span>, y<span class="op">=-</span><span class="fl">2.25</span>, label<span class="op">=</span>D) <span class="op">+\</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>geom_text(x<span class="op">=-</span><span class="dv">1</span>  , y<span class="op">=</span> <span class="fl">3.3</span> , label<span class="op">=</span><span class="st">'dagegen'</span>)<span class="op">+\</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>geom_text(x<span class="op">=</span> <span class="dv">1</span>  , y<span class="op">=</span> <span class="fl">3.3</span> , label<span class="op">=</span><span class="st">'dafür'</span>)<span class="op">+\</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>geom_text(x<span class="op">=-</span><span class="fl">2.2</span>, y<span class="op">=</span> <span class="fl">1.375</span>, angle<span class="op">=</span><span class="dv">90</span>, label<span class="op">=</span><span class="st">'dagegen'</span>)<span class="op">+\</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>geom_text(x<span class="op">=-</span><span class="fl">2.2</span>, y<span class="op">=-</span><span class="fl">1.625</span>, angle<span class="op">=</span><span class="dv">90</span>, label<span class="op">=</span><span class="st">'dafür'</span>)<span class="op">+\</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>geom_text(x<span class="op">=</span> <span class="dv">0</span> , y<span class="op">=</span> <span class="dv">4</span> ,</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>          fontface <span class="op">=</span> <span class="st">"bold"</span>, label<span class="op">=</span><span class="st">'Wähler 2'</span>)<span class="op">+\</span></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>geom_text(x<span class="op">=-</span><span class="fl">2.7</span> , y<span class="op">=</span> <span class="dv">0</span> , angle<span class="op">=</span><span class="dv">90</span>,</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>          fontface <span class="op">=</span> <span class="st">"bold"</span>, label<span class="op">=</span><span class="st">'Wähler 1'</span>)<span class="op">+\</span></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>geom_segment(x<span class="op">=-</span><span class="dv">2</span>,  xend<span class="op">=</span> <span class="dv">2</span>, y<span class="op">=</span> <span class="dv">0</span>, yend<span class="op">=</span> <span class="dv">0</span>) <span class="op">+\</span></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>geom_segment(x<span class="op">=-</span><span class="dv">2</span>,  xend<span class="op">=</span> <span class="dv">2</span>, y<span class="op">=</span> <span class="dv">3</span>, yend<span class="op">=</span> <span class="dv">3</span>) <span class="op">+\</span></span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>geom_segment(x<span class="op">=-</span><span class="dv">2</span>,  xend<span class="op">=</span> <span class="dv">2</span>, y<span class="op">=-</span><span class="dv">3</span>, yend<span class="op">=-</span><span class="dv">3</span>) <span class="op">+\</span></span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>geom_segment(x<span class="op">=-</span><span class="dv">2</span>,  xend<span class="op">=-</span><span class="dv">2</span>, y<span class="op">=-</span><span class="dv">3</span>, yend<span class="op">=</span> <span class="dv">3</span>) <span class="op">+\</span></span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>geom_segment(x<span class="op">=</span> <span class="dv">0</span>,  xend<span class="op">=</span> <span class="dv">0</span>, y<span class="op">=-</span><span class="dv">3</span>, yend<span class="op">=</span> <span class="dv">3</span>) <span class="op">+\</span></span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>geom_segment(x<span class="op">=</span> <span class="dv">2</span>,  xend<span class="op">=</span> <span class="dv">2</span>, y<span class="op">=-</span><span class="dv">3</span>, yend<span class="op">=</span> <span class="dv">3</span>) <span class="op">+\</span></span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>theme_void()<span class="op">+\</span></span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>labs(title<span class="op">=</span><span class="st">'Auszahlungen bei expressivem Wählerverhalten'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 
@@ -533,7 +610,7 @@ window.Quarto = {
        <script type="text/javascript" data-lets-plot-script="library" src="https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.2/js-package/distr/lets-plot.min.js"></script>
    
    
-          <div id="RbDo3a"></div>
+          <div id="iBzLv7"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
    
    (function() {
@@ -558,7 +635,7 @@ window.Quarto = {
        };
    }
    
-   const containerDiv = document.getElementById("RbDo3a");
+   const containerDiv = document.getElementById("iBzLv7");
    let fig = null;
    
    function renderPlot() {
