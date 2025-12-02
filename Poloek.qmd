@@ -276,7 +276,7 @@ df <- data.frame(Wähler=c("A", "B", "C"),
                  `Projekt I` =c(5, -2, -2),
                  `Projekt II`=c(-2, 5, -2))
 
-kable(df)
+kable(df, col.names = c("Wähler", "Projekt I", "Projekt II"))
 
 ```
 
@@ -376,7 +376,7 @@ df <- data.frame(Wähler=c("A", "B", "C"),
       mutate(I_u_III=I+III,
              II_u_IV=II+IV)
 
-kable(df)
+kable(df, col.names = c("Wähler", "I", "II", "III", "IV", "I u III", "II u IV"))
 
 ```
 
@@ -416,7 +416,7 @@ Borda <- data.frame(
 )
 
 kable(Borda, align="c",
-      caption="Borda Wahl, wenn I, II und III ihre Präferenzen strategisch angegeben")
+      caption="Borda Wahl, wenn A, B und C ihre Präferenzen strategisch angegeben")
 
 
 ```
@@ -434,7 +434,7 @@ Borda <- data.frame(
 )
 
 kable(Borda, align="c",
-      caption="Borda Wahl, wenn IV und V ihrerseits strategisch reagieren")
+      caption="Borda Wahl, wenn D und E ihrerseits strategisch reagieren")
 ```
 
 Borda-Gewinner: z

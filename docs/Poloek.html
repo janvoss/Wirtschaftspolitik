@@ -492,15 +492,15 @@ window.Quarto = {
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                 <span class="st">`</span><span class="at">Projekt I</span><span class="st">`</span> <span class="ot">=</span><span class="fu">c</span>(<span class="dv">5</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="dv">2</span>),</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                 <span class="st">`</span><span class="at">Projekt II</span><span class="st">`</span><span class="ot">=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">5</span>, <span class="sc">-</span><span class="dv">2</span>))</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(df, <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Wähler"</span>, <span class="st">"Projekt I"</span>, <span class="st">"Projekt II"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
 <tr class="header">
 <th style="text-align: left;">Wähler</th>
-<th style="text-align: right;">Projekt.I</th>
-<th style="text-align: right;">Projekt.II</th>
+<th style="text-align: right;">Projekt I</th>
+<th style="text-align: right;">Projekt II</th>
 </tr>
 </thead>
 <tbody>
@@ -634,7 +634,7 @@ window.Quarto = {
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">I_u_III=</span>I<span class="sc">+</span>III,</span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">II_u_IV=</span>II<span class="sc">+</span>IV)</span>
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(df, <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Wähler"</span>, <span class="st">"I"</span>, <span class="st">"II"</span>, <span class="st">"III"</span>, <span class="st">"IV"</span>, <span class="st">"I u III"</span>, <span class="st">"II u IV"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
@@ -645,8 +645,8 @@ window.Quarto = {
 <th style="text-align: right;">II</th>
 <th style="text-align: right;">III</th>
 <th style="text-align: right;">IV</th>
-<th style="text-align: right;">I_u_III</th>
-<th style="text-align: right;">II_u_IV</th>
+<th style="text-align: right;">I u III</th>
+<th style="text-align: right;">II u IV</th>
 </tr>
 </thead>
 <tbody>
@@ -757,11 +757,11 @@ window.Quarto = {
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(Borda, <span class="at">align=</span><span class="st">"c"</span>,</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption=</span><span class="st">"Borda Wahl, wenn I, II und III ihre Präferenzen strategisch angegeben"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">caption=</span><span class="st">"Borda Wahl, wenn A, B und C ihre Präferenzen strategisch angegeben"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
-<caption>Borda Wahl, wenn I, II und III ihre Präferenzen strategisch angegeben</caption>
+<caption>Borda Wahl, wenn A, B und C ihre Präferenzen strategisch angegeben</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;">Punkte</th>
@@ -805,7 +805,7 @@ window.Quarto = {
 <div class="cell">
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
-<caption>Borda Wahl, wenn IV und V ihrerseits strategisch reagieren</caption>
+<caption>Borda Wahl, wenn D und E ihrerseits strategisch reagieren</caption>
 <thead>
 <tr class="header">
 <th style="text-align: center;">Punkte</th>
