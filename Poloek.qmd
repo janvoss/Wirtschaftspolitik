@@ -118,7 +118,7 @@ $W=\min(U_i)$
 
 ### Arrows Unmöglichkeitstheorem
 
-Die Darstellung folgt  @weimannWirtschaftspolitik2006
+Die Darstellung folgt  @weimann_wirtschaftspolitik_2006
 
 #### Grundlagen
 
@@ -380,6 +380,17 @@ kable(df, col.names = c("Wähler", "I", "II", "III", "IV", "I u III", "II u IV")
 
 ```
 
+
+
+## Kann/Sollte Stimmentausch vermieden werden?
+
+- Stimmentausch gehört zum Wesenskern des politischen Geschäfts 
+
+- Er kann erheblich zur Stabilisierung der politischen Führung beitragen
+
+- Stimmentausch kann aber auch die demokratische Willensbildung von der Bevölkerung entfremden
+
+- Mögliches Instrument gegen Stimmentausch: direkte Demokratie
 
 ## Ein alternatives Wahlverfahren: Die Borda-Wahl
 
