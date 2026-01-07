@@ -57,17 +57,11 @@
 
 [Vöpel (2025): Grundzüge einer transformativen Ordnungspolitik](https://www.cep.eu/fileadmin/user_upload/cep.eu/Studien/cepInput_Grundzuege_einer_transformativen_Ordnungspolitik/cepInput_Grundzuege_einer_transformativen_Ordnungspolitik.pdf)
 
-```{r qr1,  echo=FALSE, warning=FALSE}
 
-library(qrcode)
+::: {.cell}
 
-qr1 <- qr_code('https://www.cep.eu/fileadmin/user_upload/cep.eu/Studien/cepInput_Grundzuege_einer_transformativen_Ordnungspolitik/cepInput_Grundzuege_einer_transformativen_Ordnungspolitik.pdf')
-#plot(qr)
+:::
 
-generate_svg(qr1, filename = "qr-Voepel.svg")
-
-
-```
 
 
 ![QR-Code](qr-Voepel.svg){width="30%"}
@@ -82,11 +76,10 @@ generate_svg(qr1, filename = "qr-Voepel.svg")
 
 #### Gegenüberstellung
 
-```{r}
-#| message: false
-#| warning: false
 
+::: {.cell}
 
+```{.r .cell-code}
 library(knitr)
 
 # Erstelle den Data Frame
@@ -121,22 +114,36 @@ industriepolitik <- data.frame(
 kable(industriepolitik, 
       col.names = c("Merkmal", "Horizontale Industriepolitik", "Vertikale Industriepolitik"),
       caption = "Vergleich: Horizontale vs. vertikale Industriepolitik")
-
 ```
+
+::: {.cell-output-display}
+
+
+Table: Vergleich: Horizontale vs. vertikale Industriepolitik
+
+|Merkmal              |Horizontale Industriepolitik                      |Vertikale Industriepolitik                       |
+|:--------------------|:-------------------------------------------------|:------------------------------------------------|
+|Zielgruppe           |Gesamte Wirtschaft/Industrie                      |Einzelne Sektoren, Branchen oder Unternehmen     |
+|Ansatz               |Allgemeine Rahmenbedingungen verbessern           |Selektive Förderung strategischer Bereiche       |
+|Beispiele            |Infrastruktur, Bildung, Forschung, Steueranreize  |Subventionen für Batterien, Stahl, E-Mobilität   |
+|Vorteile             |Wettbewerb bleibt erhalten, geringe Verzerrungen  |Schnelle Entwicklung strategischer Industrien    |
+|Risiken              |Weniger gezielte Steuerung, ggf. langsamer Wandel |Wettbewerbsverzerrung, Risiko von Fehlallokation |
+|Politische Akzeptanz |Breiter Konsens, marktkonform                     |Umstritten, Gefahr von Lobbyismus                |
+
+
+:::
+:::
+
 
 #### Aktuelle Debatte
 
 [Kranen/Freitag (2024): STEP – ein Paradigmenwechsel in der europäischen Wirtschaftspolitik?](https://www.wirtschaftsdienst.eu/inhalt/jahr/2024/heft/12/beitrag/step-ein-paradigmenwechsel-in-der-europaeischen-wirtschaftspolitik.html)
 
-```{r qr,  echo=FALSE, warning=FALSE}
-library(qrcode)
 
-qr <- qr_code('https://www.wirtschaftsdienst.eu/inhalt/jahr/2024/heft/12/beitrag/step-ein-paradigmenwechsel-in-der-europaeischen-wirtschaftspolitik.html')
-#plot(qr)
+::: {.cell}
 
-generate_svg(qr, filename = "qr-STEP.svg")
+:::
 
-```
 
 ![QR-Code](qr-STEP.svg){width="30%"}
 
@@ -236,15 +243,11 @@ generate_svg(qr, filename = "qr-STEP.svg")
 
 @urios_behavioural_2022 untersuchen genau diese Frage
 
-```{r qr-behavioral,  echo=FALSE, warning=FALSE}
-library(qrcode)
 
-qr <- qr_code('https://sharedgreendeal.eu/resources/behavioural-cultural-and-social-issues-eu-green-deal-policy-documents')
-#plot(qr)
+::: {.cell}
 
-generate_svg(qr, filename = "qr-behavioral-green-deal.svg")
+:::
 
-```
 
 ![Behavioural, Cultural and Social issues in EU Green Deal policy documents](qr-behavioral-green-deal.svg){width="50%"}
 
