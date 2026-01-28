@@ -111,3 +111,7 @@
 1. Was ist mit expressivem Wahlverhalten gemeint?
 
 1. Welche Konsequenzen für die grüne Transformation könnten damit verbunden sein?
+
+1. Was heißt hyperbolisches Diskontieren?
+
+1. Wie kann sich bei hyperbolischem Diskontieren die Entscheidung über eine zukünftige Aktivität unterscheiden von einer Entscheidung bei "normalem" (exponentiellem) Diskontieren?
