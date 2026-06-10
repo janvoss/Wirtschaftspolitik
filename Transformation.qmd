@@ -184,10 +184,232 @@ generate_svg(qr, filename = "qr-STEP.svg")
 
 ---
 
-- Zentrale ordnungsökonomische Herausforderung: Unberechtigte Erwartungen müssen enttäuscht werden.
-  - Fehler müssen eingestanden werden
-  - Anreize für richtige Erwartungen
-  - Das Unberechtigtsein von Erwartungen an das Nichtgelten eines Regelungsrahmens muss im Dienste der Integrität des Regelrahmens enttäuscht werden
+```{python}
+#| message: false
+#| warning: false
+#| output: false
+
+import graphviz
+# from IPython.display import display
+
+# Graph-Initialisierung mit modernem, klarem Design
+dot = graphviz.Digraph('Ordnungspolitik', comment='Struktur der Ordnungspolitik')
+dot.attr(rankdir='TB', # splines='ortho',
+nodesep='0.4', rankingsep='0.5')
+
+# Globale Node- und Edge-Styles für bessere Lesbarkeit
+dot.attr('node', fontname='Helvetica,Arial,sans-serif', fontsize='11', shape='box',
+         style='filled,rounded', fillcolor='#F8F9FA', color='#6C757D', penwidth='1.5')
+dot.attr('edge', fontname='Helvetica,Arial,sans-serif', fontsize='10', color='#495057',
+         arrowsize='0.8', penwidth='1.2')
+
+# --------------------------------------------------------
+# CLUSTER 1: Fundamente & Leitbild
+# --------------------------------------------------------
+with dot.subgraph(name='cluster_0') as c:
+    c.attr(label='1. Fundamente & Leitbild', bgcolor='#E8F0FE', color='#1A73E8', fontname='Helvetica-Bold')
+
+    c.node('OP', 'Ordnungspolitik\n(Staatliche Gestaltung der Wirtschaftsordnung)', fillcolor='#1A73E8', fontcolor='white')
+    c.node('Wurzeln', 'Konzeptionelle Wurzeln:\nOrdo-Liberalismus\n(Freiburger Schule: Eucken & Böhm)')
+    c.node('Abgrenzung', 'Abgrenzung zum Laissez-faire:\nMarktordnung ist ein rechtlich-\ninstitutionelles Konstrukt')
+    c.node('RolleStaat', 'Rolle des Staates:\nHüter der Wettbewerbsordnung\n(Setzt Spielregeln, keine Spielzüge)')
+
+    c.edge('Wurzeln', 'OP')
+    c.edge('OP', 'Abgrenzung')
+    c.edge('OP', 'RolleStaat')
+
+# --------------------------------------------------------
+# CLUSTER 2: Prinzipien & Steuerung
+# --------------------------------------------------------
+with dot.subgraph(name='cluster_1') as c:
+    c.attr(label='2. Kernprinzipien & Mechanismen', bgcolor='#E6F4EA', color='#137333', fontname='Helvetica-Bold')
+
+    c.node('Wirtschaftsverfassung', 'Wirtschaftsverfassungspolitik\n(Gestaltung der Rahmenbedingungen)', style='filled,bold', fillcolor='#CEEAD6')
+    c.node('Indirekt', 'Indirekte Steuerung\n(Eigeninteresse in gemeinnützige\nBahnen lenken -> Unsichtbare Hand)')
+
+    # Konstituierende Prinzipien
+    c.node('P1', 'Eigentum & Vertragsfreiheit')
+    c.node('P2', 'Haftung für eigenes Handeln')
+    c.node('P3', 'Geldwertstabilität')
+    c.node('P4', 'Freier Marktzutritt & Konstanz')
+
+    c.node('Privatrecht', 'Privatrechtsgesellschaft\n(Freiwillige Vereinbarungen unter Gleichgestellten)')
+
+    c.edge('Wirtschaftsverfassung', 'Indirekt')
+    c.edge('Indirekt', 'P1')
+    c.edge('Indirekt', 'P2')
+    c.edge('Indirekt', 'P3')
+    c.edge('Indirekt', 'P4')
+    c.edge('P1', 'Privatrecht')
+    c.edge('P2', 'Privatrecht')
+
+# Verbindung von Block 1 zu Block 2
+dot.edge('RolleStaat', 'Wirtschaftsverfassung', ltail='cluster_0', lhead='cluster_1')
+
+# --------------------------------------------------------
+# CLUSTER 3: Das Regelproblem (Warum Regeln?)
+# --------------------------------------------------------
+with dot.subgraph(name='cluster_2') as c:
+    c.attr(label='3. Das Regelproblem', bgcolor='#FEF7E0', color='#B06000', fontname='Helvetica-Bold')
+
+    c.node('Wissensproblem', 'Wissensproblem (Hayek):\nMenschliche Vernunft reicht nicht für\ndie gesamte Komplexität aus')
+    c.node('Anreizproblem', 'Anreizproblem:\nVerhindert kurzfristigen Populismus\nvon Politikern & Akteuren')
+    c.node('Regeln', 'Regeln als Erfahrungswissen\n(Vermeidung diskretionärer Fehler)', fillcolor='#FBBC04', style='filled,rounded')
+    c.node('StarkerStaat', 'Starker Staat:\nWiderstand gegen Interessengruppen\n(Verhinderung von Rent-Seeking)')
+
+    c.edge('Wissensproblem', 'Regeln')
+    c.edge('Anreizproblem', 'Regeln')
+    c.edge('Regeln', 'StarkerStaat')
+
+dot.edge('Abgrenzung', 'Wissensproblem')
+
+# --------------------------------------------------------
+# CLUSTER 4: Wettbewerb & Soziale Marktwirtschaft
+# --------------------------------------------------------
+with dot.subgraph(name='cluster_3') as c:
+    c.attr(label='4. Wettbewerb & Sozialer Ausgleich', bgcolor='#FCE8E6', color='#C5221F', fontname='Helvetica-Bold')
+
+    c.node('Wettbewerb', 'Wettbewerb als...\n1. Entdeckungsverfahren\n2. Instrument zur Entmachtung', fillcolor='#FAD2E1')
+    c.node('SozialerAusgleich', 'Sozialer Ausgleich\n(Muss marktkonform sein,\nPreisbildung unberührt lassen)')
+    c.node('Subsidiaritaet', 'Subsidiaritätsprinzip:\nStaat hilft nur, wenn kleinere\nEinheiten überfordert sind')
+
+    c.edge('Wettbewerb', 'SozialerAusgleich')
+    c.edge('SozialerAusgleich', 'Subsidiaritaet')
+
+dot.edge('Privatrecht', 'Wettbewerb')
+dot.edge('StarkerStaat', 'Wettbewerb')
+
+# --------------------------------------------------------
+# CLUSTER 5: Transformative Ordnungspolitik
+# --------------------------------------------------------
+with dot.subgraph(name='cluster_4') as c:
+    c.attr(label='5. Moderne / Transformative Erweiterung', bgcolor='#F3E5F5', color='#7B1FA2', fontname='Helvetica-Bold')
+
+    c.node('TransOP', 'Transformative Ordnungspolitik\n(Zwischen Dirigismus & Dogmatismus)', fillcolor='#E1BEE7')
+    c.node('Herausforderungen', 'Systemische Challenges:\nDigitalisierung & Energiewende')
+    c.node('Pfadwechsel', 'Pfadwechsel & Koordination:\nStaat baut Infrastruktur,\nMarkt treibt Innovation durch Wettbewerb')
+    c.node('Interdependenz', 'Interdependenz der Ordnungen:\nFreie Wirtschaft + Rechtsstaat +\nGesellschaftliches Vertrauen', fillcolor='#7B1FA2', fontcolor='white')
+
+    c.edge('Herausforderungen', 'TransOP')
+    c.edge('TransOP', 'Pfadwechsel')
+    c.edge('Pfadwechsel', 'Interdependenz')
+
+# Verbindungen zur Transformation
+dot.edge('Subsidiaritaet', 'Herausforderungen')
+dot.edge('Interdependenz', 'OP', style='dashed', constraint='false', label=' Schließt den Kreis')
+
+# Graph im Jupyter Notebook anzeigen
+# display(dot)
+
+dot.render('Ordnungspolitik', format='svg', cleanup=True)
+```
+
+![Ordnungspolitik](Ordnungspolitik.svg)
+
+```{python}
+#| message: false
+#| warning: false
+#| output: false
+
+
+import graphviz
+# from IPython.display import display
+
+# Erstellung des Hauptgraphen mit optimiertem Layout für hierarchische Strukturen
+dot = graphviz.Digraph('Wettbewerbsordnung', comment='Konstituierende Prinzipien der Wettbewerbsordnung')
+dot.attr(rankdir='TB', nodesep='0.5', rankingsep='0.6')
+
+# Globale Stildefinitionen (Clean & Professional)
+dot.attr('node', fontname='Helvetica,Arial,sans-serif', fontsize='11', shape='box',
+         style='filled,rounded', fillcolor='#F8F9FA', color='#495057', penwidth='1.5')
+dot.attr('edge', fontname='Helvetica,Arial,sans-serif', fontsize='10', color='#6C757D',
+         arrowsize='0.8', penwidth='1.2')
+
+# ========================================================
+# CLUSTER 1: Das Fundament (Freiburger Schule)
+# ========================================================
+#with dot.subgraph(name='cluster_basis') as c:
+#    c.attr(label='1. Theoretisches Fundament (1930er)', bgcolor='#EDF2F7', color='#4A5568', fontname='Helvetica-Bold')
+    #
+#    c.node('FS', 'Freiburger Schule\n(Eucken, Böhm, Großmann-Doerth)', fillcolor='#4A5568', fontcolor='white')
+#    c.node('Leitbild', 'Oberstes Ziel:\nFunktionsfähige & menschenwürdige\nWirtschaftsordnung\n(Vollständiger Wettbewerb & Preissystem)')
+#    c.node('StaatHüter', 'Der Staat als Hüter:\nSteht über den Einzelinteressen;\nresistenter Rahmen gegen Machtgruppen')
+
+ #   c.edge('FS', 'Leitbild')
+ #   c.edge('Leitbild', 'StaatHüter')
+
+# ========================================================
+# CLUSTER 2: Die Konstituierenden Prinzipien (Säulen)
+# ========================================================
+# Unterordner für Rechtliche Prinzipien
+with dot.subgraph(name='cluster_recht') as c:
+    c.attr(label='Rechtliche Prinzipien', bgcolor='#EBF8FF', color='#2B6CB0', fontname='Helvetica-Bold')
+
+    c.node('Eigentum', 'Schutz des Privateigentums\n(Basis für individuelle Handlungsfreiheit)')
+    c.node('Vertrag', 'Vertragsfreiheit\n(Privatautonomie & Selbstverantwortung)')
+    c.node('Kartellverbot', 'Grenze: Kartellverbot\n(Schutz Dritter & der Konsumenten)', fillcolor='#EBF8FF', color='#C53030', penwidth='2.0')
+    c.node('Haftung', 'Haftung\n(Wer Nutzen zieht, trägt den Schaden;\nSchutz vor Risiko-Abwälzung)')
+
+    c.edge('Vertrag', 'Kartellverbot', label=' limitiert durch', color='#C53030', style='dashed')
+
+# Unterordner für Ökonomisch-Politische Prinzipien
+with dot.subgraph(name='cluster_oekonomisch') as c:
+    c.attr(label='Politisch-Ökonomische Prinzipien', bgcolor='#EBF4FA', color='#3182CE', fontname='Helvetica-Bold')
+
+    c.node('Geldwert', 'Geldwertstabilität\n(Ersparnisschutz & Funktion\ndes Preises als Knappheitsindikator)')
+    c.node('Marktzutritt', 'Freier Marktzutritt\n(Abbau von Zöllen, Quoten\n& staatlichen Barrieren)')
+    c.node('Konstanz', 'Konstanz der Wirtschaftspolitik\n(Rechtssicherheit & Vertrauensschutz\nfür langfristige Investitionen)')
+
+# Verbindungen vom Fundament zu den Säulen
+# dot.edge('Leitbild', 'Eigentum', ltail='cluster_basis')
+# dot.edge('Leitbild', 'Geldwert', ltail='cluster_basis')
+
+# Invisible edge to enforce vertical order between the two active clusters
+dot.edge('Kartellverbot', 'Marktzutritt', style='invis')
+
+# ========================================================
+# CLUSTER 3: Dynamik & Marktwirkung
+# ========================================================
+# with dot.subgraph(name='cluster_dynamik') as c:
+ #   c.attr(label='3. Dynamik des Leistungswettbewerbs', bgcolor='#FEF3C7', color='#D97706', fontname='Helvetica-Bold')
+
+#    c.node('Leistungswettbewerb', 'Leistungswettbewerb\n(Erfolg nur durch die beste\nVersorgung der Konsumenten)')
+#    c.node('Entdeckungsverfahren', 'Wettbewerb als Entdeckungsverfahren\n(Ermittlung von Knappheiten, Werten\n& neuen innovativen Verfahren)')
+#    c.node('Interdependenz', 'Interdependenz der Ordnungen\n(Enge Wechselwirkung & gegenseitige\nBedingung aller Prinzipien)', fillcolor='#D97706', fontcolor='white')
+
+ #   c.edge('Leistungswettbewerb', 'Entdeckungsverfahren')
+ #   c.edge('Entdeckungsverfahren', 'Interdependenz')
+
+# Brücke von den Säulen zur Dynamik
+#dot.edge('Haftung', 'Leistungswettbewerb', ltail='cluster_recht', lhead='cluster_dynamik')
+#dot.edge('Marktzutritt', 'Leistungswettbewerb', ltail='cluster_oekonomisch', lhead='cluster_dynamik')
+
+# ========================================================
+# CLUSTER 4: Transformative Erweiterung (Moderne)
+# ========================================================
+#with dot.subgraph(name='cluster_transform') as c:
+#    c.attr(label='4. Transformative Erweiterung (Moderne Dimension)', bgcolor='#F3E8FF', color='#6B21A8', fontname='Helvetica-Bold')
+
+#    c.node('TransAnforderungen', 'Systemische Challenges:\nDigitalisierung & Klimawandel\n(Erweiterung um Ganzheitlichkeit & Nachhaltigkeit)')
+#    c.node('Balance', 'Austarierung der Regulierung:\nIncentivierung neuer Techs\nvs. Schutz des bestehenden Kapitalstocks')
+#    c.node('Konsens', 'Soziokulturelles Fundament:\nInstitutionelles Vertrauen &
+# gesellschaftlicher Konsens (Fairness)', fillcolor='#6B21A8', fontcolor='white')
+
+#    c.edge('TransAnforderungen', 'Balance')
+#    c.edge('Balance', 'Konsens')
+
+# Verbindung von der klassischen Dynamik zur modernen Transformation
+# dot.edge('Interdependenz', 'TransAnforderungen', label=' Weiterentwicklung', style='bold')
+# dot.edge('Konsens', 'StaatHüter', style='dashed', label=' Stabilisiert Institutionen', constraint='false')
+
+# Diagramm im Jupyter Notebook darstellen
+# display(dot)
+
+dot.render('Prinzipien', format='svg', cleanup=True)
+
+```
+
+![Konstituierende Prinzipien](Prinzipien.svg)
 
 ### Und was heißt das für die Transformation?
 
