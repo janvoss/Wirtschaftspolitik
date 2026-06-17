@@ -235,7 +235,7 @@ generate_svg(qr, filename = "qr-STEP.svg")
 
 ## Ordnungspolitik
 
-Vgl. etwa @wohlgemuth2017
+Vgl. etwa @wohlgemuth_was_2017
 
 ### Grundsätzliches
 
@@ -576,7 +576,7 @@ dot.render(output_filename, cleanup=True)
 #display(SVG(f"{output_filename}.svg"))
 ```
 
-![Ordnungspolitik in der Transformation nach @wohlgemuth2017 und @vopel_grundzuge_2025](eucken_vs_voepel_ordnungspolitik.svg)
+![Ordnungspolitik in der Transformation nach @wohlgemuth_was_2017 und @vopel_grundzuge_2025](eucken_vs_voepel_ordnungspolitik.svg)
 
 ## Sozialpolitik
 
