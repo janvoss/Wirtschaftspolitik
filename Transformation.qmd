@@ -1,57 +1,153 @@
-# Wirtschaftspolitik und Wirtschaftspsychologie in der 	&bdquo;grünen Transformation&ldquo;
+# Wirtschaftspolitik und Wirtschaftspsychologie in der „grünen Transformation“
 
-## Einleitung 
+## Einleitung
+
+### Worin besteht die Transformation?
+
+```{python}
+#| output: false
+
+import graphviz
+from IPython.display import display, SVG
+
+# Digraph-Objekt erstellen (von links nach rechts fließend)
+dot = graphviz.Digraph(comment='Transformationsprozess', format='svg')
+
+# Globale Layout-Einstellungen für ein elegantes, wissenschaftliches Design
+dot.attr(rankdir='LR')
+dot.attr('node', fontname='Arial', fontsize='11', shape='box', style='filled', color='#2c3e50')
+dot.attr('edge', fontname='Arial', fontsize='10', color='#7f8c8d')
+
+# --- AUSGANGSPUNKT ---
+dot.node('START', 'Auslaufender\nEntwicklungspfad\n(Fossile Basis / Status quo)', fillcolor='#95a5a6', fontcolor='white')
+
+# --- KERN DER TRANSFORMATION (Zentraler Prozess) ---
+with dot.subgraph(name='cluster_core') as c:
+    c.attr(label='Der Transformationsprozess\n(Systemisch & Ganzheitlich)', bgcolor='#f4f6f7', color='#34495e', fontname='Arial Bold')
+    
+    c.node('C1', 'Schöpferische Zerstörung\n& Disruption\n(Zukünftige Lösungen ungewiss)', fillcolor='#34495e', fontcolor='white')
+    c.node('C2', 'Anpassung von\nAngebots- & Nachfragestrukturen', fillcolor='#ecf0f1')
+    c.node('C3', 'Physische Erneuerung\ndes Kapitalstocks\n(Anlagen, Qualifikationen)', fillcolor='#ecf0f1')
+    
+    c.edge('C1', 'C2')
+    c.edge('C2', 'C3')
+
+# --- SÄULEN DER TRANSFORMATION ---
+with dot.subgraph(name='cluster_pillars') as c:
+    c.attr(label='Die zwei zentralen Säulen', bgcolor='#eaf2f8', color='#2980b9', fontname='Arial Bold')
+    
+    # Grüne Transformation
+    c.node('P1', 'Grüne Transformation\n(Dekarbonisierung &\nerneuerbare Energien)', fillcolor='#27ae60', fontcolor='white')
+    
+    # Digitale Transformation
+    c.node('P2', 'Digitale Transformation\n(Daten als neuer Produktionsfaktor /\ntechnologische Revolution)', fillcolor='#2980b9', fontcolor='white')
+
+# --- FRIKTIONEN / BARRIEREN ---
+with dot.subgraph(name='cluster_frictions') as c:
+    c.attr(label='Herausforderungen & Friktionen', bgcolor='#fdf2e9', color='#e67e22', fontname='Arial Bold')
+    c.node('F1', 'Paradigmatische\nUngewissheit', fillcolor='#fadbd8')
+    c.node('F2', 'Koordinationsprobleme &\nhohe Wechselkosten', fillcolor='#fadbd8')
+    c.node('F3', 'Strukturelle Rigiditäten &\nStatus-quo-Bias', fillcolor='#fadbd8')
+
+# --- EXTERNE EINFLUSSFAKTOREN ---
+with dot.subgraph(name='cluster_externals') as c:
+    c.attr(label='Externe Treiber & Rahmenbedingungen', bgcolor='#fef9e7', color='#f1c40f', fontname='Arial Bold')
+    c.node('E1', 'Geopolitische Neuordnung\n(Fragmentierung, Souveränität)', fillcolor='#fcf3cf')
+    c.node('E2', 'Gesellschaftliche Polarisierung\n(Mangelnder Konsens)', fillcolor='#fcf3cf')
+    c.node('E3', 'Zeitliche Dimension\n(Notwendigkeit hoher Anfangsdynamik)', fillcolor='#fcf3cf')
+    c.node('E4', 'Kultureller Prozess\n(Fortschrittsnarrativ & Mentalitätswandel)', fillcolor='#fcf3cf')
+
+# --- ZIEL / ZUKUNFT ---
+dot.node('END', 'Neuer Entwicklungspfad\n(Zivilisatorischer Prozess / Anthropozän\n& Transhumanismus)', fillcolor='#8e44ad', fontcolor='white')
+
+# --- STRUKTURELLE VERBINDUNGEN (Edges) ---
+
+# Vom alten Pfad in den Prozess
+dot.edge('START', 'C1', label=' Impuls durch\n Disruption')
+
+# Einbindung der Säulen in den physischen Umbau
+dot.edge('C2', 'P1', style='dashed')
+dot.edge('C2', 'P2', style='dashed')
+dot.edge('P1', 'C3')
+dot.edge('P2', 'C3')
+
+# Einfluss der externen Faktoren auf den gesamten Kernprozess
+dot.edge('E1', 'C1', color='#f39c12')
+dot.edge('E2', 'C2', color='#f39c12')
+dot.edge('E3', 'C1', color='#f39c12')
+dot.edge('E4', 'C3', color='#f39c12')
+
+# Friktionen bremsen/wirken auf den Prozess ein
+dot.edge('F1', 'C1', color='#c0392b', style='dotted', arrowhead='dot')
+dot.edge('F2', 'C2', color='#c0392b', style='dotted', arrowhead='dot')
+dot.edge('F3', 'C3', color='#c0392b', style='dotted', arrowhead='dot')
+
+# Erfolgreicher Brückenschlag zum neuen Pfad
+dot.edge('C3', 'END', label=' Erfolgreicher\n Pfadwechsel', style='bold')
+
+# --- RENDERN UND ANZEIGEN ---
+
+# 1. Als SVG-Datei lokal speichern
+output_name = 'transformationsprozess_modell'
+dot.render(output_name, cleanup=True)
+
+# 2. Direkt in IPython anzeigen
+#display(SVG(f"{output_name}.svg"))
+```
+
+![Transformationsherausforderungen nach @vopel_grundzuge_2025](transformationsprozess_modell.svg)
 
 ### Welche Transformationsherausforderungen bestehen?
 
-- Begrenzung der durchschnittlichen Erderwärmung, nach Möglichkeit auf unter 1,5 - 2°C
+-   Begrenzung der durchschnittlichen Erderwärmung, nach Möglichkeit auf unter 1,5 - 2°C
 
-- Dekarbonisierung bis Mitte des 21 Jahrhunderts
+-   Dekarbonisierung bis Mitte des 21 Jahrhunderts
 
-- Energiewende: Weg von von fossilen Energieträgern hin zu erneuerbaren
+-   Energiewende: Weg von von fossilen Energieträgern hin zu erneuerbaren
 
-- Dekarbonisierung des Verkehrs
+-   Dekarbonisierung des Verkehrs
 
-- Dekarbonisierung der Gebäude
+-   Dekarbonisierung der Gebäude
 
-- Digitalisierung
+-   Digitalisierung
 
-- Hintergrundherausforderungen
+-   Hintergrundherausforderungen
 
-   - Demografischer Wandel
-   
-   - Internationale Migration
-   
-   - Geopolitische Spannungen
+    -   Demografischer Wandel
 
+    -   Internationale Migration
 
+    -   Geopolitische Spannungen
 
 ### Welche wirtschaftspolitischen Herausforderungen sind damit verbunden?
 
-- Anpassung der Infrastruktur (z.B. Stromerzeugung im Norden und Transport in den Süden)
+-   Anpassung der Infrastruktur (z.B. Stromerzeugung im Norden und Transport in den Süden)
 
-- Sozialpolitische Flankierung
+-   Sozialpolitische Flankierung
 
-  - Private Nutzer nicht durch Innovationen "abhängen"
-  
-  - Beschäftigungsabbau/ - umbau in bestimmten Branchen sozial-  und arbeitsmarktpolitisch flankieren
+    -   Private Nutzer nicht durch Innovationen "abhängen"
 
-- Konsumverhalten steuern; Vereinbarkeit mit gewinnmaximierenden Strategien
+    -   Beschäftigungsabbau/ - umbau in bestimmten Branchen sozial- und arbeitsmarktpolitisch flankieren
 
-- Aufklärung/ Information
+-   Konsumverhalten steuern; Vereinbarkeit mit gewinnmaximierenden Strategien
 
-- Innovationspolitik
+-   Aufklärung/ Information
 
-- $\dots$
+-   Innovationspolitik
+
+-   $\dots$
+
+
+
+
 
 ### Welche Rolle spielen Erwartungen/Psychologie?
 
-- Keine Ängste schüren - Herausforderungen konstruktiv begleiten
+-   Keine Ängste schüren - Herausforderungen konstruktiv begleiten
 
-- Positive Erwartungen wecken/adressieren/bestärken
+-   Positive Erwartungen wecken/adressieren/bestärken
 
-- Verlässlichkeit
-
+-   Verlässlichkeit
 
 ### Aktuelle Debatte
 
@@ -69,12 +165,7 @@ generate_svg(qr1, filename = "qr-Voepel.svg")
 
 ```
 
-
 ![QR-Code](qr-Voepel.svg){width="30%"}
-
-
-
-
 
 ## Industriepolitik
 
@@ -144,45 +235,47 @@ generate_svg(qr, filename = "qr-STEP.svg")
 
 ## Ordnungspolitik
 
+Vgl. etwa @wohlgemuth2017
+
 ### Grundsätzliches
 
-- Soziale Phänomene:
-  - Ergebnisse menschlichen Handelns, aber nicht menschlichen Entwurfs
-- Wie können Menschen in einer Gesellschaft ihr Wissen bestmöglich einsetzen und ihre Pläne verwirklichen?
-- Schaffung eines geeigneten Ordnungsrahmens:
-  - Belohnungen für Entdeckung und Umsetzung von Problemlösungen
-  - Wettbewerb als Entdeckungsverfahren (vgl. Hayek)
-  - Stabilität durch Flexibilität
+-   Soziale Phänomene:
+    -   Ergebnisse menschlichen Handelns, aber nicht menschlichen Entwurfs
+-   Wie können Menschen in einer Gesellschaft ihr Wissen bestmöglich einsetzen und ihre Pläne verwirklichen?
+-   Schaffung eines geeigneten Ordnungsrahmens:
+    -   Belohnungen für Entdeckung und Umsetzung von Problemlösungen
+    -   Wettbewerb als Entdeckungsverfahren (vgl. Hayek)
+    -   Stabilität durch Flexibilität
 
----
+------------------------------------------------------------------------
 
-- Zivilisatorische Errungenschaft:
-  - Ein Ordnungsrahmen, in dem jeder unendlich viel mehr Wissen nutzen kann, als er oder sie selbst je hat
-    - Nutzung von Gütern, die man nicht selbst herstellen kann
-    - Produktion von Gütern: *Niemand auf der Welt kann einen Bleistift herstellen!* (Leonard Read)
-    - Nutzung eines Ordnungsrahmens, der selbst nicht verstanden wird
-- Rolle der Politik: Ordnungsrahmen schaffen und erhalten
-- Fördert oder hemmt „Wirtschaftspolitik“ durch Eingriffe in ökonomische Prozesse diesen Ordnungsrahmen?
+-   Zivilisatorische Errungenschaft:
+    -   Ein Ordnungsrahmen, in dem jeder unendlich viel mehr Wissen nutzen kann, als er oder sie selbst je hat
+        -   Nutzung von Gütern, die man nicht selbst herstellen kann
+        -   Produktion von Gütern: *Niemand auf der Welt kann einen Bleistift herstellen!* (Leonard Read)
+        -   Nutzung eines Ordnungsrahmens, der selbst nicht verstanden wird
+-   Rolle der Politik: Ordnungsrahmen schaffen und erhalten
+-   Fördert oder hemmt „Wirtschaftspolitik“ durch Eingriffe in ökonomische Prozesse diesen Ordnungsrahmen?
 
----
+------------------------------------------------------------------------
 
-- Konstituierende Prinzipien der Wettbewerbsordnung nach W. Eucken:
-  - Stabile Geldpolitik
-  - Offene Märkte
-  - Privateigentum
-  - Vertragsfreiheit
-  - Haftung
-  - Konstanz der Wirtschaftspolitik
+-   Konstituierende Prinzipien der Wettbewerbsordnung nach W. Eucken:
+    -   Stabile Geldpolitik
+    -   Offene Märkte
+    -   Privateigentum
+    -   Vertragsfreiheit
+    -   Haftung
+    -   Konstanz der Wirtschaftspolitik
 
----
+------------------------------------------------------------------------
 
-- Wozu Prinzipien?
-  - Verpflichtung auf langfristige Interessen der Bürger
-  - Berechenbarkeit der Politik
-  - Bewährte Regeln für Situationen der Unsicherheit
-  - Schutz vor Druck in Richtung Opportunismus
+-   Wozu Prinzipien?
+    -   Verpflichtung auf langfristige Interessen der Bürger
+    -   Berechenbarkeit der Politik
+    -   Bewährte Regeln für Situationen der Unsicherheit
+    -   Schutz vor Druck in Richtung Opportunismus
 
----
+------------------------------------------------------------------------
 
 ```{python}
 #| message: false
@@ -411,46 +504,123 @@ dot.render('Prinzipien', format='svg', cleanup=True)
 
 ![Konstituierende Prinzipien](Prinzipien.svg)
 
-### Und was heißt das für die Transformation?
+### Ordnungspolitik in der Transformation?
 
+```{python}
+#| output: false
+
+import graphviz
+from IPython.display import display, SVG
+
+# Definition des Digraphs mit passenden Formatierungen
+dot = graphviz.Digraph(comment='Eucken vs Voepel', format='svg')
+
+# Globale Attribute für ein sauberes, modernes Layout
+dot.attr(rankdir='LR')
+dot.attr('node', fontname='Arial', fontsize='11', shape='box', style='filled', color='#2c3e50')
+dot.attr('edge', fontname='Arial', fontsize='10', color='#7f8c8d')
+
+# --- CLUSTER 1: Euckens Konstitutive Prinzipien (Wohlgemuth) ---
+with dot.subgraph(name='cluster_eucken') as c:
+    c.attr(label='Euckens Ordnungspolitik\n(Klassisch / Statisch)', bgcolor='#ebf5fb', color='#2980b9', fontname='Arial Bold')
+    c.node('E_main', 'Regelbasierter Rahmen\n& Wettbewerb', fillcolor='#3498db', fontcolor='white')
+    c.node('E1', 'Konstanz der Politik\n(Verlässliche Regeln)', fillcolor='#aed6f1')
+    c.node('E2', 'Staat als Schiedsrichter\n(Keine Strukturpolitik)', fillcolor='#aed6f1')
+    c.node('E3', 'Strikte Haftung\n(Dezentrales Risiko)', fillcolor='#aed6f1')
+
+    c.edge('E_main', 'E1')
+    c.edge('E_main', 'E2')
+    c.edge('E_main', 'E3')
+
+# --- CLUSTER 2: Gemeinsame Schnittmenge ---
+with dot.subgraph(name='cluster_shared') as c:
+    c.attr(label='Übereinstimmungen\n(Der ordoliberale Kern)', bgcolor='#e8f8f5', color='#27ae60', fontname='Arial Bold')
+    c.node('S1', 'Dezentralität &\nMarktprozesse\n(Skepsis ggü. Planwirtschaft)', fillcolor='#2ecc71', fontcolor='white')
+    c.node('S2', 'Offene Märkte &\nfreier Zutritt\n(Gegen Monopole & Lobbyismus)', fillcolor='#2ecc71', fontcolor='white')
+    c.node('S3', 'Primat der\nRahmenbedingungen\n(Regeln statt Einzelprozess)', fillcolor='#2ecc71', fontcolor='white')
+
+# --- CLUSTER 3: Vöpels Transformative Ordnungspolitik ---
+with dot.subgraph(name='cluster_voepel') as c:
+    c.attr(label='Vöpels Ordnungspolitik\n(Transformativ / Dynamisch)', bgcolor='#fef9e7', color='#f39c12', fontname='Arial Bold')
+    c.node('V_main', 'Politischer und endogener Transformationsdruck\n(Kreative Zerstörung und politische Anforderungen)', fillcolor='#e67e22', fontcolor='white')
+    c.node('V1', 'Flexible Anpassung\n(Agile Regeln im Wandel)', fillcolor='#fadbd8')
+    c.node('V2', 'Aktiver Staat\n(Infrastruktur & Skalierung)', fillcolor='#fadbd8')
+    c.node('V3', 'Systemische Flankierung\n(Risikoabfederung)', fillcolor='#fadbd8')
+
+    c.edge('V_main', 'V1')
+    c.edge('V_main', 'V2')
+    c.edge('V_main', 'V3')
+
+# --- Verbindungen & Spannungsverhältnisse (Edges) ---
+
+# Brücken zu den Gemeinsamkeiten
+dot.edge('E_main', 'S1', style='dashed', color='#27ae60')
+dot.edge('V_main', 'S1', style='dashed', color='#27ae60')
+dot.edge('E_main', 'S2', style='dashed', color='#27ae60')
+dot.edge('V_main', 'S2', style='dashed', color='#27ae60')
+dot.edge('E_main', 'S3', style='dashed', color='#27ae60')
+dot.edge('V_main', 'S3', style='dashed', color='#27ae60')
+
+# Spannungsfelder (Konflikte) zwischen den Prinzipien
+dot.edge('E1', 'V1', label='Spannung:\nStarrheit vs. Dynamik', color='#c0392b', arrowhead='none', style='bold')
+dot.edge('E2', 'V2', label='Spannung:\nSchiedsrichter vs. Gestalter', color='#c0392b', arrowhead='none', style='bold')
+dot.edge('E3', 'V3', label='Spannung:\nEigenhaftung vs. Abfederung', color='#c0392b', arrowhead='none', style='bold')
+
+# --- Rendern und Anzeigen ---
+
+# 1. Als SVG-Datei auf der Festplatte speichern
+output_filename = 'eucken_vs_voepel_ordnungspolitik'
+dot.render(output_filename, cleanup=True)
+
+# 2. Direkt in IPython / Jupyter anzeigen
+#display(SVG(f"{output_filename}.svg"))
+```
+
+![Ordnungspolitik in der Transformation nach @wohlgemuth2017 und @vopel_grundzuge_2025](eucken_vs_voepel_ordnungspolitik.svg)
 
 ## Sozialpolitik
+
+- Sozial-/ verteilungspolitische Flankierung
+
+- Tradeoff mit Effizienz?
+
+- Nach welchen Maßstäben sollen Nutzen und Lasten der Transformation verteilt werden?
 
 ## Psychologie der Transformation
 
 ### Einleitung
 
-- Die Transformation verlangt eine simultane Neuorientierung auf vielen Feldern Gleichzeitig
+-   Die Transformation verlangt eine simultane Neuorientierung auf vielen Feldern Gleichzeitig
 
-- Dies ist eine komplexe Aufgabe, für die es in privaten Entscheidungen, in Unternehmen und in der Politik keine erprobten Routinen gibt
+-   Dies ist eine komplexe Aufgabe, für die es in privaten Entscheidungen, in Unternehmen und in der Politik keine erprobten Routinen gibt
 
-- Es ist naheliegend, dass wirtschaftspsychologische/verhaltensökonomische Effekte hier eine Rolle spielen
+-   Es ist naheliegend, dass wirtschaftspsychologische/verhaltensökonomische Effekte hier eine Rolle spielen
 
 ### Einige Grundkonzepte
 
 #### Mental Accounting
 
-- Wirkung von Preissignalen?
+-   Wirkung von Preissignalen?
 
-- Neuausrichtung der "Accounts" nötig (mehr fixe, höhere variable Ausgaben)
+-   Neuausrichtung der "Accounts" nötig (mehr fixe, höhere variable Ausgaben)
 
-- $\dots$
+-   $\dots$
 
 #### Denken in Wahrscheinlichkeiten
 
-- Auswirkungen auf die Transformation?
+-   Auswirkungen auf die Transformation?
 
 #### Asymmetrische Berücksichtigung von Gewinnen und Verlusten
 
-- Auswirkungen auf die Transformation?
+-   Auswirkungen auf die Transformation?
 
 #### Status quo Bias
 
-- Auswirkungen auf die Transformation?
+-   Auswirkungen auf die Transformation?
 
 #### Expressives Wählerverhalten
 
-- Auswirkungen auf die Transformation?
+-   Auswirkungen auf die Transformation?
 
 ### Werden Erkenntnisse der Wirtschaftspsychologie/Verhaltensökonomik auch umgesetzt?
 
@@ -472,31 +642,30 @@ generate_svg(qr, filename = "qr-behavioral-green-deal.svg")
 
 #### Strukturierende Fragen
 
-1. Was ist der European New Green Deal?
-  
-  - Ziel: Klimaneutralität
-  
-  - Strategie für Wachstum und Prosperität
+1.  Was ist der European New Green Deal?
 
-2. Was sind verhaltensbezogene, soziale und kulturelle (BSC) Themen im Kontext des EU Green Deal?
+-   Ziel: Klimaneutralität
 
-  - Betroffenheit unterschiedlicher Einkommensgruppen
-  
-  - Berücksichtigung kultureller Prägungen
-  
-  - Berücksichtigung verhaltensökonomischer Aspekte
+-   Strategie für Wachstum und Prosperität
 
-3. Warum sind sie wichtig?
+2.  Was sind verhaltensbezogene, soziale und kulturelle (BSC) Themen im Kontext des EU Green Deal?
 
-  - Umfassende Transformation der Gesellschaft/Wirtschaft
-  
-  - Berücksichtigung kultureller Vorprägungen bestimmt bedeutsam
-  
-  - Kein Ausspielen Klima vs. soziale Gerechtigkeit
+-   Betroffenheit unterschiedlicher Einkommensgruppen
 
-4. Inwieweit berücksichtigen die EU-Politikdokumente zu Green Deal-Themen BSC-Aspekte?
+-   Berücksichtigung kultureller Prägungen
 
-  - Gemischte Bilanz. Bei einigen Themen stärkere Berücksichtigung als bei anderen
-  
-  - Tendenziell ausführlichere Berücksichtigung in Mitteilungen als in Folgenabschätzungen
-  
+-   Berücksichtigung verhaltensökonomischer Aspekte
+
+3.  Warum sind sie wichtig?
+
+-   Umfassende Transformation der Gesellschaft/Wirtschaft
+
+-   Berücksichtigung kultureller Vorprägungen bestimmt bedeutsam
+
+-   Kein Ausspielen Klima vs. soziale Gerechtigkeit
+
+4.  Inwieweit berücksichtigen die EU-Politikdokumente zu Green Deal-Themen BSC-Aspekte?
+
+-   Gemischte Bilanz. Bei einigen Themen stärkere Berücksichtigung als bei anderen
+
+-   Tendenziell ausführlichere Berücksichtigung in Mitteilungen als in Folgenabschätzungen
