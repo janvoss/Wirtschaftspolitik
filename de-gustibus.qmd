@@ -1,0 +1,109 @@
+# De gustibus non est disputandum
+
+
+## Einleitung
+
+## Das Modell
+
+Der Haushalt maximiert die Nutzenfunktion:$$U = U(Z_1, \dots, Z_m)$$
+
+Diese Commodities $Z_i$ kauft der Haushalt aber nicht, sondern er produziert sie selbst über die Haushaltsproduktionsfunktion:$$Z_i = f_i(X_{1i}, \dots, X_{ki}, t_{1i}, \dots, t_{li}, S_1, \dots, S_l, Y_i)$$
+
+
+$X_{ji}$: Eingesetzte Marktgüter und Dienstleistungen.
+
+$t_{ji}$: Die eigene eingesetzte Zeit des Haushalts.
+
+$S_j$: Das Humankapital (Fähigkeiten, akkumulierte Erfahrung, Training).
+
+$Y_i$: Sonstige Umweltvariablen.
+
+
+Die Preisbildung (Schattenpreise):Da die Commodities $Z_i$ keinen Marktpreis haben, besitzen sie Schattenpreise ($\pi_i$), die den Grenzkosten ihrer Produktion entsprechen. Unter der Standardannahme, dass die Produktionsfunktion homogen vom Grade 1 in Gütern und Zeit ist, lautet der Schattenpreis:$$\pi_i = \sum_{j=1}^{k} \alpha_{ji} p_j + \sum_{j=1}^{l} \beta_{ji} w_j$$
+
+$p_j$: Der Marktpreis des Guts $X_j$.
+
+$w_j$: Die Lohnrate (die Opportunitätskosten der eingesetzten Zeit $t_j$).
+
+$\alpha_{ji}, \beta_{ji}$: Input-Output-Koeffizienten, die vom Humankapital $S$ und der Umwelt $Y_i$ abhängen.
+
+## Guter Geschmack
+
+Das Phänomen: Wer viel klassische Musik hört, will immer mehr davon.
+
+Klassische Erklärung: Die Präferenz verschiebt sich, der Grenznutzen steigt.
+
+Die Stigler-Becker-Lösung: Die Nutzenfunktion $U(M, Z)$ bleibt über die gesamte Lebenszeit identisch. 
+
+Was sich durch vergangenen Musikkonsum ($M_{j-1}$) aufbaut, ist Konsumkapital ($S_{m_j}$):$$S_{m_j} = h(M_{j-1}, M_{j-2}, \dots, E_j)$$
+
+Der Mechanismus bei Musik (Beneficial Addiction): Ein wachsender Stock an Musikkapital $S_m$ erhöht die Produktivität der Zeit, die man mit Musikhören verbringt. Dadurch sinkt der Schattenpreis für Musikgenuss im Alter ($\pi_m$). Der Konsum steigt also nicht wegen einer neuen Vorliebe, sondern weil das Gut für diesen spezifischen Konsumenten durch "Learning by Doing" billiger geworden ist!
+
+### Lösungsweg mit konkreten Funktionen
+
+Wir nehmen an, der Haushalt maximiert eine klassische Cobb-Douglas-Nutzenfunktion über zwei Güter, Musikgenuss ($Z_1$) und alle anderen Aktivitäten ($Z_2$):$$U(Z_1, Z_2) = Z_1^\gamma Z_2^{1-\gamma} \quad \text{mit} \quad 0 < \gamma < 1$$
+
+Für die Produktion der Güter $Z_1$ nutzt der Haushalt ebenfalls eine Cobb-Douglas-Technologie, bei der das Humankapital $S$ als Produktivitätsfaktor eingeht:  $$Z_1 = S \cdot X^\alpha t^{1-\alpha} \quad \text{mit} \quad 0 < \alpha < 1$$
+
+$X$: Am Markt gekauftes Gut (z. B. Konzerttickets, Alben).
+
+$t$: Eingesetzte Freizeit (z. B. Stunden vor der Anlage).  
+
+$S$: Der aktuelle Bestand (stock) an "Konsumkapital" (Musikwissen). 
+
+Die Kostenminimierung des Haushalts (Schattenpreis-Herleitung)Um den Schattenpreis $\pi_1$ für eine Einheit $Z_1$ zu finden, minimiert der Haushalt die Ausgaben für die Inputs $X$ und $t$, um ein gegebenes Niveau $\bar{Z}_1$ zu erreichen:$$\min_{X, t} \quad p \cdot X + w \cdot t \quad \text{s.t.} \quad S \cdot X^\alpha t^{1-\alpha} = \bar{Z}_1$$
+
+$p$: Marktpreis von $X$.  
+
+$w$: Opportunitätskosten der Zeit (Lohnsatz). 
+
+Löst man dieses Problem über den Lagrange-Ansatz, erhält man die bekannten Faktornachfragen für die Inputs. 
+
+Setzt man diese zurück in die Kostenfunktion, ergibt sich der Schattenpreis $\pi_1$ (die Grenzkosten der Produktion):  
+
+$$\pi_1(p, w, S) = \frac{1}{S} \cdot \left[ \left(\frac{\alpha}{1-\alpha}\right)^{1-\alpha} + \left(\frac{1-\alpha}{\alpha}\right)^\alpha \right] \cdot p^\alpha w^{1-\alpha}$$
+
+Wir fassen den konstanten Klammerterm als Parameter $A$ zusammen:$$\pi_1(p, w, S) = \frac{A \cdot p^\alpha w^{1-\alpha}}{S}$$
+
+**Zwei Kernbotschaften**
+
+Steigen die Marktpreise ($p$) oder die Zeitkosten ($w$), steigt der Schattenpreis $\pi_1$.
+
+Der Humankapital-Effekt: Steigt das Konsumkapital $S$, sinkt der Schattenpreis $\pi_1$ proportional. Das Endgut wird also "effektiver" produziert.  
+
+
+Nun verknüpfen wir das Ganze mit der Sucht- bzw. Erfahrungskomponente aus dem Papier (unter Verweis auf Alfred Marshalls Musik-Beispiel).  Wir betrachten zwei Perioden ($j=1, 2$). Die Nutzenfunktion ist über die Zeit stabil. Das Konsumkapital in Periode 2 ($S_2$) baut sich durch den Konsum in Periode 1 ($Z_{1,1}$) auf (Lerneffekt/Sucht): 
+$$S_1 = 1 \quad (\text{Anfangsausstattung})$$
+
+$$S_2 = 1 + \delta \cdot Z_{1,1} \quad \text{mit} \quad \delta > 0 \quad (\text{Lerneffekt}) \quad \text{[cite: 1]}$$
+
+Periode 1: Der ungebildete KonsumentIn Periode 1 ist $S_1 = 1$. Der Schattenpreis für eine Einheit Musik beträgt:$$\pi_{1,1} = A \cdot p^\alpha w^{1-\alpha}$$
+
+Periode 2: Der erfahrene KonsumentWeil in Periode 1 Musik konsumiert wurde ($Z_{1,1} > 0$), ist das Humankapital in Periode 2 angewachsen: $S_2 > 1$. Der neue Schattenpreis lautet:
+  
+$$\pi_{1,2} = \frac{A \cdot p^\alpha w^{1-\alpha}}{1 + \delta \cdot Z_{1,1}} < \pi_{1,1} \quad$$
+
+Wenn wir nun die relative Nachfrage nach Musikgenuss ($Z_1$) im Verhältnis zu anderen Gütern ($Z_2$, deren Schattenpreis $\pi_2$ konstant sei) über die Cobb-Douglas-Nutzenelastizitäten betrachten, gilt für das optimale Konsumverhältnis in Periode 2:$$\frac{Z_{1,2}}{Z_{2,2}} = \frac{\gamma}{1-\gamma} \cdot \frac{\pi_2}{\pi_{1,2}}$$
+
+Da $\pi_{1,2}$ durch das akkumulierte Kapital gesunken ist, gilt zwingend:
+$$\frac{Z_{1,2}}{Z_{2,2}} > \frac{Z_{1,1}}{Z_{2,1}}$$
+  
+  
+
+## Sucht
+
+Der Haushalt lebt für zwei Perioden ($j = 1, 2$). Er maximiert einen intertemporalen Gesamtnutzen, wobei wir der Einfachheit halber den Diskontfaktor auf $1$ setzen (keine reine Zeitpräferenz, ganz im Sinne der Autoren):  $$U = U(Z_{1,1}, Z_{2,1}) + U(Z_{1,2}, Z_{2,2})$$Unter Verwendung unserer Cobb-Douglas-Präferenzen ergibt sich:$$U = \left( Z_{1,1}^\gamma Z_{2,1}^{1-\gamma} \right) + \left( Z_{1,2}^\gamma Z_{2,2}^{1-\gamma} \right)$$$Z_{1,j}$: Konsum des potenziell suchterzeugenden Guts (Musik oder Heroin) in Periode $j$.  $Z_{2,j}$: Konsum des neutralen Basisguts in Periode $j$.  
+
+Die Haushaltsproduktion für das Suchtgut $Z_1$ in den jeweiligen Perioden lautet:Periode 1: $Z_{1,1} = S_1 \cdot X_1^\alpha t_1^{1-\alpha}$ (mit $S_1 = 1$ als gegebene Anfangsausstattung)  Periode 2: $Z_{1,2} = S_2 \cdot X_2^\alpha t_2^{1-\alpha}$  
+
+Der Kern der Sucht liegt in der Transformationsgleichung des Kapitals für Periode 2:  $$S_2 = 1 + \delta \cdot Z_{1,1}$$Hier entscheiden die Studierenden über die Art der Sucht:  Wohltuende Sucht (Beneficial Addiction, z. B. Musik): $\delta > 0$. Aktueller Konsum erhöht das zukünftige Kapital.  Schädliche Sucht (Harmful Addiction, z. B. Heroin): $\delta < 0$. Aktueller Konsum zerstört das zukünftige Kapital.  
+
+Ein rein kurzsichtiger (myopischer) Konsument würde in Periode 1 nur den statischen Schattenpreis $\pi_{1,1}$ sehen. Ein rationaler Konsument sieht jedoch, dass eine heute produzierte Einheit $Z_{1,1}$ sein Kapital $S_2$ verändert. Das wiederum verändert die Kosten für die Produktion in Periode 2 ($\pi_{1,2}$).  Daraus ergibt sich der intertemporale Schattenpreis $\pi_{1,1}^*$ für die erste Periode (analog zu Gleichung (8) im Paper):  $$\pi_{1,1}^* = \pi_{1,1} - \text{Zukunftseffekt}$$Nutzen wir unsere hergeleitete Cobb-Douglas-Kostenfunktion für den statischen Preis ($\pi = \frac{A \cdot p^\alpha w^{1-\alpha}}{S}$), können wir die beiden Suchtformen konkret berechnen:  Fall A: Wohltuende Sucht ($\delta > 0$)Da der Konsum in Periode 1 die Produktion in Periode 2 erleichtert, zieht der Konsument diese künftige "Kosteneinsparung" (Anlageeffekt) gedanklich vom heutigen Preis ab:  $$\pi_{1,1}^* = \frac{A \cdot p^\alpha w^{1-\alpha}}{S_1} - \underbrace{\frac{\partial \pi_{1,2}}{\partial S_2} \cdot \frac{\partial S_2}{\partial Z_{1,1}}}_{\text{Zukunftsgewinn } (>0)} < \pi_{1,1} \quad \text{[cite: 1]}$$
+
+Fazit: Das Gut fühlt sich für den Haushalt in Periode 1 billiger an, als es der reine Marktpreis von $X_1$ vermuten lässt. Er investiert aktiv in sein Musik-Kapital
+
+Heroinkonsum heute zerstört das künftige Euphorie-Kapital $S_2$ ($\frac{\partial S_2}{\partial Z_{1,1}} < 0$). Dadurch explodieren die Produktionskosten für künftige Euphorie ($\frac{\partial \pi_{1,2}}{\partial S_2} < 0$). Der rationale Akteur schlägt diese zukünftigen Kosten auf den heutigen Preis auf:  $$\pi_{1,1}^* = \frac{A \cdot p^\alpha w^{1-\alpha}}{S_1} + \underbrace{\text{Zukunftsschaden } (>0)}_{\text{weil } \delta < 0} > \pi_{1,1} \quad \text{[cite: 1]}$$Didaktisches Fazit: Der intertemporale Schattenpreis für Heroin ist heute extrem hoch. Wenn der Haushalt rational ist, wird er den Konsum stark einschränken oder gar nicht erst anfangen, weil er die künftigen Kosten antizipiert. 
+
+Warum aber mehr Konsum in Periode 2?
+
+$$Z_{1,2} = S_2 \cdot X_2^\alpha t_2^{1-\alpha}$$Wegen $\delta < 0$ ist $S_2$ im Zeitverlauf massiv geschrumpft ($S_2 \to 0$). Um nun in Periode 2 auch nur ein minimales Niveau an "Euphorie" ($Z_{1,2}$) zu generieren, muss der Haushalt den Einbruch von $S_2$ durch einen massiven Einsatz des Marktguts $X_2$ (Heroinmenge) kompensieren.  Anhand der Nachfrage nach dem Inputfaktor $X_2$ (über Shephards Lemma oder die Faktoranteile) lässt sich zeigen:$$X_2 = \left( \frac{\alpha \cdot \pi_{1,2}}{p} \right) \cdot Z_{1,2} = \left( \frac{\alpha \cdot A \cdot p^\alpha w^{1-\alpha}}{p \cdot S_2} \right) \cdot Z_{1,2}$$Da $S_2$ im Nenner gegen Null geht, schießt die nachgefragte Menge des Suchtguts $X_2$ unaufhaltsam in die Höhe, selbst wenn der tatsächliche Nutzenoutput $Z_{1,2}$ sinkt.  Das finale Vorlesungsargument: Der steigende Heroinkonsum ist kein Beweis für einen "gestiegenen Geschmack" an Drogen ($\gamma$ bleibt konstant). Er ist der verzweifelte, rein neoklassische Versuch eines Konsumenten, den totalen Produktivitätsverlust seines körpereigenen Kapitals ($S_2$) durch immer mehr Markteinsatz ($X_2$) auszugleichen, weil die Nachfrage nach dem Endziel (Euphorie/Schmerzfreiheit) unelastisch ist.  
