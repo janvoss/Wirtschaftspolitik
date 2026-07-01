@@ -5,7 +5,6 @@
 1. Welche wirtschaftspsychologischen Themen mit Bezug zur Wirtschaftspolitik kennnen Sie?
 
 
-
 1.  Zeigen Sie anhand einer Edgeworth-Box die Menge der Tauschoptima!
 
 1.  Zeigen Sie anhand einer Edgeworth-Box die Menge der
@@ -14,9 +13,9 @@
 1.  Reicht die getrennte Ermittlung von Tausch- und Produktionsoptima
     aus, um etwas über die Effizienz einer Volkswirtschaft auszusagen?
 
-1. Inwieweit sollten/könnte es sinnvoll sein, die neoklassische Sichtweise auf die Bedingungen für Effizienz auch wirtschaftspsychologisch zu ergänzen?
+1. ~~Inwieweit sollten/könnte es sinnvoll sein, die neoklassische Sichtweise auf die Bedingungen für Effizienz auch wirtschaftspsychologisch zu ergänzen?~~
 
-1.  Was meint der Begriff Marktversagen'? Zeigen Sie auf, welche
+1.  Was meint der Begriff Marktversagen? Zeigen Sie auf, welche
     positiven und welche normativen Aussagen erforderlich sind, um ein
     Marktversagen festzustellen.
 
@@ -58,9 +57,9 @@
     Effekt anhand einer Grafik. Wovon hängt das Ausmaß des
     Wohlfahrtsverlustes ab?
 
-1. Zeigen Sie den Wohlfahrtsverlust durch einen positiven externen
+1. ~~Zeigen Sie den Wohlfahrtsverlust durch einen positiven externen
     Effekt anhand einer Grafik. Wovon hängt das Ausmaß des
-    Wohlfahrtsverlustes ab?
+    Wohlfahrtsverlustes ab?~~
 
 1. Mit welchen wirtschaftspolitischen Instrumenten könnte man auf einen
     negativen externen Effekt reagieren? Nennen Sie jeweils Beispiele.
@@ -68,8 +67,8 @@
 1. Zeigen Sie die Wirkung einer Pigou\" Steuer anhand einer geeigneten
     Grafik.
 
-1. Mit welchen wirtschaftspolitischen Instrumenten könnte man auf einen
-    positiven externen Effekt reagieren? Nennen Sie jeweils Beispiele.
+1. ~~Mit welchen wirtschaftspolitischen Instrumenten könnte man auf einen
+    positiven externen Effekt reagieren? Nennen Sie jeweils Beispiele.~~
 
 1. Was sind adverse selection' und moral hazard'?
 
@@ -115,3 +114,16 @@
 1. Was heißt hyperbolisches Diskontieren?
 
 1. Wie kann sich bei hyperbolischem Diskontieren die Entscheidung über eine zukünftige Aktivität unterscheiden von einer Entscheidung bei "normalem" (exponentiellem) Diskontieren?
+
+
+# Neue Fragen SoSe 2026 {-}
+
+1. Menschen scheinen unter Risiko/Unsicherheit mögliche Ereignisse nicht gemäß ihrer tatsächlichen Wahrscheinlicheit zu gewichten. Wie haben Kahnemann und Tversky den Unterschied zwischen tatsächlicher Wahrscheinlichkeit und Gewichtung in der Entscheidungsfindung beschrieben?
+
+1. Wie unterscheidt sich das gerade Gesagte für positive und negative Ereignisse?
+
+1. Wie sieht eine Wertefunktion für den Zugang bzw. Abgang von Gütern im Rahmen der Prospect Theory aus? Inwieweit werden positive und negative Effekte asymmetrisch bewertet?
+
+1. Welcher Zusammenhang besteht zwischen dem abnehmenden Grenznutzen aus dem Konsum eines Gutes und der Risikoneigung? Erläutern Sie diesen Zusammenhang anhand dieser Nutzenfunktion $$u(x) = \begin{cases} \dfrac{x^{1-\sigma}}{1-\sigma} &\text{für } \sigma \neq 1 \\[15pt]\ln(x) & \text{für } \sigma= 1 \end{cases}$$
+
+1. Wenn Sie sich noch einmal die Wertefunktion nach der Prospect Theory ansehen, ist die Risikoneigung überall die gleiche?

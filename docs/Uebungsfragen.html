@@ -69,6 +69,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -166,7 +195,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Transformation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Wirtschaftspolitik und Wirtschaftspsychologie in der 	„grünen Transformation“</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Wirtschaftspolitik und Wirtschaftspsychologie in der „grünen Transformation“</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -192,8 +221,14 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Überblick</h2>
+   
+  <ul>
+  <li><a href="#neue-fragen-sose-2026" id="toc-neue-fragen-sose-2026" class="nav-link active" data-scroll-target="#neue-fragen-sose-2026">Neue Fragen SoSe 2026</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -223,8 +258,8 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Zeigen Sie anhand einer Edgeworth-Box die Menge der Tauschoptima!</p></li>
 <li><p>Zeigen Sie anhand einer Edgeworth-Box die Menge der Produktionsoptima!</p></li>
 <li><p>Reicht die getrennte Ermittlung von Tausch- und Produktionsoptima aus, um etwas über die Effizienz einer Volkswirtschaft auszusagen?</p></li>
-<li><p>Inwieweit sollten/könnte es sinnvoll sein, die neoklassische Sichtweise auf die Bedingungen für Effizienz auch wirtschaftspsychologisch zu ergänzen?</p></li>
-<li><p>Was meint der Begriff Marktversagen’? Zeigen Sie auf, welche positiven und welche normativen Aussagen erforderlich sind, um ein Marktversagen festzustellen.</p></li>
+<li><p><del>Inwieweit sollten/könnte es sinnvoll sein, die neoklassische Sichtweise auf die Bedingungen für Effizienz auch wirtschaftspsychologisch zu ergänzen?</del></p></li>
+<li><p>Was meint der Begriff Marktversagen? Zeigen Sie auf, welche positiven und welche normativen Aussagen erforderlich sind, um ein Marktversagen festzustellen.</p></li>
 <li><p>Was sind soziale Wohlfahrtsfunktionen?</p></li>
 <li><p>Welche fünf Anforderungen stellt K. Arrow in seinem Unmöglichkeitstheorem’ an die Aggregation individueller Wertvorstellungen zu einer Gesamtwertvorstellung? Welches Problem ergibt sich daraus?</p></li>
 <li><p>Was besagt die ,,Theorie des Zweitbesten”?</p></li>
@@ -238,10 +273,10 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Was sind ,,externe Effekte”? Welche Arten von externen Effekten gibt es?</p></li>
 <li><p>Unterscheiden Sie negative von positiven externen Effekten. Führen beide zu Marktversagen?</p></li>
 <li><p>Zeigen Sie den Wohlfahrtsverlust durch einen negativen externen Effekt anhand einer Grafik. Wovon hängt das Ausmaß des Wohlfahrtsverlustes ab?</p></li>
-<li><p>Zeigen Sie den Wohlfahrtsverlust durch einen positiven externen Effekt anhand einer Grafik. Wovon hängt das Ausmaß des Wohlfahrtsverlustes ab?</p></li>
+<li><p><del>Zeigen Sie den Wohlfahrtsverlust durch einen positiven externen Effekt anhand einer Grafik. Wovon hängt das Ausmaß des Wohlfahrtsverlustes ab?</del></p></li>
 <li><p>Mit welchen wirtschaftspolitischen Instrumenten könnte man auf einen negativen externen Effekt reagieren? Nennen Sie jeweils Beispiele.</p></li>
 <li><p>Zeigen Sie die Wirkung einer Pigou"&nbsp;Steuer anhand einer geeigneten Grafik.</p></li>
-<li><p>Mit welchen wirtschaftspolitischen Instrumenten könnte man auf einen positiven externen Effekt reagieren? Nennen Sie jeweils Beispiele.</p></li>
+<li><p><del>Mit welchen wirtschaftspolitischen Instrumenten könnte man auf einen positiven externen Effekt reagieren? Nennen Sie jeweils Beispiele.</del></p></li>
 <li><p>Was sind adverse selection’ und moral hazard’?</p></li>
 <li><p>Führt die Abstimmung mit einfacher Mehrheit über eindimensionale Entscheidungsgegenstände stets zu einem eindeutigen und effizienten Ergebnis? Begründen Sie Ihre Antwort!</p></li>
 <li><p>Erläutern Sie das Problem zyklischer Mehrheiten bei mehrdimensionalen Entscheidungssituationen (Abstimmung über die Bereitstellung zweier öffentlicher Güter)! Wodurch werden in realen Abstimmungssituationen Abstimmungsergebnisse typischerweise stabilisiert?</p></li>
@@ -260,8 +295,18 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Was heißt hyperbolisches Diskontieren?</p></li>
 <li><p>Wie kann sich bei hyperbolischem Diskontieren die Entscheidung über eine zukünftige Aktivität unterscheiden von einer Entscheidung bei “normalem” (exponentiellem) Diskontieren?</p></li>
 </ol>
+<section id="neue-fragen-sose-2026" class="level1 unnumbered">
+<h1 class="unnumbered">Neue Fragen SoSe 2026</h1>
+<ol type="1">
+<li><p>Menschen scheinen unter Risiko/Unsicherheit mögliche Ereignisse nicht gemäß ihrer tatsächlichen Wahrscheinlicheit zu gewichten. Wie haben Kahnemann und Tversky den Unterschied zwischen tatsächlicher Wahrscheinlichkeit und Gewichtung in der Entscheidungsfindung beschrieben?</p></li>
+<li><p>Wie unterscheidt sich das gerade Gesagte für positive und negative Ereignisse?</p></li>
+<li><p>Wie sieht eine Wertefunktion für den Zugang bzw. Abgang von Gütern im Rahmen der Prospect Theory aus? Inwieweit werden positive und negative Effekte asymmetrisch bewertet?</p></li>
+<li><p>Welcher Zusammenhang besteht zwischen dem abnehmenden Grenznutzen aus dem Konsum eines Gutes und der Risikoneigung? Erläutern Sie diesen Zusammenhang anhand dieser Nutzenfunktion <span class="math display">\[u(x) = \begin{cases} \dfrac{x^{1-\sigma}}{1-\sigma} &amp;\text{für } \sigma \neq 1 \\[15pt]\ln(x) &amp; \text{für } \sigma= 1 \end{cases}\]</span></p></li>
+<li><p>Wenn Sie sich noch einmal die Wertefunktion nach der Prospect Theory ansehen, ist die Risikoneigung überall die gleiche?</p></li>
+</ol>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
