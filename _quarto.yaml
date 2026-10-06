@@ -6,7 +6,7 @@ book:
   title: "Wirtschaftspolitik und Wirtschaftspsychologie"
   author: "Prof. Dr. Jan S. Voßwinkel"
   # date: "2024"
-  subtitle: "Sommersemester 2026"
+  subtitle: "Wintersemester 2026/27"
   #lang: de
   language:  _language.yml
   repo-url: https://github.com/janvoss/Wirtschaftsolitik.git
@@ -14,6 +14,7 @@ book:
   chapters:
     - index.qmd
     - intro.qmd
+    - Wipo.qmd
     - Begriffe.qmd
     - Maerkte.qmd
     - Marktversagen.qmd
@@ -29,9 +30,9 @@ book:
     - Uebungsfragen.qmd
 
 bibliography: Wirtschaftspolitik.bib
-#csl: dresden.csl #Ohne funktioniert es gut, mit nicht. 
+csl: dresden.csl #Ohne funktioniert es gut, mit nicht. 
 # Aber warum? Und was ist mit Herausgeberwerken (Hrsg vs. Ed?)
-
+lang: de
 
 format:
   html:
