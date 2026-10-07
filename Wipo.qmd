@@ -337,16 +337,14 @@ dot.render('wirtschaftspolitische_ziele_systematik', format='svg', cleanup=True)
 ```
 
 ![Wirtschaftspolitische Ziele](wirtschaftspolitische_ziele_systematik.svg)
+
 ## Entwicklung wirtschaftspolitischer Kernvariablen
+
 
 ```{r}
 #| message: false
 #| warning: false
-#| fig-cap: "Wirtschaftspolitische Kernvariablen. Daten: Eurostat. Darstellung: Jan S. Voßwinkel"
-
-# Dfs noch prüfen.  Werden die richtigen Daten gefiltert?
-# Ist Arbeitslosigkeit richtig erfasst?
-# Unterschied eurostat u BuRe?
+#| fig-cap: "Wirtschaftspolitische Kernvariablen im Vergleich. Daten: Eurostat. Darstellung: Jan S. Voßwinkel"
 
 # Benötigte Pakete laden
 library(eurostat)
@@ -364,52 +362,45 @@ regions <- c("DE", "EU27_2020")
 # 1.1 BIP pro Kopf (Reales BIP, verkettete Volumen 2015, in Euro)
 gdp_pc <- get_eurostat("nama_10_pc", time_format = "num") %>%
   filter(geo %in% regions, na_item == "B1GQ", unit == "CLV15_EUR_HAB") %>%
-  select(geo, TIME_PERIOD, values) %>% # Changed 'value' to 'values'
-  rename(time = TIME_PERIOD, value = values) %>% # Renamed 'TIME_PERIOD' to 'time' and 'values' to 'value' for consistency
+  select(geo, TIME_PERIOD, values) %>%
+  rename(time = TIME_PERIOD, value = values) %>%
   mutate(indicator = "BIP pro Kopf (Real, €)")
 
 # 1.2 Wirtschaftswachstum (Prozentuale Veränderung zum Vorjahr)
 growth <- get_eurostat("nama_10_gdp", time_format = "num") %>%
   filter(geo %in% regions, na_item == "B1GQ", unit == "CLV_PCH_PRE") %>%
-  select(geo, TIME_PERIOD, values) %>% # Changed 'value' to 'values'
-  rename(time = TIME_PERIOD, value = values) %>% # Renamed 'TIME_PERIOD' to 'time' and 'values' to 'value' for consistency
+  select(geo, TIME_PERIOD, values) %>%
+  rename(time = TIME_PERIOD, value = values) %>%
   mutate(indicator = "BIP-Wachstum (%)")
 
 # 1.3 Arbeitslosigkeit (Prozent der Erwerbspersonen, 15-74 Jahre)
 unemp <- get_eurostat("une_rt_a", time_format = "num") %>%
   filter(geo %in% regions, age == "Y15-74", sex == "T", unit == "PC_ACT") %>%
-  select(geo, TIME_PERIOD, values) %>% # Changed 'value' to 'values'
-  rename(time = TIME_PERIOD, value = values) %>% # Renamed 'TIME_PERIOD' to 'time' and 'values' to 'value' for consistency
+  select(geo, TIME_PERIOD, values) %>%
+  rename(time = TIME_PERIOD, value = values) %>%
   mutate(indicator = "Arbeitslosenquote (%)")
 
 # 1.4 Inflation (HVPI, jährliche Veränderungsrate)
 inflation <- get_eurostat("prc_hicp_aind", time_format = "num") %>%
   filter(geo %in% regions, coicop == "CP00", unit == "RCH_A") %>%
-  select(geo, TIME_PERIOD, values) %>% # Changed 'value' to 'values'
-  rename(time = TIME_PERIOD, value = values) %>% # Renamed 'TIME_PERIOD' to 'time' and 'values' to 'value' for consistency
+  select(geo, TIME_PERIOD, values) %>%
+  rename(time = TIME_PERIOD, value = values) %>%
   mutate(indicator = "Inflation (HVPI, %)")
 
 # 1.5 Treibhausgasemissionen pro Kopf (Tonnen)
-# SDG 13.10 Datensatz - aggregierte THG-Emissionen pro Kopf
 ghg <- get_eurostat("sdg_13_10", time_format = "num") %>%
-  filter(geo %in% regions,
-         src_crf=="TOTXMEMO",
-         unit=="T_HAB") %>%
-  select(geo, TIME_PERIOD, values) %>% # Changed 'value' to 'values'
-  rename(time = TIME_PERIOD, value = values) %>% # Renamed 'TIME_PERIOD' to 'time' and 'values' to 'value' for consistency
+  filter(geo %in% regions, src_crf == "TOTXMEMO", unit == "T_HAB") %>%
+  select(geo, TIME_PERIOD, values) %>%
+  rename(time = TIME_PERIOD, value = values) %>%
   mutate(indicator = "THG-Emissionen (Tonnen/Kopf)")
 
-# 1.6 Handelsindikatoren (Exporte, Importe, Saldo, Offenheit in % des BIP)
-# Wir rufen das nominale BIP (B1GQ), Exporte (P6) und Importe (P7) in Mio. Euro (Laufende Preise) ab
+# 1.6 Handelsindikatoren
 trade_raw <- get_eurostat("nama_10_gdp", time_format = "num") %>%
   filter(geo %in% regions, na_item %in% c("B1GQ", "P6", "P7"), unit == "CP_MEUR") %>%
-  select(geo, TIME_PERIOD, na_item, values) %>% # Changed 'value' to 'values'
-  rename(time = TIME_PERIOD, value = values) %>% # Renamed 'TIME_PERIOD' to 'time' and 'values' to 'value' for consistency
-  pivot_wider(names_from = na_item, values_from = value) %>% # 'value' column for pivot_wider is now correctly named
-  # Berechnung der Quoten
+  select(geo, TIME_PERIOD, na_item, values) %>%
+  rename(time = TIME_PERIOD, value = values) %>%
+  pivot_wider(names_from = na_item, values_from = value) %>%
   mutate(
-#    `Exporte (% BIP)` = (P6 / B1GQ) * 100,
-#    `Importe (% BIP)` = (P7 / B1GQ) * 100,
     `Nettoexporte (% BIP)` = ((P6 - P7) / B1GQ) * 100,
     `Handelsoffenheit (% BIP)` = ((P6 + P7) / B1GQ) * 100
   ) %>%
@@ -422,47 +413,252 @@ trade_raw <- get_eurostat("nama_10_gdp", time_format = "num") %>%
 
 df_all <- bind_rows(gdp_pc, growth, unemp, inflation, ghg, trade_raw) %>%
   drop_na(value) %>%
-  # Faktoren ordnen für eine logische Anordnung im Plot
   mutate(indicator = factor(indicator, levels = c(
     "BIP pro Kopf (Real, €)",
     "BIP-Wachstum (%)",
     "Arbeitslosenquote (%)",
     "Inflation (HVPI, %)",
-#    "Exporte (% BIP)",
-#    "Importe (% BIP)",
     "Nettoexporte (% BIP)",
     "Handelsoffenheit (% BIP)",
     "THG-Emissionen (Tonnen/Kopf)"
   )))
 
 # -------------------------------------------------------------------------
-# 3. Visualisierung mit ggplot2
+# 3. Einzelne Visualisierungen per Schleife ausgeben
 # -------------------------------------------------------------------------
 
-# Labels für die Legende anpassen
 geo_labels <- c("DE" = "Deutschland", "EU27_2020" = "EU-27")
+indicators <- levels(df_all$indicator)
 
-ggplot(df_all, aes(x = time, y = value, color = geo)) +
-  geom_line(linewidth = 0.8) +
-  facet_wrap(~ indicator, scales = "free_y", ncol = 3) +
-  scale_color_manual(values = c("DE" = "#2c3e50", "EU27_2020" = "#e74c3c"),
-                     labels = geo_labels) +
-  scale_x_continuous(breaks = seq(min(df_all$time, na.rm=TRUE),
-                                  max(df_all$time, na.rm=TRUE), by = 5)) +
-  theme_minimal(base_size = 12) +
-  theme(
-    legend.position = "bottom",
-    legend.title = element_blank(),
-    strip.text = element_text(face = "bold", size = 10),
-    panel.grid.minor = element_blank(),
-    axis.title.x = element_blank(),
-    axis.title.y = element_blank()
-  ) +
-  labs(
-    title = "Wirtschaftspolitische Indikatoren: Deutschland vs. EU-27",
-  #  subtitle = "Datenquelle: Eurostat",
-  #  caption = "Darstellung der Zeitreihen für Wachstum, Arbeitsmarkt, Außenhandel und Klima."
-  )
-
+for (ind in indicators) {
+  df_sub <- df_all %>% filter(indicator == ind)
+  
+  if (nrow(df_sub) > 0) {
+    p <- ggplot(df_sub, aes(x = time, y = value, color = geo)) +
+      geom_line(linewidth = 0.9) +
+      scale_color_manual(
+        values = c("DE" = "#2c3e50", "EU27_2020" = "#e74c3c"),
+        labels = geo_labels
+      ) +
+      scale_x_continuous(
+        breaks = seq(min(df_sub$time, na.rm = TRUE),
+                     max(df_sub$time, na.rm = TRUE), by = 5)
+      ) +
+      theme_minimal(base_size = 12) +
+      theme(
+        legend.position = "bottom",
+        legend.title = element_blank(),
+        panel.grid.minor = element_blank(),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        plot.title = element_text(face = "bold", size = 13)
+      ) +
+      labs(title = as.character(ind))
+    
+    # In R Markdown / Quarto gibt print() in einer Schleife jede Grafik einzeln aus
+    print(p)
+  }
+}
 ```
 
+
+
+## Wer macht Wirtschaftspolitik?
+
+```{python}
+#| output: false
+
+import graphviz
+# from IPython.display import display
+
+# Graph-Objekt initialisieren
+dot = graphviz.Digraph(
+    "NPO_Politikversagen",
+    comment="Neue Politische Ökonomie - Prinzipal-Agenten-Kette und Politikversagen",
+    format="svg",
+)
+
+# Globale Attribute für sauberes Layout
+dot.attr(
+    rankdir="TB",
+    nodesep="0.7",
+    ranksep="0.9",
+    fontname="Arial",
+    fontsize="11",
+)
+dot.attr(
+    "node",
+    shape="box",
+    style="filled,rounded",
+    fontname="Arial",
+    margin="0.2,0.15",
+)
+dot.attr("edge", fontname="Arial", fontsize="9")
+
+# ==========================================
+# CLUSTER 1: NACHFRAGERSEITE
+# ==========================================
+with dot.subgraph(name="cluster_demand") as c:
+    c.attr(
+        label="NACHFRAGERSEITE POLITISCHER LEISTUNGEN",
+        style="filled,dashed",
+        color="#2C3E50",
+        fillcolor="#EBF5FB",
+        fontname="Arial-Bold",
+        fontsize="12",
+    )
+
+    c.node(
+        "waehler",
+        "Unorganisierte Bürger / Wähler\n"
+        "-----------------------------------\n"
+        "• Ziel: Nutzenmaximierung\n"
+        "  (Öffentl. Leistungen - Steuerlast)\n"
+        "• Rolle: Prinzipal (unterste Ebene)\n"
+        "• Problem: Rationale Ignoranz & Streuung",
+        fillcolor="#D4E6F1",
+        color="#2980B9",
+    )
+
+    c.node(
+        "verbande",
+        "Organisierte Interessengruppen / Verbände\n"
+        "-----------------------------------\n"
+        "• Ziel: Partikularinteressen\n"
+        "  (Sondergüter, Subventionen, Renten)\n"
+        "• Ressourcen: Fachexpertise, Spenden, Stimmen",
+        fillcolor="#A9CCE3",
+        color="#2471A3",
+    )
+
+# ==========================================
+# CLUSTER 2: ANBIETERSEITE
+# ==========================================
+with dot.subgraph(name="cluster_supply") as c:
+    c.attr(
+        label="ANBIETERSEITE POLITISCHER LEISTUNGEN (STAAT)",
+        style="filled,dashed",
+        color="#2C3E50",
+        fillcolor="#FDEDEC",
+        fontname="Arial-Bold",
+        fontsize="12",
+    )
+
+    c.node(
+        "politiker",
+        "Politiker / Regierung (Legislative)\n"
+        "-----------------------------------\n"
+        "• Ziel: Wiederwahl, Macht, Prestige, Budget\n"
+        "• Rolle: Agent (der Wähler) & Prinzipal (der Verwaltung)\n"
+        "• Problem: Informationsmangel bei Fachfragen",
+        fillcolor="#F5B7B1",
+        color="#C0392B",
+    )
+
+    c.node(
+        "buerokratie",
+        "Staatliche Verwaltung / Bürokratie (Exekutive)\n"
+        "-----------------------------------\n"
+        "• Ziel: Budgetmaximierung, Einfluss, Aufstieg\n"
+        "• Rolle: Agent (der Politiker)\n"
+        "• Vorteil: Monopolistisches Durchführungswissen",
+        fillcolor="#F1948A",
+        color="#A93226",
+    )
+
+# ==========================================
+# ERGEBNIS / SYSTEMOUTCOME
+# ==========================================
+dot.node(
+    "politikversagen",
+    "ERGEBNIS: POLITIKVERSAGEN\n"
+    "===================================\n"
+    "• Verzerrte Aggregation des Wählerwillens\n"
+    "• Besserstellung organisierter Partikularinteressen\n"
+    "• Lastenüberwälzung auf unorganisierte Bürger",
+    shape="box",
+    style="filled,bold",
+    fillcolor="#F9E79F",
+    color="#D4AC0D",
+    fontsize="11",
+    fontname="Arial-Bold",
+)
+
+# ==========================================
+# BEZIEHUNGEN & VERBINDUNGEN (EDGES)
+# ==========================================
+
+# 1. Prinzipal-Agenten-Kette (Hauptstrang)
+dot.edge(
+    "waehler",
+    "politiker",
+    label=" 1. Prinzipal-Agent-Beziehung (Wahlmechanismus)\n"
+    "   • Auftrag: Präferenzkonforme Politik\n"
+    "   • Asymmetrie: Hidden Action & Opportunismus",
+    color="#1B4F72",
+    penwidth="2.0",
+)
+
+dot.edge(
+    "politiker",
+    "buerokratie",
+    label=" 2. Prinzipal-Agent-Beziehung (Gesetzesvollzug)\n"
+    "   • Auftrag: Konkrete Umsetzung\n"
+    "   • Asymmetrie: Informationsvorsprung der Bürokratie",
+    color="#1B4F72",
+    penwidth="2.0",
+)
+
+# 2. Konkurrenz auf Nachfragerseite
+dot.edge(
+    "waehler",
+    "verbande",
+    label="Konkurrenz um öffentliche Ressourcen\n(Kostenüberwälzung)",
+    dir="both",
+    style="dotted",
+    color="#7F8C8D",
+    penwidth="1.2",
+)
+
+# 3. Verzerrung durch Interessengruppen (Tauschgeschäfte)
+dot.edge(
+    "verbande",
+    "politiker",
+    label="Verzerrung der PA-Kette (Tauschgeschäft):\n"
+    "• Bietet: Expertise, Wahlkampfspenden, Stimmen\n"
+    "• Verlangt: Sondervergünstigungen & Renten",
+    color="#7D3C98",
+    penwidth="1.8",
+)
+
+dot.edge(
+    "verbande",
+    "buerokratie",
+    label="Einfluss auf Verwaltung:\n"
+    "• Unterstützung bei Budgetausweitung\n"
+    "• Anreiz: Lukrative Folgeanstellungen",
+    color="#7D3C98",
+    style="dashed",
+    penwidth="1.5",
+)
+
+# 4. Hinführung zum Politikversagen
+dot.edge("politiker", "politikversagen", style="dotted", color="#D4AC0D")
+dot.edge("buerokratie", "politikversagen", style="dotted", color="#D4AC0D")
+dot.edge("verbande", "politikversagen", style="dotted", color="#D4AC0D")
+
+# ==========================================
+# AUSGABE & SPEICHERUNG
+# ==========================================
+
+# Als SVG speichern (erzeugt 'npo_politikversagen_modell.svg')
+file_path = dot.render(
+    filename="npo_politikversagen_modell", format="svg", cleanup=True
+)
+print(f"Grafik erfolgreich als SVG gespeichert unter: {file_path}")
+
+# Direkt in IPython / Jupyter Notebook anzeigen
+# display(dot)
+```
+
+![Verzerrungen im politischen Prozess](npo_politikversagen_modell.svg)
