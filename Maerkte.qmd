@@ -38,180 +38,122 @@ Grenzrate der Subsitution entspricht Grenzrate der Transformation $$MRS^A_{x_1, 
 ### Nutzenmaximierung unter Nebenbedingungen
 
 ```{python}
-#| message: false
-#| warning: false
 #| output: false
-#| include: true
 
-from graphviz import Digraph
-from IPython.display import display
+import graphviz
+# from IPython.display import display, SVG
 
-dot = Digraph()
+# Digraph im fließenden S-O-R-Stil initialisieren
+dot = graphviz.Digraph(comment='Rationale Nutzenmaximierung (Prozessmodell)', format='svg')
+dot.attr(rankdir='LR', size='12,5', fontname='Helvetica')
+dot.attr('node', fontname='Helvetica', style='filled', margin='0.2')
 
-# Layout des gesamten Graphen
-dot.attr(rankdir='LR')
+# Farbpalette passend zum S-O-R-Stil
+pref_color = '#E3F2FD'   # Sanftes Blau (Zielfunktion / Präferenzen)
+restr_color = '#FFF9C4'  # Sanftes Gelb/Amber (Restriktionen / Grenzen)
+action_color = '#E8F5E9' # Sanftes Grün (Handlung / Verhalten)
 
-# Funktion zur Erstellung eines Clusters mit \l für Linksbündigkeit
-def create_cluster(dot, name, label, color, fillcolor, nodes, max_nodes
-                   ):
-    with dot.subgraph(name=name) as c:
-        c.attr(label=label,
-               fontname="times-bold",
-               style='filled,rounded',
-               fillcolor=fillcolor,
-               color=color,
-               penwidth='1.5')
+# 1. Cluster: Zielfunktion (Präferenzen)
+with dot.subgraph(name='cluster_ziel') as c:
+    c.attr(label='1. Zielfunktion (Präferenzen)\n"Was der Akteur will"', 
+           style='rounded,filled', color='#90CAF9', fillcolor='#F5F9FF', fontname='Helvetica-Bold')
+    c.node('ziel', '• Bekannt (klare Präferenzordnung)\n• Gegeben (exogen vorausgesetzt)\n• Konstant (stabil im Zeitverlauf)', 
+           shape='box', fillcolor=pref_color, color='#BBDEFB', align='left')
 
-        # Standardknoten mit \l für Linksbündigkeit
-        for node_id, node_label in nodes:
-            # \n durch \l ersetzen und am Ende \l hinzufügen
-            formatted_label = node_label.replace('\n', '\\l') + '\\l'
-            c.node(node_id,
-                   label=formatted_label,
-                   width="3",
-                   height=".7",
-                   shape='none',
-                   )  # Schrift6art für bessere Lesbarkeit
+# 2. Cluster: Restriktionen (Handlungsrahmen)
+with dot.subgraph(name='cluster_restr') as c:
+    c.attr(label='2. Restriktionen\n"Was der Akteur kann"', 
+           style='rounded,filled', color='#FFE082', fillcolor='#FFFDE7', fontname='Helvetica-Bold')
+    c.node('restr', '• Informationen & Suchkosten\n• Zielkonflikte (Opportunitätskosten)\n• Begleiterscheinungen & Mittelknappheit', 
+           shape='box', fillcolor=restr_color, color='#FFEE58', align='left')
 
-        # Unsichtbare Platzhalterknoten
-        for i in range(len(nodes), max_nodes
-                       ):
-            c.node(f'{name}_placeholder_{i}', '', style='invis', width="3", height=".7")
+# 3. Cluster: Handlung (Ergebnis)
+with dot.subgraph(name='cluster_handlung') as c:
+    c.attr(label='3. Handlung (Verhalten)\n"Das ökonomische Resultat"', 
+           style='rounded,filled', color='#A5D6A7', fillcolor='#F1F8F5', fontname='Helvetica-Bold')
+    c.node('handlung', '• Stabil bei konstanten Rahmenbedingungen\n• Veränderlich durch Anpassung an\n  variable Restriktionen (Anreize/Preise)', 
+           shape='box', fillcolor=action_color, color='#81C784', align='left')
 
-# Clusterdefinitionen (unverändert)
-clusters = [
-    ('cluster_ziel', 'Zielfunktion', 'blue', '#FFFFFF', [
-        ('a1', 'bekannt'),
-        ('a2', 'gegeben'),
-        ('a3', 'konstant')
-    ]),
-    ('cluster_Restriktion','Restriktionen', 'blue', '#EFEFEF', [
-        ('b1', 'Informationen'),
-        ('b2', 'Zielkonflikte'),
-        ('b3', 'Begleiterscheinungen von'
-                '\n Zielen und Mitteln '),
-    #    ('b4', '')
-    ]),
-    ('cluster_Handlung', 'Handlung', 'blue', '#DFDFDF', [
-        ('c1', 'stabil'),
-        ('c2', 'abhängig von variablen\n'
-               'Restriktionen veränderlich')
-    ])
-]
+# Logische Wirkungskanten (fließender Übergang)
+dot.edge('ziel', 'handlung', label=' Bestimmt\n Zielrichtung', color='#555555', fontname='Helvetica', fontsize='10')
+dot.edge('restr', 'handlung', label=' Begrenzt &\n formt Wahl', color='#555555', fontname='Helvetica', fontsize='10')
 
-max_nodes = max(len(cluster[4]) for cluster in clusters)
+# Als SVG-Datei im Arbeitsverzeichnis speichern
+output_filename = 'nutzenmaximierung_fluss'
+dot.render(filename=output_filename, cleanup=True)
 
-# Cluster erstellen
-for name, label, color, fillcolor, nodes in clusters:
-    create_cluster(dot, name, label, color, fillcolor, nodes, max_nodes
-                   )
-
-# Unsichtbare Kanten für vertikale Anordnung
-dot.edge('a2', 'b2', style='invis'
-         )
-dot.edge('b2', 'c2', style='invis'
-         )
-
-# Ausgabe
-# display(dot)
-
-#Datei erzeugen 
-dot.format = 'svg'  # Format setzen
-dot.render(filename='Nutzenmaximierung', cleanup=True)  # Erzeugt output.svg
-
+# Direkt in Jupyter / IPython anzeigen
+# display(SVG(filename=f'{output_filename}.svg'))
 ```
 
-![Schema der rationalen Nutzenmaximierung](Nutzenmaximierung.svg)
+
+![Schema der rationalen Nutzenmaximierung](nutzenmaximierung_fluss.svg)
 
 ### SOR-Modell der Wirtschaftspsychologie
 
 
 ```{python}
-
-#| message: false
-#| warning: false
 #| output: false
-#| include: true
 
+import graphviz
+# from IPython.display import display, SVG
 
+# Erstellen des Graphviz Digraphs
+dot = graphviz.Digraph(comment='Stimulus-Organism-Response (S-O-R) Modell', format='svg')
+dot.attr(rankdir='LR', size='12,6', fontname='Helvetica')
+dot.attr('node', fontname='Helvetica', style='filled', margin='0.2')
 
-from graphviz import Digraph
-from IPython.display import display
+# Farbpalette für die Phasen
+stimulus_color = '#E3F2FD'  # Sanftes Blau
+organism_color = '#E8F5E9'  # Sanftes Grün
+response_color = '#FFF3E0'  # Sanftes Orange
 
-dot = Digraph()
+# 1. Stimulus (S) Cluster
+with dot.subgraph(name='cluster_S') as c:
+    c.attr(label='Stimulus (S)\nExterner Reiz', style='rounded,filled', color='#BBDEFB', fillcolor='#F5F9FF', fontname='Helvetica-Bold')
+    c.node('S1', 'Marketing-Mix\n(Produkt, Preis, Place, Promotion)', shape='box', fillcolor=stimulus_color, color='#90CAF9')
+    c.node('S2', 'Umfeld & Umwelt\n(Soziale Einflüsse, Atmosphäre)', shape='box', fillcolor=stimulus_color, color='#90CAF9')
 
-# Layout des gesamten Graphen
-dot.attr(rankdir='LR')
+# 2. Organismus (O) Cluster mit Unterteilungen
+with dot.subgraph(name='cluster_O') as c:
+    c.attr(label='Organismus (O)\nInterne Verarbeitung', style='rounded,filled', color='#C8E6C9', fillcolor='#F1F8F5', fontname='Helvetica-Bold')
+    
+    with c.subgraph(name='cluster_O_aff') as o_aff:
+        o_aff.attr(label='Aktivierende Prozesse', style='dashed', color='#81C784', fontname='Helvetica')
+        o_aff.node('O_aff', 'Emotionen, Motive,\nAktivierung & Einstellungen', shape='ellipse', fillcolor=organism_color, color='#A5D6A7')
+        
+    with c.subgraph(name='cluster_O_kog') as o_kog:
+        o_kog.attr(label='Kognitive Prozesse', style='dashed', color='#81C784', fontname='Helvetica')
+        o_kog.node('O_kog', 'Wahrnehmung, Lernen,\nDenken & Entscheiden', shape='ellipse', fillcolor=organism_color, color='#A5D6A7')
 
-# Funktion zur Erstellung eines Clusters mit \l für Linksbündigkeit
-def create_cluster(dot, name, label, color, fillcolor, nodes, max_nodes
-                   ):
-    with dot.subgraph(name=name) as c:
-        c.attr(label=label,
-               fontname="times-bold",
-               style='filled,rounded',
-               fillcolor=fillcolor,
-               color=color,
-               penwidth='1.5')
+# 3. Response (R) Cluster
+with dot.subgraph(name='cluster_R') as c:
+    c.attr(label='Response (R)\nSichtbare Reaktion', style='rounded,filled', color='#FFE0B2', fillcolor='#FFFBF5', fontname='Helvetica-Bold')
+    c.node('R1', 'Hinwendungsverhalten\n(Kauf, Verweildauer, Loyalität)', shape='box', fillcolor=response_color, color='#FFCC80')
+    c.node('R2', 'Abwendungsverhalten\n(Kaufabbruch, Ignorieren)', shape='box', fillcolor=response_color, color='#FFCC80')
 
-        # Standardknoten mit \l für Linksbündigkeit
-        for node_id, node_label in nodes:
-            # \n durch \l ersetzen und am Ende \l hinzufügen
-            formatted_label = node_label.replace('\n', '\\l') + '\\l'
-            c.node(node_id,
-                   label=formatted_label,
-                   width="3",
-                   height=".7",
-                   shape='none',
-                   )  # Schrift6art für bessere Lesbarkeit
+# Kanten (Verbindungen) definieren
+dot.edge('S1', 'O_aff', color='#555555')
+dot.edge('S1', 'O_kog', color='#555555')
+dot.edge('S2', 'O_aff', color='#555555')
+dot.edge('S2', 'O_kog', color='#555555')
 
-        # Unsichtbare Platzhalterknoten
-        for i in range(len(nodes), max_nodes):
-            c.node(f'{name}_placeholder_{i}', '', style='invis', width="3", height=".7")
+# Interne Interaktion im Organismus
+dot.edge('O_aff', 'O_kog', style='dotted', color='#555555', constraint='false')
 
-# Clusterdefinitionen (unverändert)
-clusters = [
-    ('cluster_Stimulus', 'Stimulus', 'blue', '#FFFFFF', [
-        ('a0', ""),
-        ('a01', ""),
-        ('a1', 'Reiz wirkt auf Organismus'),
-        ('a2', '')
-    ]),
-    ('cluster_Organismus','Organismus', 'blue', '#EFEFEF', [
-        ('b1', 'Verarbeitung'),
-        ('b2', 'Vorwissen'),
-        ('b3', 'Werte'),
-        ('b4', 'aktuelle Situation'),
-        ('b5', '...'),
-    ]),
-    ('cluster_Reaktion', 'Reaktion', 'blue', '#DFDFDF', [
-        ('c0', ""),
-        ('c1', 'Reaktion auf den Reiz'),
-        ('c2', 'abhängig von Reiz\n'
-               'und Situation im Organismus')
-    ])
-]
+# Verbindungen zum Response
+dot.edge('O_aff', 'R1', color='#555555')
+dot.edge('O_kog', 'R1', color='#555555')
+dot.edge('O_aff', 'R2', color='#555555')
+dot.edge('O_kog', 'R2', color='#555555')
 
-max_nodes = max(len(cluster[4]) for cluster in clusters)
+# Als SVG speichern (erzeugt 'sor_model.svg')
+output_filename = 'sor_model'
+dot.render(output_filename, cleanup=True)
 
-# Cluster erstellen
-for name, label, color, fillcolor, nodes in clusters:
-    create_cluster(dot, name, label, color, fillcolor, nodes, max_nodes
-                   )
-
-# Unsichtbare Kanten für vertikale Anordnung
-dot.edge('a1', 'b3'#, style='invis'
-         )
-dot.edge('b3', 'c2'#, style='invis'
-         )
-
-# Ausgabe
-display(dot)
-
-#Datei erzeugen 
-dot.format = 'svg'  # Format setzen
-dot.render(filename='SOR', cleanup=True)  # Erzeugt output.svg
-
+# In Jupyter/IPython anzeigen
+# display(SVG(filename=f'{output_filename}.svg'))
 ```
 
-![SOR-Modell](SOR.svg)
+
+![Das SOR-Modell](sor_model.svg)
