@@ -1,6 +1,6 @@
 # Effizienz auf Märkten
 
--   Unter den Bedingungen des vollkommenen Wettbewerbs führen Märzte zu Effizienz
+-   Unter den Bedingungen des vollkommenen Wettbewerbs führen Märkte zu Effizienz
 
 -   Bedingungen:
 
@@ -24,6 +24,81 @@ Gleiche Grenzraten der technischen Substitution: $$MRTS^{x_1}_{L, K}=MRTS^{x_2}_
 ## Effizienzbedingungen Abstimmung zwischen beiden Sphären
 
 Grenzrate der Subsitution entspricht Grenzrate der Transformation $$MRS^A_{x_1, x_2}=MRS^B_{x_1, x_2}=MRT_{x_1, x_2}$$
+
+## Ist das alles was Märkte und Preise können?
+
+```{python}
+#| include: false
+
+import graphviz
+# from IPython.display import display
+
+# Graphviz Digraph erstellen
+dot = graphviz.Digraph('Marktwirtschaft_System', format='svg')
+
+# Globale Attribute für ein professionelles Layout
+dot.attr(rankdir='TB', size='12,12')
+dot.attr('node', shape='box', style='filled,rounded', fontname='Helvetica', fontsize='10', margin='0.2,0.1')
+dot.attr('edge', fontname='Helvetica', fontsize='9', color='#4A5568', fontcolor='#2D3748', penwidth='1.2')
+
+# Subgraph 1: Fundament & Wissen
+with dot.subgraph(name='cluster_0') as c:
+    c.attr(label='Fundament: Dezentrale Marktordnung & Wissen', style='dashed', color='#CBD5E0', bgcolor='#F7FAFC', fontname='Helvetica-Bold', fontsize='12')
+    c.node('wissen', 'Dezentral verstreutes Wissen\n(Ressourcenknappheiten, Kosten, Nutzen)', fillcolor='#EBF8FF', color='#3182CE', fontcolor='#2B6CB0')
+
+# Subgraph 2: Preissystem
+with dot.subgraph(name='cluster_1') as c:
+    c.attr(label='Das Preissystem (Kommunikations- & Nervensystem)', style='solid', color='#BEE3F8', bgcolor='#EDF2F7', fontname='Helvetica-Bold', fontsize='12')
+    c.node('preise', 'Marktpreise / Preisveränderungen\n(Verdichtung von Informationen)', fillcolor='#BEE3F8', color='#3182CE', fontcolor='#1A365D', style='filled,bold,rounded')
+    c.node('signal_steigend', 'Signalfunktion:\nSteigender Preis = Höhere Knappheit', fillcolor='#EBF8FF', color='#4299E1')
+    c.node('anreiz_konsum', 'Anpassung Konsumenten:\nVerbrauch reduzieren / substituieren', fillcolor='#E2E8F0', color='#4A5568')
+    c.node('anreiz_prod', 'Anpassung Produzenten:\nAngebot ausweiten', fillcolor='#E2E8F0', color='#4A5568')
+    c.node('gewinn_verlust', 'Gewinn- & Verlustrechnung:\nAnzeige produktiver Ressourcennutzung', fillcolor='#E2E8F0', color='#4A5568')
+
+# Subgraph 3: Wettbewerb
+with dot.subgraph(name='cluster_2') as c:
+    c.attr(label='Der Wettbewerb (Dynamischer Prozess der Rivalität)', style='solid', color='#C6F6D5', bgcolor='#F0FFF4', fontname='Helvetica-Bold', fontsize='12')
+    c.node('entdeckung', 'Entdeckungsverfahren:\nSuche nach ungenutzten Tauschgelegenheiten & Arbitrage', fillcolor='#C6F6D5', color='#38A169', fontcolor='#22543D', style='filled,bold,rounded')
+    c.node('gewinnaussicht', 'Gewinnaussichten & Innovation:\nAnreiz für neue Konkurrenten', fillcolor='#E6FFFA', color='#319795')
+    c.node('ausrichtung', 'Ausrichtung an Kundenpräferenzen\n& Kostenminimierung', fillcolor='#E6FFFA', color='#319795')
+    c.node('machtbegrenzung', 'Begrenzung wirtsch. Macht\nAbbau von Monopolen & Handlungsfreiheit', fillcolor='#E6FFFA', color='#319795')
+
+# Subgraph 4: Ergebnis & Wohlfahrt
+with dot.subgraph(name='cluster_3') as c:
+    c.attr(label='Ergebnis: Dynamische Effizienz & Fortschritt', style='dashed', color='#FEFCBF', bgcolor='#FFFFF0', fontname='Helvetica-Bold', fontsize='12')
+    c.node('fortschritt', 'Dynamische Effizienz & Wohlfahrt:\nIntegrierte Nutzung verstreuten Wissens', fillcolor='#FEFCBF', color='#D69E2E', fontcolor='#744210', style='filled,bold,rounded')
+
+# Verbindungen (Kanten / Wirkungsketten)
+dot.edge('wissen', 'preise', label='wird verdichtet durch')
+dot.edge('wissen', 'entdeckung', label='wird erschlossen durch')
+
+dot.edge('preise', 'signal_steigend', label='sendet Signal')
+dot.edge('signal_steigend', 'anreiz_konsum')
+dot.edge('signal_steigend', 'anreiz_prod')
+dot.edge('preise', 'gewinn_verlust', label='steuert')
+
+dot.edge('entdeckung', 'preise', label='bildet & passt an', color='#2B6CB0', penwidth='2.0')
+dot.edge('entdeckung', 'gewinnaussicht')
+dot.edge('gewinnaussicht', 'ausrichtung', label='zwingt zu')
+dot.edge('gewinnaussicht', 'machtbegrenzung', label='führt zu')
+
+dot.edge('anreiz_prod', 'fortschritt')
+dot.edge('gewinn_verlust', 'fortschritt')
+dot.edge('ausrichtung', 'fortschritt')
+dot.edge('machtbegrenzung', 'fortschritt')
+dot.edge('fortschritt', 'wissen', label='Rückkopplung:\nneue Rahmenbedingungen', style='dashed', constraint='false')
+
+# 1. Als SVG-Datei speichern
+svg_filename = dot.render('marktwirtschaft_preise_wettbewerb', format='svg', cleanup=True)
+print(f"SVG Datei erfolgreich gespeichert unter: {svg_filename}")
+
+# 2. Direkt im Jupyter / IPython Notebook anzeigen
+# display(dot)
+```
+
+
+![Wettbewerb und Preise](marktwirtschaft_preise_wettbewerb.svg)
+
 
 ## Wirtschaftspsychologische Ergänzung
 

@@ -6,3 +6,5 @@
 /.quarto/
 
 Klausur/
+
+**/*.quarto_ipynb
