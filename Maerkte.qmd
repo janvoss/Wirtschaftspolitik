@@ -25,6 +25,148 @@ Gleiche Grenzraten der technischen Substitution: $$MRTS^{x_1}_{L, K}=MRTS^{x_2}_
 
 Grenzrate der Subsitution entspricht Grenzrate der Transformation $$MRS^A_{x_1, x_2}=MRS^B_{x_1, x_2}=MRT_{x_1, x_2}$$
 
+## Die beiden Hauptsätze der Wohlfahrtsökonomik
+
+***
+**Erster Hauptsatz der Wohlfahrtsökonomik**: 
+Unter der Annahme von vollständiger Konkurrenz ist jedes allgemeine Wettbewerbsgleichgewicht Pareto-effizient.
+
+
+**Zweiter Hauptsatz der Wohlfahrtsökonomik**: 
+Jede gewünschte Pareto-effiziente Allokation kann als Wettbewerbsgleichgewicht erreicht werden, vorausgesetzt, es werden vorab eine geeignete pauschale Umverteilung vorgenommen.
+
+***
+
+```{python}
+#| output: false
+
+import graphviz
+# from IPython.display import SVG, display
+
+# Erstellung des Graphviz-Digraphs
+dot = graphviz.Digraph(
+    name="Wohlfahrtsoekonomik",
+    comment="Erster und zweiter Hauptsatz der Wohlfahrtsökonomik",
+    format="svg",
+)
+
+# Globale Attribute für ein sauberes, modernes Layout
+dot.attr(
+    rankdir="TB",
+    splines="ortho",
+    nodesep="0.5",
+    ranksep="0.6",
+    fontname="DejaVu Sans, Arial, Helvetica, sans-serif",
+    fontsize="11",
+)
+
+# Standard-Knoten-Styling
+dot.attr(
+    "node",
+    shape="rectangle",
+    style="rounded,filled",
+    fillcolor="#F8F9FA",
+    color="#343A40",
+    penwidth="1.5",
+    fontname="DejaVu Sans, Arial, Helvetica, sans-serif",
+    fontsize="10",
+    margin="0.4,0.3",
+)
+
+dot.attr("edge", fontname="DejaVu Sans, Arial, Helvetica, sans-serif", fontsize="9", color="#495057", penwidth="1.2")
+
+# Header / Titel-Knoten
+dot.node(
+    "Title",
+    "Hauptsätze der Wohlfahrtsökonomik\n(Effizienz vs. Verteilung)",
+    shape="ellipse",
+    fillcolor="#212529",
+    fontcolor="#FFFFFF",
+    style="filled",
+    fontsize="12",
+)
+
+# ==========================================
+# 1. HAUPTSATZ (SUBGRAPH)
+# ==========================================
+with dot.subgraph(name="cluster_1h") as c:
+    c.attr(label="1. Hauptsatz: Markt als Effizienzmotor", style="dashed", color="#2B6CB0", bgcolor="#EDF2F7")
+
+    c.node(
+        "H1_Annahmen",
+        "Annahmen:\n• Vollständige Konkurrenz",
+        fillcolor="#EBF8FF",
+        color="#2B6CB0",
+    )
+    c.node(
+        "H1_Kern",
+        "Kernsatz:\nJedes Wettbewerbsgleichgewicht\nist Pareto-effizient.",
+        fillcolor="#BEE3F8",
+        color="#2B6CB0",
+    )
+    c.node(
+        "H1_Politik",
+        "Wirtschaftspolitik:\n• Dezentrale Marktsteuerung bevorzugt\n• Kein Staatseingriff bei funktionierendem Markt\n• Eingriffe nur bei Marktversagen",
+        fillcolor="#EBF8FF",
+        color="#2B6CB0",
+    )
+
+    c.edge("H1_Annahmen", "H1_Kern")
+    c.edge("H1_Kern", "H1_Politik")
+
+# ==========================================
+# 2. HAUPTSATZ (SUBGRAPH)
+# ==========================================
+with dot.subgraph(name="cluster_2h") as c:
+    c.attr(label="2. Hauptsatz: Trennung von Allokation & Verteilung", style="dashed", color="#2F855A", bgcolor="#F0FFF4")
+
+    c.node(
+        "H2_Annahmen",
+        "Annahmen:\n• Erfüllung der Annahmen des 1. Hauptsatzes\n• Existenz verzerrungsfreier Pauschaultransfers",
+        fillcolor="#F0FFF4",
+        color="#2F855A",
+    )
+    c.node(
+        "H2_Kern",
+        "Kernsatz:\n Jede Pareto-effiziente Allokation\nist als Gleichgewicht durch geeignete\nStartvermeidensverteilung realisierbar.",
+        fillcolor="#C6F6D5",
+        color="#2F855A",
+    )
+    c.node(
+        "H2_Politik",
+        "Wirtschaftspolitik:\n• Zweistufiger Ansatz: Erst umverteilen, dann Markt überlassen\n• Keine Eingriffe in relative Preise\n• Dilemma: Reale Steuern/Transfers sind meist verzerrend (Trade-off)",
+        fillcolor="#F0FFF4",
+        color="#2F855A",
+    )
+
+    c.edge("H2_Annahmen", "H2_Kern")
+    c.edge("H2_Kern", "H2_Politik")
+
+# Verbindungen vom Haupttitel zu den beiden Subgraphen
+dot.edge("Title", "H1_Annahmen")
+dot.edge("Title", "H2_Annahmen")
+
+# Querverbindung / Fazit
+dot.node(
+    "Fazit",
+    "Wirtschaftspolitisches Fazit:\nDer 1. Hauptsatz sichert die Größe des Kuchens (Effizienz).\nDer 2. Hauptsatz regelt das Aufteilen des Kuchens (Verteilung) via Lump-Sum Transfers.",
+    shape="note",
+    fillcolor="#FEFCBF",
+    color="#D69E2E",
+)
+
+dot.edge("H1_Politik", "Fazit", style="dotted", constraint="false")
+dot.edge("H2_Politik", "Fazit", style="dotted", constraint="false")
+
+# 1. Als SVG-Datei speichern (rendert 'wohlfahrtssoekonomik.svg')
+svg_filepath = dot.render(filename="wohlfahrtssoekonomik", cleanup=True)
+
+# 2. Ausgabe direkt in IPython / Jupyter Notebook / Shinylive
+# display(SVG(filename=svg_filepath))
+```
+
+![Die beiden Hauptsätze der Wohlfahrtsökonomik](wohlfahrtssoekonomik.svg)
+
 ## Ist das alles was Märkte und Preise können?
 
 ```{python}
