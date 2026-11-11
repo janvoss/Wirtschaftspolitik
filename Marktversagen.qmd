@@ -1,5 +1,110 @@
 # Marktversagen
 
+[Teaser Marktversagen](Marktversagen-Teaser.html)
+
+```{python}
+#| output: false
+
+import graphviz
+# from IPython.display import display, SVG
+
+# Digraph-Objekt erstellen
+dot = graphviz.Digraph(comment='Tatbestände des Marktversagens', format='svg')
+dot.attr(rankdir='TB', size='12,12', fontname='Arial')
+dot.attr('node', fontname='Arial', margin='0.15')
+
+# 1. Hauptknoten (Root)
+dot.node('Marktversagen', '''<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="2" CELLPADDING="6">
+<TR><TD><B><FONT POINT-SIZE="15" COLOR="#0D47A1">Marktversagen</FONT></B></TD></TR>
+<TR><TD><FONT POINT-SIZE="10" COLOR="#333333">Dezentraler Marktmechanismus verfehlt Pareto-Effizienz</FONT></TD></TR>
+</TABLE>>''', fillcolor='#BBDEFB', color='#1976D2', style='filled,rounded')
+
+# --- Kategorie 1: Güterarten ---
+dot.node('Gueter', '''<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="2" CELLPADDING="4">
+<TR><TD><B><FONT POINT-SIZE="12" COLOR="#1B5E20">1. Öffentliche &amp; Allmendegüter</FONT></B></TD></TR>
+</TABLE>>''', fillcolor='#C8E6C9', color='#388E3C', style='filled,rounded')
+
+dot.node('PublGueter', '''<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="2" CELLPADDING="4">
+<TR><TD><B>Öffentliche Güter</B></TD></TR>
+<TR><TD><FONT POINT-SIZE="9">• Keine Konsumrivalität<br/>• Kein Ausschluss<br/>➔ Trittbrettfahrer / Unterversorgung</FONT></TD></TR>
+</TABLE>>''', fillcolor='#E8F5E9', color='#4CAF50', style='filled,rounded')
+
+dot.node('Allmende', '''<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="2" CELLPADDING="4">
+<TR><TD><B>Allmendegüter</B></TD></TR>
+<TR><TD><FONT POINT-SIZE="9">• Konsumrivalität + Kein Ausschluss<br/>➔ Übernutzung / Tragik der Allmende</FONT></TD></TR>
+</TABLE>>''', fillcolor='#E8F5E9', color='#4CAF50', style='filled,rounded')
+
+# --- Kategorie 2: Externe Effekte ---
+dot.node('Externe', '''<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="2" CELLPADDING="4">
+<TR><TD><B><FONT POINT-SIZE="12" COLOR="#E65100">2. Technologische externe Effekte</FONT></B></TD></TR>
+</TABLE>>''', fillcolor='#FFE0B2', color='#F57C00', style='filled,rounded')
+
+dot.node('NegExtern', '''<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="2" CELLPADDING="4">
+<TR><TD><B>Negative Externalitäten</B></TD></TR>
+<TR><TD><FONT POINT-SIZE="9">• Private Kosten &lt; Gesellschaftliche Kosten<br/>➔ Volkswirtschaftliche Überproduktion</FONT></TD></TR>
+</TABLE>>''', fillcolor='#FFF3E0', color='#FF9800', style='filled,rounded')
+
+dot.node('PosExtern', '''<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="2" CELLPADDING="4">
+<TR><TD><B>Positive Externalitäten</B></TD></TR>
+<TR><TD><FONT POINT-SIZE="9">• Privater Nutzen &lt; Gesellschaftlicher Nutzen<br/>➔ Marktangebot zu gering</FONT></TD></TR>
+</TABLE>>''', fillcolor='#FFF3E0', color='#FF9800', style='filled,rounded')
+
+# --- Kategorie 3: Informationsasymmetrien ---
+dot.node('Info', '''<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="2" CELLPADDING="4">
+<TR><TD><B><FONT POINT-SIZE="12" COLOR="#4A148C">3. Informationsasymmetrien</FONT></B></TD></TR>
+</TABLE>>''', fillcolor='#E1BEE7', color='#7B1FA2', style='filled,rounded')
+
+dot.node('Adverse', '''<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="2" CELLPADDING="4">
+<TR><TD><B>Adverse Selektion (Ex-ante)</B></TD></TR>
+<TR><TD><FONT POINT-SIZE="9">• Versteckte Eigenschaften vor Vertrag<br/>➔ Verdrängung hochwertiger Qualitäten</FONT></TD></TR>
+</TABLE>>''', fillcolor='#F3E5F5', color='#9C27B0', style='filled,rounded')
+
+dot.node('Moral', '''<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="2" CELLPADDING="4">
+<TR><TD><B>Moral Hazard (Ex-post)</B></TD></TR>
+<TR><TD><FONT POINT-SIZE="9">• Unbeobachtbares Verhalten nach Vertrag<br/>➔ Riskantere Entscheidungen</FONT></TD></TR>
+</TABLE>>''', fillcolor='#F3E5F5', color='#9C27B0', style='filled,rounded')
+
+# --- Kategorie 4: Marktmacht & Monopole ---
+dot.node('Macht', '''<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="2" CELLPADDING="4">
+<TR><TD><B><FONT POINT-SIZE="12" COLOR="#B71C1C">4. Marktmacht &amp; Natürliche Monopole</FONT></B></TD></TR>
+</TABLE>>''', fillcolor='#FFCDD2', color='#D32F2F', style='filled,rounded')
+
+dot.node('NatMonopol', '''<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="2" CELLPADDING="4">
+<TR><TD><B>Natürliches Monopol</B></TD></TR>
+<TR><TD><FONT POINT-SIZE="9">• Subadditive &amp; versunkene Kosten<br/>➔ X-Ineffizienzen &amp; Wohlfahrtsverlust</FONT></TD></TR>
+</TABLE>>''', fillcolor='#FFEBEE', color='#F44336', style='filled,rounded')
+
+# Verbindungen (Edges) vom Wurzelknoten zu den Hauptkategorien
+dot.edge('Marktversagen', 'Gueter', color='#1976D2', penwidth='1.5')
+dot.edge('Marktversagen', 'Externe', color='#1976D2', penwidth='1.5')
+dot.edge('Marktversagen', 'Info', color='#1976D2', penwidth='1.5')
+dot.edge('Marktversagen', 'Macht', color='#1976D2', penwidth='1.5')
+
+# Verbindungen von den Hauptkategorien zu den Unterpunkten
+dot.edge('Gueter', 'PublGueter', color='#388E3C')
+dot.edge('Gueter', 'Allmende', color='#388E3C')
+
+dot.edge('Externe', 'NegExtern', color='#F57C00')
+dot.edge('Externe', 'PosExtern', color='#F57C00')
+
+dot.edge('Info', 'Adverse', color='#7B1FA2')
+dot.edge('Info', 'Moral', color='#7B1FA2')
+
+# dot.edge('Macht', 'Preissetzung', color='#D32F2F')
+dot.edge('Macht', 'NatMonopol', color='#D32F2F')
+
+# 1. Als SVG-Datei auf der Festplatte speichern
+output_filename = "marktversagen_uebersicht"
+dot.render(output_filename, format="svg", cleanup=True)
+print(f"Diagramm erfolgreich als '{output_filename}.svg' gespeichert.")
+
+# 2. Direkt in IPython / Jupyter Notebook anzeigen
+# display(SVG(filename=f"{output_filename}.svg"))
+```
+
+![Übersicht Marktversagenstatbestände](marktversagen_uebersicht.svg)
+
+
 ## Externe Effekte
 
 $\rightarrow$ Umweltökonomik

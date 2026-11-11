@@ -1,0 +1,39 @@
+---
+title: "Was erwartet uns heute?"
+project:
+  output-dir: docs
+format:
+  revealjs:
+    self-contained: true
+    center: true
+    css: styles.css
+---
+
+<style>
+.reveal section {
+  text-align: center;
+  font-size: 2em;
+}
+</style>
+
+## 
+
+Du Marktversager!
+
+---
+
+##
+
+12,1% der Märkte versagen.
+
+---
+
+## 
+
+Schreib dich nicht ab!
+
+---
+
+## 
+
+Lass dich korrigieren.

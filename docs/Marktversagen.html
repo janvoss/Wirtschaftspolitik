@@ -2,17 +2,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>5&nbsp; Marktversagen – Wirtschaftspolitik und Wirtschaftspsychologie</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -93,10 +99,10 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-c599ca7844cfd5ff950332d51a54001f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-174fd6913be23cc9900c0b0ca550f0a9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -126,7 +132,7 @@ div.csl-indent {
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -139,7 +145,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -322,6 +328,119 @@ window.Quarto = {
 </header>
 
 
+<p><a href="Marktversagen-Teaser.html">Teaser Marktversagen</a></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> graphviz</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># from IPython.display import display, SVG</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Digraph-Objekt erstellen</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>dot <span class="op">=</span> graphviz.Digraph(comment<span class="op">=</span><span class="st">'Tatbestände des Marktversagens'</span>, <span class="bu">format</span><span class="op">=</span><span class="st">'svg'</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>dot.attr(rankdir<span class="op">=</span><span class="st">'TB'</span>, size<span class="op">=</span><span class="st">'12,12'</span>, fontname<span class="op">=</span><span class="st">'Arial'</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>dot.attr(<span class="st">'node'</span>, fontname<span class="op">=</span><span class="st">'Arial'</span>, margin<span class="op">=</span><span class="st">'0.15'</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Hauptknoten (Root)</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">'Marktversagen'</span>, <span class="st">'''&lt;&lt;TABLE BORDER="0" CELLBORDER="0" CELLSPACING="2" CELLPADDING="6"&gt;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;TR&gt;&lt;TD&gt;&lt;B&gt;&lt;FONT POINT-SIZE="15" COLOR="#0D47A1"&gt;Marktversagen&lt;/FONT&gt;&lt;/B&gt;&lt;/TD&gt;&lt;/TR&gt;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;TR&gt;&lt;TD&gt;&lt;FONT POINT-SIZE="10" COLOR="#333333"&gt;Dezentraler Marktmechanismus verfehlt Pareto-Effizienz&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;/TABLE&gt;&gt;'''</span>, fillcolor<span class="op">=</span><span class="st">'#BBDEFB'</span>, color<span class="op">=</span><span class="st">'#1976D2'</span>, style<span class="op">=</span><span class="st">'filled,rounded'</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Kategorie 1: Güterarten ---</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">'Gueter'</span>, <span class="st">'''&lt;&lt;TABLE BORDER="0" CELLBORDER="0" CELLSPACING="2" CELLPADDING="4"&gt;</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;TR&gt;&lt;TD&gt;&lt;B&gt;&lt;FONT POINT-SIZE="12" COLOR="#1B5E20"&gt;1. Öffentliche &amp;amp; Allmendegüter&lt;/FONT&gt;&lt;/B&gt;&lt;/TD&gt;&lt;/TR&gt;</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;/TABLE&gt;&gt;'''</span>, fillcolor<span class="op">=</span><span class="st">'#C8E6C9'</span>, color<span class="op">=</span><span class="st">'#388E3C'</span>, style<span class="op">=</span><span class="st">'filled,rounded'</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">'PublGueter'</span>, <span class="st">'''&lt;&lt;TABLE BORDER="0" CELLBORDER="0" CELLSPACING="2" CELLPADDING="4"&gt;</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;TR&gt;&lt;TD&gt;&lt;B&gt;Öffentliche Güter&lt;/B&gt;&lt;/TD&gt;&lt;/TR&gt;</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;TR&gt;&lt;TD&gt;&lt;FONT POINT-SIZE="9"&gt;• Keine Konsumrivalität&lt;br/&gt;• Kein Ausschluss&lt;br/&gt;➔ Trittbrettfahrer / Unterversorgung&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;/TABLE&gt;&gt;'''</span>, fillcolor<span class="op">=</span><span class="st">'#E8F5E9'</span>, color<span class="op">=</span><span class="st">'#4CAF50'</span>, style<span class="op">=</span><span class="st">'filled,rounded'</span>)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">'Allmende'</span>, <span class="st">'''&lt;&lt;TABLE BORDER="0" CELLBORDER="0" CELLSPACING="2" CELLPADDING="4"&gt;</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;TR&gt;&lt;TD&gt;&lt;B&gt;Allmendegüter&lt;/B&gt;&lt;/TD&gt;&lt;/TR&gt;</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;TR&gt;&lt;TD&gt;&lt;FONT POINT-SIZE="9"&gt;• Konsumrivalität + Kein Ausschluss&lt;br/&gt;➔ Übernutzung / Tragik der Allmende&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;/TABLE&gt;&gt;'''</span>, fillcolor<span class="op">=</span><span class="st">'#E8F5E9'</span>, color<span class="op">=</span><span class="st">'#4CAF50'</span>, style<span class="op">=</span><span class="st">'filled,rounded'</span>)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Kategorie 2: Externe Effekte ---</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">'Externe'</span>, <span class="st">'''&lt;&lt;TABLE BORDER="0" CELLBORDER="0" CELLSPACING="2" CELLPADDING="4"&gt;</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;TR&gt;&lt;TD&gt;&lt;B&gt;&lt;FONT POINT-SIZE="12" COLOR="#E65100"&gt;2. Technologische externe Effekte&lt;/FONT&gt;&lt;/B&gt;&lt;/TD&gt;&lt;/TR&gt;</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;/TABLE&gt;&gt;'''</span>, fillcolor<span class="op">=</span><span class="st">'#FFE0B2'</span>, color<span class="op">=</span><span class="st">'#F57C00'</span>, style<span class="op">=</span><span class="st">'filled,rounded'</span>)</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">'NegExtern'</span>, <span class="st">'''&lt;&lt;TABLE BORDER="0" CELLBORDER="0" CELLSPACING="2" CELLPADDING="4"&gt;</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;TR&gt;&lt;TD&gt;&lt;B&gt;Negative Externalitäten&lt;/B&gt;&lt;/TD&gt;&lt;/TR&gt;</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;TR&gt;&lt;TD&gt;&lt;FONT POINT-SIZE="9"&gt;• Private Kosten &amp;lt; Gesellschaftliche Kosten&lt;br/&gt;➔ Volkswirtschaftliche Überproduktion&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;/TABLE&gt;&gt;'''</span>, fillcolor<span class="op">=</span><span class="st">'#FFF3E0'</span>, color<span class="op">=</span><span class="st">'#FF9800'</span>, style<span class="op">=</span><span class="st">'filled,rounded'</span>)</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">'PosExtern'</span>, <span class="st">'''&lt;&lt;TABLE BORDER="0" CELLBORDER="0" CELLSPACING="2" CELLPADDING="4"&gt;</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;TR&gt;&lt;TD&gt;&lt;B&gt;Positive Externalitäten&lt;/B&gt;&lt;/TD&gt;&lt;/TR&gt;</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;TR&gt;&lt;TD&gt;&lt;FONT POINT-SIZE="9"&gt;• Privater Nutzen &amp;lt; Gesellschaftlicher Nutzen&lt;br/&gt;➔ Marktangebot zu gering&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;/TABLE&gt;&gt;'''</span>, fillcolor<span class="op">=</span><span class="st">'#FFF3E0'</span>, color<span class="op">=</span><span class="st">'#FF9800'</span>, style<span class="op">=</span><span class="st">'filled,rounded'</span>)</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Kategorie 3: Informationsasymmetrien ---</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">'Info'</span>, <span class="st">'''&lt;&lt;TABLE BORDER="0" CELLBORDER="0" CELLSPACING="2" CELLPADDING="4"&gt;</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;TR&gt;&lt;TD&gt;&lt;B&gt;&lt;FONT POINT-SIZE="12" COLOR="#4A148C"&gt;3. Informationsasymmetrien&lt;/FONT&gt;&lt;/B&gt;&lt;/TD&gt;&lt;/TR&gt;</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;/TABLE&gt;&gt;'''</span>, fillcolor<span class="op">=</span><span class="st">'#E1BEE7'</span>, color<span class="op">=</span><span class="st">'#7B1FA2'</span>, style<span class="op">=</span><span class="st">'filled,rounded'</span>)</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">'Adverse'</span>, <span class="st">'''&lt;&lt;TABLE BORDER="0" CELLBORDER="0" CELLSPACING="2" CELLPADDING="4"&gt;</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;TR&gt;&lt;TD&gt;&lt;B&gt;Adverse Selektion (Ex-ante)&lt;/B&gt;&lt;/TD&gt;&lt;/TR&gt;</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;TR&gt;&lt;TD&gt;&lt;FONT POINT-SIZE="9"&gt;• Versteckte Eigenschaften vor Vertrag&lt;br/&gt;➔ Verdrängung hochwertiger Qualitäten&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;/TABLE&gt;&gt;'''</span>, fillcolor<span class="op">=</span><span class="st">'#F3E5F5'</span>, color<span class="op">=</span><span class="st">'#9C27B0'</span>, style<span class="op">=</span><span class="st">'filled,rounded'</span>)</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">'Moral'</span>, <span class="st">'''&lt;&lt;TABLE BORDER="0" CELLBORDER="0" CELLSPACING="2" CELLPADDING="4"&gt;</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;TR&gt;&lt;TD&gt;&lt;B&gt;Moral Hazard (Ex-post)&lt;/B&gt;&lt;/TD&gt;&lt;/TR&gt;</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;TR&gt;&lt;TD&gt;&lt;FONT POINT-SIZE="9"&gt;• Unbeobachtbares Verhalten nach Vertrag&lt;br/&gt;➔ Riskantere Entscheidungen&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;/TABLE&gt;&gt;'''</span>, fillcolor<span class="op">=</span><span class="st">'#F3E5F5'</span>, color<span class="op">=</span><span class="st">'#9C27B0'</span>, style<span class="op">=</span><span class="st">'filled,rounded'</span>)</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Kategorie 4: Marktmacht &amp; Monopole ---</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">'Macht'</span>, <span class="st">'''&lt;&lt;TABLE BORDER="0" CELLBORDER="0" CELLSPACING="2" CELLPADDING="4"&gt;</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;TR&gt;&lt;TD&gt;&lt;B&gt;&lt;FONT POINT-SIZE="12" COLOR="#B71C1C"&gt;4. Marktmacht &amp;amp; Natürliche Monopole&lt;/FONT&gt;&lt;/B&gt;&lt;/TD&gt;&lt;/TR&gt;</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;/TABLE&gt;&gt;'''</span>, fillcolor<span class="op">=</span><span class="st">'#FFCDD2'</span>, color<span class="op">=</span><span class="st">'#D32F2F'</span>, style<span class="op">=</span><span class="st">'filled,rounded'</span>)</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>dot.node(<span class="st">'NatMonopol'</span>, <span class="st">'''&lt;&lt;TABLE BORDER="0" CELLBORDER="0" CELLSPACING="2" CELLPADDING="4"&gt;</span></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;TR&gt;&lt;TD&gt;&lt;B&gt;Natürliches Monopol&lt;/B&gt;&lt;/TD&gt;&lt;/TR&gt;</span></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;TR&gt;&lt;TD&gt;&lt;FONT POINT-SIZE="9"&gt;• Subadditive &amp;amp; versunkene Kosten&lt;br/&gt;➔ X-Ineffizienzen &amp;amp; Wohlfahrtsverlust&lt;/FONT&gt;&lt;/TD&gt;&lt;/TR&gt;</span></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;/TABLE&gt;&gt;'''</span>, fillcolor<span class="op">=</span><span class="st">'#FFEBEE'</span>, color<span class="op">=</span><span class="st">'#F44336'</span>, style<span class="op">=</span><span class="st">'filled,rounded'</span>)</span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a><span class="co"># Verbindungen (Edges) vom Wurzelknoten zu den Hauptkategorien</span></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">'Marktversagen'</span>, <span class="st">'Gueter'</span>, color<span class="op">=</span><span class="st">'#1976D2'</span>, penwidth<span class="op">=</span><span class="st">'1.5'</span>)</span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">'Marktversagen'</span>, <span class="st">'Externe'</span>, color<span class="op">=</span><span class="st">'#1976D2'</span>, penwidth<span class="op">=</span><span class="st">'1.5'</span>)</span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">'Marktversagen'</span>, <span class="st">'Info'</span>, color<span class="op">=</span><span class="st">'#1976D2'</span>, penwidth<span class="op">=</span><span class="st">'1.5'</span>)</span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">'Marktversagen'</span>, <span class="st">'Macht'</span>, color<span class="op">=</span><span class="st">'#1976D2'</span>, penwidth<span class="op">=</span><span class="st">'1.5'</span>)</span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="co"># Verbindungen von den Hauptkategorien zu den Unterpunkten</span></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">'Gueter'</span>, <span class="st">'PublGueter'</span>, color<span class="op">=</span><span class="st">'#388E3C'</span>)</span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">'Gueter'</span>, <span class="st">'Allmende'</span>, color<span class="op">=</span><span class="st">'#388E3C'</span>)</span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">'Externe'</span>, <span class="st">'NegExtern'</span>, color<span class="op">=</span><span class="st">'#F57C00'</span>)</span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">'Externe'</span>, <span class="st">'PosExtern'</span>, color<span class="op">=</span><span class="st">'#F57C00'</span>)</span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">'Info'</span>, <span class="st">'Adverse'</span>, color<span class="op">=</span><span class="st">'#7B1FA2'</span>)</span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">'Info'</span>, <span class="st">'Moral'</span>, color<span class="op">=</span><span class="st">'#7B1FA2'</span>)</span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a><span class="co"># dot.edge('Macht', 'Preissetzung', color='#D32F2F')</span></span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>dot.edge(<span class="st">'Macht'</span>, <span class="st">'NatMonopol'</span>, color<span class="op">=</span><span class="st">'#D32F2F'</span>)</span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Als SVG-Datei auf der Festplatte speichern</span></span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>output_filename <span class="op">=</span> <span class="st">"marktversagen_uebersicht"</span></span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>dot.render(output_filename, <span class="bu">format</span><span class="op">=</span><span class="st">"svg"</span>, cleanup<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Diagramm erfolgreich als '</span><span class="sc">{</span>output_filename<span class="sc">}</span><span class="ss">.svg' gespeichert."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Direkt in IPython / Jupyter Notebook anzeigen</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># display(SVG(filename=f"{output_filename}.svg"))</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="marktversagen_uebersicht.svg" class="img-fluid figure-img"></p>
+<figcaption>Übersicht Marktversagenstatbestände</figcaption>
+</figure>
+</div>
 <section id="externe-effekte" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="externe-effekte"><span class="header-section-number">5.1</span> Externe Effekte</h2>
 <p><span class="math inline">\(\rightarrow\)</span> Umweltökonomik</p>
@@ -341,120 +460,120 @@ window.Quarto = {
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bibliotheken laden</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggtext)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Funktionen definieren</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">5</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>demand <span class="ot">&lt;-</span> <span class="cf">function</span>(x) (x <span class="sc">-</span> <span class="dv">8</span>)<span class="sc">^</span><span class="dv">2-5</span><span class="sc">*</span>x</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>supply <span class="ot">&lt;-</span> <span class="cf">function</span>(x) x<span class="sc">^</span><span class="fl">2.5</span> <span class="sc">+</span> <span class="fl">2.5</span><span class="sc">*</span>x <span class="sc">+</span> <span class="dv">8</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">#t &lt;-10</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>supply_ext <span class="ot">&lt;-</span> <span class="cf">function</span>(x) x<span class="sc">^</span><span class="fl">2.5</span> <span class="sc">+</span> <span class="fl">7.5</span><span class="sc">*</span>x <span class="sc">+</span> <span class="dv">8</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">#labels &lt;- c("Nachfrage", "Angebot")</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">#Gleichgewichtsmengen</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>q <span class="ot">&lt;-</span> <span class="fu">uniroot</span>(<span class="cf">function</span>(x) <span class="fu">demand</span>(x) <span class="sc">-</span> <span class="fu">supply</span>(x), <span class="fu">range</span>(x))<span class="sc">$</span>root</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>q_t <span class="ot">&lt;-</span> <span class="fu">uniroot</span>(<span class="cf">function</span>(x) <span class="fu">demand</span>(x) <span class="sc">-</span> <span class="fu">supply_ext</span>(x), <span class="fu">range</span>(x))<span class="sc">$</span>root</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co">#Gleichgewichtspreise</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">supply</span>(q)</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>p_t <span class="ot">&lt;-</span> <span class="fu">supply_ext</span>(q_t)</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>p_ext <span class="ot">&lt;-</span> <span class="fu">supply_ext</span>(q)</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="st">"x^t"</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Angebotsfunktion mit Steuer</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">supply_ext</span>(q_t) <span class="sc">-</span> <span class="fu">supply</span>(q_t)</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>supply_t <span class="ot">&lt;-</span> <span class="cf">function</span>(x) x<span class="sc">^</span><span class="fl">2.5</span> <span class="sc">+</span> <span class="fl">2.5</span><span class="sc">*</span>x <span class="sc">+</span> <span class="dv">8</span> <span class="sc">+</span> t</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Konsumenten- und Produzentenrente</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, q, <span class="fl">0.01</span>)</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>z_t <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, q_t, <span class="fl">0.01</span>)</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>z_wfl <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, q, <span class="fl">0.01</span>)</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Chart</span></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>chart <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="st">"Nachfrage"</span>), <span class="at">fun =</span> demand, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">3.5</span>))<span class="sc">+</span></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom =</span> <span class="st">"text"</span>, <span class="at">x=</span><span class="fl">3.5</span>, <span class="at">y=</span><span class="fu">demand</span>(<span class="fl">3.5</span>), <span class="at">hjust=</span><span class="sc">-</span><span class="fl">0.1</span>, <span class="at">label=</span><span class="st">"D"</span>,<span class="at">color =</span> <span class="st">"grey30"</span>)<span class="sc">+</span></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="st">"Private Grenzkosten"</span>), <span class="at">fun =</span> supply, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">3.5</span>))<span class="sc">+</span></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom =</span> <span class="st">"text"</span>, <span class="at">x=</span><span class="fl">3.5</span>, <span class="at">y=</span><span class="fu">supply</span>(<span class="fl">3.5</span>), <span class="at">hjust=</span><span class="sc">-</span><span class="fl">0.1</span>, <span class="at">label=</span><span class="fu">expression</span>(<span class="st">"S=MC"</span>[pr]), <span class="at">color =</span> <span class="st">"grey30"</span>)<span class="sc">+</span> </span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"point"</span>, <span class="at">x =</span> q, <span class="at">y =</span> p, <span class="at">color =</span> <span class="st">"grey30"</span>)<span class="sc">+</span></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> q, <span class="at">xend =</span> q, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">yend =</span> p,</span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>           <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">color =</span> <span class="st">"grey30"</span>) <span class="sc">+</span></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> <span class="dv">0</span>, <span class="at">xend =</span> q, <span class="at">y =</span> p, <span class="at">yend =</span> p,</span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>           <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">color =</span> <span class="st">"grey30"</span>)<span class="sc">+</span></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"point"</span>, <span class="at">x =</span> q, <span class="at">y =</span> p_ext, <span class="at">color =</span> <span class="st">"grey30"</span>)<span class="sc">+</span></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">x =</span> z, <span class="at">ymin =</span> <span class="fu">supply</span>(z), <span class="at">ymax =</span> p,</span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>                  <span class="at">fill =</span> <span class="st">"Produzentenrente"</span>), <span class="at">alpha =</span> <span class="fl">0.25</span>) <span class="sc">+</span></span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="st">"Soziale Grenzkosten"</span>), <span class="at">fun =</span> supply_ext, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">3.5</span>))<span class="sc">+</span></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom =</span> <span class="st">"text"</span>, <span class="at">x=</span><span class="fl">3.5</span>, <span class="at">y=</span><span class="fu">supply_ext</span>(<span class="fl">3.5</span>)<span class="sc">+</span>.<span class="dv">5</span>, <span class="at">hjust=</span><span class="fl">0.8</span>, <span class="at">label=</span><span class="fu">expression</span>(<span class="st">"MC"</span>[pr]<span class="sc">~+</span>MC[ext]),<span class="at">color =</span> <span class="st">"grey30"</span>)<span class="sc">+</span></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"point"</span>, <span class="at">x =</span> q_t, <span class="at">y =</span> p_t, <span class="at">color =</span> <span class="st">"grey30"</span>)<span class="sc">+</span></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> q_t, <span class="at">xend =</span> q_t, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">yend =</span> p_t,</span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>           <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">color =</span> <span class="st">"grey30"</span>) <span class="sc">+</span></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> <span class="dv">0</span>, <span class="at">xend =</span> q_t, <span class="at">y =</span> p_t, <span class="at">yend =</span> p_t,</span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>           <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">color =</span> <span class="st">"grey30"</span>)<span class="sc">+</span></span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>  <span class="co"># annotate("text", x=1, y=16, label="PR", color="grey30")+</span></span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Preis abzüglich steuer</span></span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>  <span class="co"># annotate("segment", x = 0, xend = q_t, y = p_t-t, yend = p_t-t,</span></span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>  <span class="co">#        linetype = "dashed", color = "grey30")+</span></span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">x =</span> z, <span class="at">ymin =</span> p, <span class="at">ymax =</span> <span class="fu">demand</span>(z),</span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>                  <span class="at">fill =</span> <span class="st">"Konsumentenrente"</span>), <span class="at">alpha =</span> <span class="fl">0.25</span>)<span class="sc">+</span></span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>  <span class="co"># geom_ribbon(aes(x = z_t, ymin = p_t-t, ymax = p_t,</span></span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>  <span class="co">#                fill = "Steuereinnahmen"), alpha = 0.55)+</span></span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>  <span class="co"># geom_ribbon(aes(x = z_wfl, ymin = supply(z_wfl), ymax = demand(z_wfl),</span></span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>  <span class="co">#                fill = "Wohlfahrtsverlust"), alpha = 0.55)+</span></span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>  <span class="co">#  annotate("text", x=1, y=28, label="KR", color="grey30")+</span></span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Soziale Kosten</span></span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">x =</span> z_wfl, <span class="at">ymin =</span> <span class="fu">supply</span>(z_wfl), <span class="at">ymax =</span> <span class="fu">supply_ext</span>(z_wfl),</span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>                  <span class="at">fill =</span> <span class="st">"Externe Kosten"</span>), <span class="at">alpha =</span> <span class="fl">0.55</span>)<span class="sc">+</span></span>
-<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>  <span class="co"># annotate("text", x=q+1, y=p_t, label="Wohlfahrtsverlust",color = "grey30")+</span></span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
-<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Angebotsfunktion mit Pigou-Steuer</span></span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
-<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="st">"Private Grenzkosten + Steuer"</span>), <span class="at">fun =</span> supply_t, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">3.5</span>))<span class="sc">+</span></span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom =</span> <span class="st">"text"</span>, <span class="at">x=</span><span class="fl">3.5</span>, <span class="at">y=</span><span class="fu">supply_t</span>(<span class="fl">3.5</span>), <span class="at">hjust=</span><span class="sc">-</span><span class="fl">0.1</span>, <span class="at">label=</span><span class="fu">expression</span>(MC[pr]<span class="sc">+</span>t),<span class="at">color =</span> <span class="st">"grey30"</span>)<span class="sc">+</span></span>
-<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Steuereinnahmen</span></span>
-<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">x =</span> z_t, <span class="at">ymin =</span> p_t<span class="sc">-</span>t, <span class="at">ymax =</span> p_t,</span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>                  <span class="at">fill =</span> <span class="st">"Steuereinnahmen"</span>), <span class="at">alpha =</span> <span class="fl">0.55</span>)<span class="sc">+</span></span>
-<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
-<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">"green"</span>, <span class="st">"orange"</span>, <span class="st">"blue"</span>, <span class="st">"red"</span>))<span class="sc">+</span></span>
-<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"green"</span>, <span class="st">"orange"</span>, <span class="st">"blue"</span>))<span class="sc">+</span></span>
-<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), </span>
-<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>,q_t,q), <span class="at">labels =</span> <span class="fu">expression</span>(<span class="dv">0</span>, <span class="st">"x*"</span>,<span class="st">"x"</span><span class="sc">^</span><span class="dv">0</span>),</span>
-<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>                     <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">4</span>)) <span class="sc">+</span></span>
-<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), </span>
-<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks =</span> <span class="fu">c</span>(p, p_t), <span class="at">labels =</span> <span class="fu">expression</span>(<span class="st">"p"</span><span class="sc">^</span><span class="dv">0</span>, <span class="st">"p*"</span>),</span>
-<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a>                     <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">70</span>)) <span class="sc">+</span></span>
-<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
-<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a>        <span class="co"># legend.position = "none", #Damit Legende unterdrückt.</span></span>
-<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a>        <span class="co">#axis.breaks.x=element_markdown()</span></span>
-<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.line =</span> <span class="fu">element_line</span>(<span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">type=</span><span class="st">'closed'</span>, <span class="at">length =</span> <span class="fu">unit</span>(<span class="dv">5</span>,<span class="st">'pt'</span>))))<span class="sc">+</span></span>
-<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Menge"</span>, <span class="at">y =</span> <span class="st">"Preis"</span>, </span>
-<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a>  <span class="at">color =</span> <span class="cn">NULL</span>,</span>
-<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill =</span> <span class="cn">NULL</span>,</span>
-<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a>  <span class="at">title=</span><span class="st">"Die Pigou-Steuer bei einem negativen externen Effekt"</span>)</span>
-<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a>chart</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bibliotheken laden</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggtext)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Funktionen definieren</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>demand <span class="ot">&lt;-</span> <span class="cf">function</span>(x) (x <span class="sc">-</span> <span class="dv">8</span>)<span class="sc">^</span><span class="dv">2-5</span><span class="sc">*</span>x</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>supply <span class="ot">&lt;-</span> <span class="cf">function</span>(x) x<span class="sc">^</span><span class="fl">2.5</span> <span class="sc">+</span> <span class="fl">2.5</span><span class="sc">*</span>x <span class="sc">+</span> <span class="dv">8</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">#t &lt;-10</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>supply_ext <span class="ot">&lt;-</span> <span class="cf">function</span>(x) x<span class="sc">^</span><span class="fl">2.5</span> <span class="sc">+</span> <span class="fl">7.5</span><span class="sc">*</span>x <span class="sc">+</span> <span class="dv">8</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">#labels &lt;- c("Nachfrage", "Angebot")</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co">#Gleichgewichtsmengen</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>q <span class="ot">&lt;-</span> <span class="fu">uniroot</span>(<span class="cf">function</span>(x) <span class="fu">demand</span>(x) <span class="sc">-</span> <span class="fu">supply</span>(x), <span class="fu">range</span>(x))<span class="sc">$</span>root</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>q_t <span class="ot">&lt;-</span> <span class="fu">uniroot</span>(<span class="cf">function</span>(x) <span class="fu">demand</span>(x) <span class="sc">-</span> <span class="fu">supply_ext</span>(x), <span class="fu">range</span>(x))<span class="sc">$</span>root</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co">#Gleichgewichtspreise</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">supply</span>(q)</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>p_t <span class="ot">&lt;-</span> <span class="fu">supply_ext</span>(q_t)</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>p_ext <span class="ot">&lt;-</span> <span class="fu">supply_ext</span>(q)</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="st">"x^t"</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Angebotsfunktion mit Steuer</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">supply_ext</span>(q_t) <span class="sc">-</span> <span class="fu">supply</span>(q_t)</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>supply_t <span class="ot">&lt;-</span> <span class="cf">function</span>(x) x<span class="sc">^</span><span class="fl">2.5</span> <span class="sc">+</span> <span class="fl">2.5</span><span class="sc">*</span>x <span class="sc">+</span> <span class="dv">8</span> <span class="sc">+</span> t</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Konsumenten- und Produzentenrente</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, q, <span class="fl">0.01</span>)</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>z_t <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, q_t, <span class="fl">0.01</span>)</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>z_wfl <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, q, <span class="fl">0.01</span>)</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Chart</span></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>chart <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="st">"Nachfrage"</span>), <span class="at">fun =</span> demand, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">3.5</span>))<span class="sc">+</span></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom =</span> <span class="st">"text"</span>, <span class="at">x=</span><span class="fl">3.5</span>, <span class="at">y=</span><span class="fu">demand</span>(<span class="fl">3.5</span>), <span class="at">hjust=</span><span class="sc">-</span><span class="fl">0.1</span>, <span class="at">label=</span><span class="st">"D"</span>,<span class="at">color =</span> <span class="st">"grey30"</span>)<span class="sc">+</span></span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="st">"Private Grenzkosten"</span>), <span class="at">fun =</span> supply, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">3.5</span>))<span class="sc">+</span></span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom =</span> <span class="st">"text"</span>, <span class="at">x=</span><span class="fl">3.5</span>, <span class="at">y=</span><span class="fu">supply</span>(<span class="fl">3.5</span>), <span class="at">hjust=</span><span class="sc">-</span><span class="fl">0.1</span>, <span class="at">label=</span><span class="fu">expression</span>(<span class="st">"S=MC"</span>[pr]), <span class="at">color =</span> <span class="st">"grey30"</span>)<span class="sc">+</span> </span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"point"</span>, <span class="at">x =</span> q, <span class="at">y =</span> p, <span class="at">color =</span> <span class="st">"grey30"</span>)<span class="sc">+</span></span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> q, <span class="at">xend =</span> q, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">yend =</span> p,</span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>           <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">color =</span> <span class="st">"grey30"</span>) <span class="sc">+</span></span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> <span class="dv">0</span>, <span class="at">xend =</span> q, <span class="at">y =</span> p, <span class="at">yend =</span> p,</span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>           <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">color =</span> <span class="st">"grey30"</span>)<span class="sc">+</span></span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"point"</span>, <span class="at">x =</span> q, <span class="at">y =</span> p_ext, <span class="at">color =</span> <span class="st">"grey30"</span>)<span class="sc">+</span></span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">x =</span> z, <span class="at">ymin =</span> <span class="fu">supply</span>(z), <span class="at">ymax =</span> p,</span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>                  <span class="at">fill =</span> <span class="st">"Produzentenrente"</span>), <span class="at">alpha =</span> <span class="fl">0.25</span>) <span class="sc">+</span></span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="st">"Soziale Grenzkosten"</span>), <span class="at">fun =</span> supply_ext, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">3.5</span>))<span class="sc">+</span></span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom =</span> <span class="st">"text"</span>, <span class="at">x=</span><span class="fl">3.5</span>, <span class="at">y=</span><span class="fu">supply_ext</span>(<span class="fl">3.5</span>)<span class="sc">+</span>.<span class="dv">5</span>, <span class="at">hjust=</span><span class="fl">0.8</span>, <span class="at">label=</span><span class="fu">expression</span>(<span class="st">"MC"</span>[pr]<span class="sc">~+</span>MC[ext]),<span class="at">color =</span> <span class="st">"grey30"</span>)<span class="sc">+</span></span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"point"</span>, <span class="at">x =</span> q_t, <span class="at">y =</span> p_t, <span class="at">color =</span> <span class="st">"grey30"</span>)<span class="sc">+</span></span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> q_t, <span class="at">xend =</span> q_t, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">yend =</span> p_t,</span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>           <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">color =</span> <span class="st">"grey30"</span>) <span class="sc">+</span></span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> <span class="dv">0</span>, <span class="at">xend =</span> q_t, <span class="at">y =</span> p_t, <span class="at">yend =</span> p_t,</span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>           <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">color =</span> <span class="st">"grey30"</span>)<span class="sc">+</span></span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>  <span class="co"># annotate("text", x=1, y=16, label="PR", color="grey30")+</span></span>
+<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Preis abzüglich steuer</span></span>
+<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>  <span class="co"># annotate("segment", x = 0, xend = q_t, y = p_t-t, yend = p_t-t,</span></span>
+<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a>  <span class="co">#        linetype = "dashed", color = "grey30")+</span></span>
+<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">x =</span> z, <span class="at">ymin =</span> p, <span class="at">ymax =</span> <span class="fu">demand</span>(z),</span>
+<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>                  <span class="at">fill =</span> <span class="st">"Konsumentenrente"</span>), <span class="at">alpha =</span> <span class="fl">0.25</span>)<span class="sc">+</span></span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a>  <span class="co"># geom_ribbon(aes(x = z_t, ymin = p_t-t, ymax = p_t,</span></span>
+<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a>  <span class="co">#                fill = "Steuereinnahmen"), alpha = 0.55)+</span></span>
+<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a>  <span class="co"># geom_ribbon(aes(x = z_wfl, ymin = supply(z_wfl), ymax = demand(z_wfl),</span></span>
+<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>  <span class="co">#                fill = "Wohlfahrtsverlust"), alpha = 0.55)+</span></span>
+<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a>  <span class="co">#  annotate("text", x=1, y=28, label="KR", color="grey30")+</span></span>
+<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Soziale Kosten</span></span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">x =</span> z_wfl, <span class="at">ymin =</span> <span class="fu">supply</span>(z_wfl), <span class="at">ymax =</span> <span class="fu">supply_ext</span>(z_wfl),</span>
+<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a>                  <span class="at">fill =</span> <span class="st">"Externe Kosten"</span>), <span class="at">alpha =</span> <span class="fl">0.55</span>)<span class="sc">+</span></span>
+<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a>  <span class="co"># annotate("text", x=q+1, y=p_t, label="Wohlfahrtsverlust",color = "grey30")+</span></span>
+<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Angebotsfunktion mit Pigou-Steuer</span></span>
+<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_function</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="st">"Private Grenzkosten + Steuer"</span>), <span class="at">fun =</span> supply_t, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">3.5</span>))<span class="sc">+</span></span>
+<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="at">geom =</span> <span class="st">"text"</span>, <span class="at">x=</span><span class="fl">3.5</span>, <span class="at">y=</span><span class="fu">supply_t</span>(<span class="fl">3.5</span>), <span class="at">hjust=</span><span class="sc">-</span><span class="fl">0.1</span>, <span class="at">label=</span><span class="fu">expression</span>(MC[pr]<span class="sc">+</span>t),<span class="at">color =</span> <span class="st">"grey30"</span>)<span class="sc">+</span></span>
+<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Steuereinnahmen</span></span>
+<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">x =</span> z_t, <span class="at">ymin =</span> p_t<span class="sc">-</span>t, <span class="at">ymax =</span> p_t,</span>
+<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a>                  <span class="at">fill =</span> <span class="st">"Steuereinnahmen"</span>), <span class="at">alpha =</span> <span class="fl">0.55</span>)<span class="sc">+</span></span>
+<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a>  <span class="co">#</span></span>
+<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">"green"</span>, <span class="st">"orange"</span>, <span class="st">"blue"</span>, <span class="st">"red"</span>))<span class="sc">+</span></span>
+<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"green"</span>, <span class="st">"orange"</span>, <span class="st">"blue"</span>))<span class="sc">+</span></span>
+<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), </span>
+<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>,q_t,q), <span class="at">labels =</span> <span class="fu">expression</span>(<span class="dv">0</span>, <span class="st">"x*"</span>,<span class="st">"x"</span><span class="sc">^</span><span class="dv">0</span>),</span>
+<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a>                     <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">4</span>)) <span class="sc">+</span></span>
+<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), </span>
+<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks =</span> <span class="fu">c</span>(p, p_t), <span class="at">labels =</span> <span class="fu">expression</span>(<span class="st">"p"</span><span class="sc">^</span><span class="dv">0</span>, <span class="st">"p*"</span>),</span>
+<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a>                     <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">70</span>)) <span class="sc">+</span></span>
+<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a>        <span class="co"># legend.position = "none", #Damit Legende unterdrückt.</span></span>
+<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a>        <span class="co">#axis.breaks.x=element_markdown()</span></span>
+<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.line =</span> <span class="fu">element_line</span>(<span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">type=</span><span class="st">'closed'</span>, <span class="at">length =</span> <span class="fu">unit</span>(<span class="dv">5</span>,<span class="st">'pt'</span>))))<span class="sc">+</span></span>
+<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Menge"</span>, <span class="at">y =</span> <span class="st">"Preis"</span>, </span>
+<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a>  <span class="at">color =</span> <span class="cn">NULL</span>,</span>
+<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a>  <span class="at">fill =</span> <span class="cn">NULL</span>,</span>
+<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a>  <span class="at">title=</span><span class="st">"Die Pigou-Steuer bei einem negativen externen Effekt"</span>)</span>
+<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a>chart</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Marktversagen_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Marktversagen_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -503,7 +622,7 @@ mit <span class="math inline">\(w_{t}^{i}\)</span>: Umsatzanteil des Gutes <span
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Marktversagen_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p><img src="Marktversagen_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
 </figure>
 </div>
 </div>
@@ -512,7 +631,7 @@ mit <span class="math inline">\(w_{t}^{i}\)</span>: Umsatzanteil des Gutes <span
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Marktversagen_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Marktversagen_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -549,77 +668,77 @@ mit <span class="math inline">\(w_{t}^{i}\)</span>: Umsatzanteil des Gutes <span
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Original [https://www.r-bloggers.com/2021/09/the-polya-urn-model-a-simple-simulation-of-the-rich-get-richer/]</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Nun mit ggplot</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Matrix aufbauen</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>cols <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"black"</span>, <span class="st">"blue"</span>, <span class="st">"green"</span>, <span class="st">"red"</span>, <span class="st">"yellow"</span>)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>n<span class="ot">=</span><span class="dv">1000</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>urn <span class="ot">&lt;-</span> cols <span class="sc">|&gt;</span> <span class="fu">table</span>() <span class="sc">|&gt;</span> <span class="fu">as.matrix</span>() <span class="sc">|&gt;</span> <span class="fu">t</span>()</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>urn <span class="ot">&lt;-</span> <span class="fu">rbind</span>(urn, <span class="fu">matrix</span>(<span class="cn">NA</span>, <span class="at">nrow =</span> n<span class="dv">-1</span>, <span class="at">ncol =</span> <span class="fu">ncol</span>(urn)))</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>cols_unique <span class="ot">&lt;-</span> <span class="fu">colnames</span>(urn)</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># n-1 draws from Dirichelet distribution</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(j <span class="cf">in</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)){</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span><span class="sc">+</span>j)</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_len</span>(n<span class="dv">-1</span>)) {</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  urn[i<span class="sc">+</span><span class="dv">1</span>, ] <span class="ot">&lt;-</span> urn[i, ]</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  col_sample <span class="ot">&lt;-</span> <span class="fu">sample</span>(cols_unique, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> (urn[i, ] <span class="sc">/</span> <span class="fu">sum</span>(urn[i, ]))                       ) <span class="co"># sample ball</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  urn[i<span class="sc">+</span><span class="dv">1</span>, col_sample] <span class="ot">&lt;-</span> urn[i<span class="sc">+</span><span class="dv">1</span>, col_sample] <span class="sc">+</span> <span class="dv">1</span> <span class="co"># add ball with same colour</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Data frame erzeugen</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(urn) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(Züge<span class="ot">=</span><span class="fu">seq</span>(<span class="dv">1</span><span class="sc">:</span>n))</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Rundenanzahl</span></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="co"># long format</span></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span>   </span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>( <span class="sc">!</span><span class="fu">starts_with</span>(<span class="st">"Z"</span>) ,</span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"Farbe"</span>, <span class="at">values_to =</span> <span class="st">"Anzahl"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Züge) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Anteil=</span>Anzahl<span class="sc">/</span><span class="fu">sum</span>(Anzahl))</span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> df1 <span class="sc">%&gt;%</span> </span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Züge, <span class="at">y=</span>Anzahl, <span class="at">group=</span>Farbe, <span class="at">color=</span>Farbe))<span class="sc">+</span></span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size=</span><span class="dv">1</span>)<span class="sc">+</span></span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="fu">unique</span>(df1<span class="sc">$</span>Farbe)),</span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"schwarz"</span>, <span class="st">"blau"</span>, <span class="st">"grün"</span>, <span class="st">"rot"</span>, <span class="st">"gelb"</span>))<span class="sc">+</span></span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>()</span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>  <span class="co">#theme(legend.position = 'bottom', legend.direction = "horizontal")+</span></span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>  <span class="co">#theme(legend.position = NULL)</span></span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> df1 <span class="sc">%&gt;%</span> </span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Züge, <span class="at">y=</span>Anteil, <span class="at">group=</span>Farbe, <span class="at">color=</span>Farbe))<span class="sc">+</span></span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size=</span><span class="dv">1</span>)<span class="sc">+</span></span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="fu">unique</span>(df1<span class="sc">$</span>Farbe)),</span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"schwarz"</span>, <span class="st">"blau"</span>, <span class="st">"grün"</span>, <span class="st">"rot"</span>, <span class="st">"gelb"</span>))<span class="sc">+</span></span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>()</span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>  <span class="co">#theme(legend.position = 'bottom', legend.direction = "horizontal")#+</span></span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>  <span class="co">#theme(legend.position = NULL)</span></span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="co">#p1 &lt;- p1+theme(legend.position = NULL)</span></span>
-<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
-<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(p1<span class="sc">+</span> p2<span class="sc">+</span><span class="fu">plot_layout</span>(<span class="at">guides =</span> <span class="st">'collect'</span>) <span class="sc">+</span></span>
-<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_annotation</span>(<span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">'Pfadabhängigkeit in der Póliya-Urne'</span>),</span>
-<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>                  <span class="at">subtitle=</span><span class="fu">paste0</span>(<span class="st">'Durchlauf Nr. '</span>, j)))</span>
-<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Original [https://www.r-bloggers.com/2021/09/the-polya-urn-model-a-simple-simulation-of-the-rich-get-richer/]</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Nun mit ggplot</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Matrix aufbauen</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>cols <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"black"</span>, <span class="st">"blue"</span>, <span class="st">"green"</span>, <span class="st">"red"</span>, <span class="st">"yellow"</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>n<span class="ot">=</span><span class="dv">1000</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>urn <span class="ot">&lt;-</span> cols <span class="sc">|&gt;</span> <span class="fu">table</span>() <span class="sc">|&gt;</span> <span class="fu">as.matrix</span>() <span class="sc">|&gt;</span> <span class="fu">t</span>()</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>urn <span class="ot">&lt;-</span> <span class="fu">rbind</span>(urn, <span class="fu">matrix</span>(<span class="cn">NA</span>, <span class="at">nrow =</span> n<span class="dv">-1</span>, <span class="at">ncol =</span> <span class="fu">ncol</span>(urn)))</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>cols_unique <span class="ot">&lt;-</span> <span class="fu">colnames</span>(urn)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co"># n-1 draws from Dirichelet distribution</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(j <span class="cf">in</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)){</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span><span class="sc">+</span>j)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_len</span>(n<span class="dv">-1</span>)) {</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  urn[i<span class="sc">+</span><span class="dv">1</span>, ] <span class="ot">&lt;-</span> urn[i, ]</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>  col_sample <span class="ot">&lt;-</span> <span class="fu">sample</span>(cols_unique, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> (urn[i, ] <span class="sc">/</span> <span class="fu">sum</span>(urn[i, ]))                       ) <span class="co"># sample ball</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  urn[i<span class="sc">+</span><span class="dv">1</span>, col_sample] <span class="ot">&lt;-</span> urn[i<span class="sc">+</span><span class="dv">1</span>, col_sample] <span class="sc">+</span> <span class="dv">1</span> <span class="co"># add ball with same colour</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Data frame erzeugen</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(urn) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(Züge<span class="ot">=</span><span class="fu">seq</span>(<span class="dv">1</span><span class="sc">:</span>n))</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Rundenanzahl</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="co"># long format</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span>   </span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>( <span class="sc">!</span><span class="fu">starts_with</span>(<span class="st">"Z"</span>) ,</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"Farbe"</span>, <span class="at">values_to =</span> <span class="st">"Anzahl"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Züge) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Anteil=</span>Anzahl<span class="sc">/</span><span class="fu">sum</span>(Anzahl))</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> df1 <span class="sc">%&gt;%</span> </span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Züge, <span class="at">y=</span>Anzahl, <span class="at">group=</span>Farbe, <span class="at">color=</span>Farbe))<span class="sc">+</span></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size=</span><span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="fu">unique</span>(df1<span class="sc">$</span>Farbe)),</span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"schwarz"</span>, <span class="st">"blau"</span>, <span class="st">"grün"</span>, <span class="st">"rot"</span>, <span class="st">"gelb"</span>))<span class="sc">+</span></span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>()</span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>  <span class="co">#theme(legend.position = 'bottom', legend.direction = "horizontal")+</span></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>  <span class="co">#theme(legend.position = NULL)</span></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> df1 <span class="sc">%&gt;%</span> </span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Züge, <span class="at">y=</span>Anteil, <span class="at">group=</span>Farbe, <span class="at">color=</span>Farbe))<span class="sc">+</span></span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size=</span><span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="fu">unique</span>(df1<span class="sc">$</span>Farbe)),</span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>                     <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"schwarz"</span>, <span class="st">"blau"</span>, <span class="st">"grün"</span>, <span class="st">"rot"</span>, <span class="st">"gelb"</span>))<span class="sc">+</span></span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>()</span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>  <span class="co">#theme(legend.position = 'bottom', legend.direction = "horizontal")#+</span></span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>  <span class="co">#theme(legend.position = NULL)</span></span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a><span class="co">#p1 &lt;- p1+theme(legend.position = NULL)</span></span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(p1<span class="sc">+</span> p2<span class="sc">+</span><span class="fu">plot_layout</span>(<span class="at">guides =</span> <span class="st">'collect'</span>) <span class="sc">+</span></span>
+<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_annotation</span>(<span class="at">title =</span> <span class="fu">paste0</span>(<span class="st">'Pfadabhängigkeit in der Póliya-Urne'</span>),</span>
+<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a>                  <span class="at">subtitle=</span><span class="fu">paste0</span>(<span class="st">'Durchlauf Nr. '</span>, j)))</span>
+<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Marktversagen_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Marktversagen_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
 <figcaption>Ziehungen aus einer Pólya-Urne</figcaption>
 </figure>
 </div>
@@ -627,7 +746,7 @@ mit <span class="math inline">\(w_{t}^{i}\)</span>: Umsatzanteil des Gutes <span
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Marktversagen_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Marktversagen_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid figure-img" width="672"></p>
 <figcaption>Ziehungen aus einer Pólya-Urne</figcaption>
 </figure>
 </div>
@@ -635,7 +754,7 @@ mit <span class="math inline">\(w_{t}^{i}\)</span>: Umsatzanteil des Gutes <span
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Marktversagen_files/figure-html/unnamed-chunk-4-3.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Marktversagen_files/figure-html/unnamed-chunk-5-3.png" class="img-fluid figure-img" width="672"></p>
 <figcaption>Ziehungen aus einer Pólya-Urne</figcaption>
 </figure>
 </div>
@@ -643,7 +762,7 @@ mit <span class="math inline">\(w_{t}^{i}\)</span>: Umsatzanteil des Gutes <span
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Marktversagen_files/figure-html/unnamed-chunk-4-4.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Marktversagen_files/figure-html/unnamed-chunk-5-4.png" class="img-fluid figure-img" width="672"></p>
 <figcaption>Ziehungen aus einer Pólya-Urne</figcaption>
 </figure>
 </div>
@@ -651,7 +770,7 @@ mit <span class="math inline">\(w_{t}^{i}\)</span>: Umsatzanteil des Gutes <span
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Marktversagen_files/figure-html/unnamed-chunk-4-5.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Marktversagen_files/figure-html/unnamed-chunk-5-5.png" class="img-fluid figure-img" width="672"></p>
 <figcaption>Ziehungen aus einer Pólya-Urne</figcaption>
 </figure>
 </div>
@@ -734,13 +853,14 @@ Weimann, J. (2006). <em><a href="https://doi.org/10.1007/3-540-28857-0">Wirtscha
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
