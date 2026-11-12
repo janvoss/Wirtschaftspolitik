@@ -10,7 +10,7 @@ import graphviz
 
 # Digraph-Objekt erstellen
 dot = graphviz.Digraph(comment='Tatbestände des Marktversagens', format='svg')
-dot.attr(rankdir='TB', size='12,12', fontname='Arial')
+dot.attr(rankdir='LR', size='12,12', fontname='Arial')
 dot.attr('node', fontname='Arial', margin='0.15')
 
 # 1. Hauptknoten (Root)
